@@ -23,5 +23,14 @@ Lista_Sessao *Cria_Lista(){
 
 Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
 
-    
+    Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
+
+    printf("Digite o nome da sessao\n");
+    scanf("%[^\n]", Novo_No->sessao_lista.nome);
+    printf("Digite a descrisao da sessao\n");
+    scanf("%[^\n]", Novo_No->sessao_lista.descrisao);
+
+    Novo_No->sessao_lista.produto_var = NULL;
+    Novo_No->proxima_sessao = lista_sessao_var;
+    return Novo_No;
 }
