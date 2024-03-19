@@ -44,3 +44,10 @@ short Lista_Vazia(Lista_Sessao *lista_sessao_var){
     return 0;
 }
 
+void Percorrer_Sessoes(){
+    if(Lista_Vazia == 1){
+        
+        printf("Erro: Nao existe Sessoes!!!");
+
+    }
+}
