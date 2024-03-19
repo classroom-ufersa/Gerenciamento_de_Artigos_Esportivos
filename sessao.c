@@ -1,3 +1,4 @@
+#include "sessao.h"
 
 struct sessao
 {
@@ -6,3 +7,5 @@ struct sessao
     char descrisao[100];
     Produto *produto_var;
 };
+
+

@@ -1,1 +1,3 @@
 
+
+typedef struct sessao Sessao;
