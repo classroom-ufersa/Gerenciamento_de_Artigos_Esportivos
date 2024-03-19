@@ -34,3 +34,7 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     Novo_No->proxima_sessao = lista_sessao_var;
     return Novo_No;
 }
+
+int Lista_Vazia(Lista_Sessao *lista_sessao_var){
+
+}
