@@ -35,6 +35,12 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     return Novo_No;
 }
 
-int Lista_Vazia(Lista_Sessao *lista_sessao_var){
+short Lista_Vazia(Lista_Sessao *lista_sessao_var){
 
+    if (lista_sessao_var == NULL){
+
+        return 1;
+    }
+    return 0;
 }
+
