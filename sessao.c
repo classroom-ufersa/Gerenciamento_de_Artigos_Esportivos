@@ -1,4 +1,6 @@
 #include "sessao.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 struct sessao{
     
@@ -13,7 +15,13 @@ struct lista_sessao{
     Sessao sessao_lista;
 };
 
-Sessao *Adicionar_Sessao(Sessao sessao_var){
+Lista_Sessao *Cria_Lista(){
+
+    Lista_Sessao *Primeiro_No = NULL;
+    return Primeiro_No;
+}
+
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
 
     
 }

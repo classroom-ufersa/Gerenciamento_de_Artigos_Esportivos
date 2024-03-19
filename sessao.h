@@ -2,4 +2,6 @@
 
 typedef struct sessao Sessao;
 typedef struct lista_sessao Lista_Sessao;
-Sessao *Adicionar_Sessao(Sessao sessao_var);
+
+Lista_Sessao *Cria_Lista();
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var);
