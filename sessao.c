@@ -55,3 +55,9 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var){
     key = key->proxima_sessao;
     return key;
 }
+
+void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
+
+    printf("Sessao: %s", lista_sessao_var->sessao_lista.nome);
+    printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
+}
