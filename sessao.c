@@ -46,6 +46,10 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     return Novo_No;
 }
 
+Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var){
+
+}
+
 short Lista_Vazia(Lista_Sessao *lista_sessao_var){
 
     if (lista_sessao_var == NULL){
