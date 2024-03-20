@@ -40,7 +40,7 @@ short Lista_Vazia(Lista_Sessao *lista_sessao_var){
     if (lista_sessao_var == NULL){
 
         return 1;
-    }
+    } 
     return 0;
 }
 
