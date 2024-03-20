@@ -50,22 +50,22 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
-    while (Atual->sessao_lista.nome != nome && Atual != NULL)
-    {
+    
+    while (Atual->sessao_lista.nome != nome && Atual != NULL) {
+
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
     }
-    if (Anterior == NULL)
-    {
+    if (Anterior == NULL){
+
         free(Atual);
         return lista_sessao_var;
-    }
-    else
-    {
+    } else{
         Anterior->proxima_sessao = Atual->proxima_sessao;
         free(Atual);
         return lista_sessao_var;
     }
+
     printf("objeto não encontrado\n");
     return lista_sessao_var;
 }
