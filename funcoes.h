@@ -1,4 +1,2 @@
 
-
-void menu();
 char exibirMenu();
