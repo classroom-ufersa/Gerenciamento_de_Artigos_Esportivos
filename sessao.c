@@ -1,6 +1,7 @@
 #include "sessao.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 struct sessao{
     
@@ -30,8 +31,18 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Digite a descrisao da sessao\n");
     scanf("%[^\n]", Novo_No->sessao_lista.descrisao);
 
+    Lista_Sessao *contador;
+    while(contador != NULL){
+
+        if(strcmp(Novo_No->sessao_lista.nome, contador->sessao_lista.nome)){
+
+            break;
+        }
+        contador = contador->proxima_sessao;
+    }
+
     Novo_No->sessao_lista.produto_var = NULL;
-    Novo_No->proxima_sessao = lista_sessao_var;
+    Novo_No->proxima_sessao = contador;
     return Novo_No;
 }
 
