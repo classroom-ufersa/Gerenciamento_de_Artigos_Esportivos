@@ -48,6 +48,30 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
 
 Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var){
 
+    Lista *Atual = lista;
+    Lista *Anterior = NULL;
+    while (Atual->informacao != Apagar && Atual != NULL)
+    {
+        Anterior = Atual;
+        Atual = Atual->pro_informacao;
+    }
+    if (Anterior == NULL)
+    {
+        free(Atual);
+        return lista;
+    }
+    else if (Atual == NULL)
+    {
+        return lista;
+    }
+    else
+    {
+        Anterior->pro_informacao = Atual->pro_informacao;
+        free(Atual);
+        return lista;
+    }
+    printf("objeto não encontrado\n");
+    return lista;
 }
 
 short Lista_Vazia(Lista_Sessao *lista_sessao_var){
