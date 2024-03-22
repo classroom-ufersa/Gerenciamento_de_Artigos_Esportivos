@@ -4,7 +4,7 @@
 
 int main() {
     char opcao;
-    Lista_Sessao *Lista_sessao = Cria_Lista();
+    Lista_Sessao *Lista_sessao_var = Cria_Lista();
 
     do {
         opcao = exibirMenu();
@@ -21,11 +21,17 @@ int main() {
 
             case '3':
                 printf("\nOpção selecionada: Adicionar sessao\n");
-                Lista_sessao = Adicionar_Sessao(Lista_sessao);
+                Lista_sessao_var = Adicionar_Sessao(Lista_sessao_var);
                 break;
 
             case '4':
+
+                if (Lista_Vazia(Lista_sessao_var)){
+                    printf("Nao existe nenhuma sessao cadastrada\n");
+                }
+                char nome_remover[100];
                 printf("\nOpção selecionada: Remover sessao\n");
+                Lista_sessao_var = Remover_Sessao(Lista_sessao_var, nome_remover);
                 break;
 
             case '5':
