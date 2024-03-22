@@ -8,3 +8,7 @@ typedef struct {
     int quantidade;
 } Produto;
 
+typedef struct No_Produto {
+    Produto produto;
+    struct No_Produto *proximo;
+} No_Produto;
