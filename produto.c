@@ -60,3 +60,13 @@ void removerProduto(Lista_Produtos *lista, char nome[100]) {
 
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
+
+void liberarListaProdutos(Lista_Produtos *lista) {
+    No_Produto *atual = lista->primeiro;
+    while (atual != NULL) {
+        No_Produto *proximo = atual->proximo;
+        free(atual);
+        atual = proximo;
+    }
+    free(lista);
+}
