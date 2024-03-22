@@ -16,3 +16,11 @@ typedef struct No_Produto {
 typedef struct {
     No_Produto *primeiro;
 } Lista_Produtos;
+
+void adicionarProduto(Lista_Produtos *lista, Produto produto);
+void imprimirProdutos(Lista_Produtos *lista);
+void removerProduto(Lista_Produtos *lista, const char *nome);
+int listaProdutosVazia(Lista_Produtos *lista);
+void liberarListaProdutos(Lista_Produtos *lista);
+
+#endif
