@@ -12,3 +12,7 @@ typedef struct No_Produto {
     Produto produto;
     struct No_Produto *proximo;
 } No_Produto;
+
+typedef struct {
+    No_Produto *primeiro;
+} Lista_Produtos;
