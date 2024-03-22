@@ -7,7 +7,7 @@ struct sessao{
     
     char nome[100];
     char descrisao[100];
-    Produto *produto_var;
+    lista_produto *produto_var;
 };
 
 struct lista_sessao{
@@ -31,6 +31,8 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Digite a descrisao da sessao\n");
     scanf("%[^\n]", Novo_No->sessao_lista.descrisao);
 
+    lista_sessao_var->sessao_lista.nome;
+
     Lista_Sessao *contador;
     while(contador != NULL){
 
@@ -50,7 +52,7 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
-    
+
     while (Atual->sessao_lista.nome != nome && Atual != NULL) {
 
         Anterior = Atual;
