@@ -13,3 +13,20 @@ void adicionarProduto(Lista_Produtos *lista, Produto produto) {
         printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
     }
 }
+
+void imprimirProdutos(Lista_Produtos *lista) {
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia.\n");
+        return;
+    }
+    printf("Produtos:\n");
+    No_Produto *atual = lista->primeiro;
+    while (atual != NULL) {
+        printf("Nome: %s\n", atual->produto.nome);
+        printf("Categoria: %s\n", atual->produto.categoria);
+        printf("Preço: %.2f\n", atual->produto.preco);
+        printf("Quantidade: %d\n", atual->produto.quantidade);
+        printf("\n");
+        atual = atual->proximo;
+    }
+}
