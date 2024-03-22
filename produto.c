@@ -30,3 +30,33 @@ void imprimirProdutos(Lista_Produtos *lista) {
         atual = atual->proximo;
     }
 }
+int listaProdutosVazia(Lista_Produtos *lista) {
+    return (lista == NULL || lista->primeiro == NULL);
+}
+
+void removerProduto(Lista_Produtos *lista, char nome[100]) {
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia. Nada a remover.\n");
+        return;
+    }
+
+    No_Produto *atual = lista->primeiro;
+    No_Produto *anterior = NULL;
+
+    while (atual != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
+            if (anterior == NULL) {
+                lista->primeiro = atual->proximo;
+            } else {
+                anterior->proximo = atual->proximo;
+            }
+            free(atual);
+            printf("Produto \"%s\" removido com sucesso.\n", nome);
+            return;
+        }
+        anterior = atual;
+        atual = atual->proximo;
+    }
+
+    printf("Produto \"%s\" não encontrado na lista.\n", nome);
+}
