@@ -70,3 +70,29 @@ void liberarListaProdutos(Lista_Produtos *lista) {
     }
     free(lista);
 }
+void editarProduto(Lista_Produtos *lista, char *nome) {
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia. Nada a editar.\n");
+        return;
+    }
+
+    No_Produto *atual = lista->primeiro;
+
+    while (atual != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
+            printf("Digite o novo nome do produto: ");
+            scanf(" %[^\n]", atual->produto.nome);
+            printf("Digite a nova categoria do produto: ");
+            scanf(" %[^\n]", atual->produto.categoria);
+            printf("Digite o novo preço do produto: ");
+            scanf(" %f", &atual->produto.preco);
+            printf("Digite a nova quantidade do produto: ");
+            scanf(" %d", &atual->produto.quantidade);
+            printf("Produto \"%s\" editado com sucesso.\n", nome);
+            return;
+        }
+        atual = atual->proximo;
+    }
+
+    printf("Produto \"%s\" não encontrado na lista.\n", nome);
+}
