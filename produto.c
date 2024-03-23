@@ -96,3 +96,29 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
 
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
+void buscarPorNome(Lista_Produtos *lista, char *nome) {
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia.\n");
+        return;
+    }
+
+    No_Produto *atual = lista->primeiro;
+    int encontrado = 0;
+
+    while (atual != NULL) {
+        if (strstr(atual->produto.nome, nome) != NULL) {
+            printf("Produto encontrado:\n");
+            printf("Nome: %s\n", atual->produto.nome);
+            printf("Categoria: %s\n", atual->produto.categoria);
+            printf("Preço: %.2f\n", atual->produto.preco);
+            printf("Quantidade: %d\n", atual->produto.quantidade);
+            printf("\n");
+            encontrado = 1;
+        }
+        atual = atual->proximo;
+    }
+
+    if (!encontrado) {
+        printf("Nenhum produto encontrado com o nome \"%s\".\n", nome);
+    }
+}
