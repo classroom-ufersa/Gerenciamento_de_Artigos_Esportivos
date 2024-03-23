@@ -56,7 +56,10 @@ int main() {
                 break;
             }
             case '6': {
-                // Implemente a busca de produto por nome aqui
+                char nome[100];
+                printf("Digite o nome do produto a ser buscado: ");
+                scanf(" %[^\n]", nome);
+                buscarPorNome(listaProdutos, nome);
                 break;
             }
             case '7': {
