@@ -22,5 +22,5 @@ void imprimirProdutos(Lista_Produtos *lista);
 void removerProduto(Lista_Produtos *lista, const char *nome);
 int listaProdutosVazia(Lista_Produtos *lista);
 void liberarListaProdutos(Lista_Produtos *lista);
-
+void editarProduto(Lista_Produtos *lista, char *nome);
 #endif
