@@ -49,7 +49,10 @@ int main() {
                 break;
             }
             case '5': {
-                // Implemente a edição de informações do produto aqui
+                char nome[100];
+                printf("Digite o nome do produto a ser editado: ");
+                scanf(" %[^\n]", nome);
+                editarProduto(listaProdutos, nome);
                 break;
             }
             case '6': {
