@@ -18,15 +18,6 @@ int main() {
 
         switch (opcao) {
             case '1': {
-                Produto novoProduto;
-                printf("Digite o nome do produto: ");
-                scanf(" %[^\n]", novoProduto.nome);
-                printf("Digite a categoria do produto: ");
-                scanf(" %[^\n]", novoProduto.categoria);
-                printf("Digite o preço do produto: ");
-                scanf(" %f", &novoProduto.preco);
-                printf("Digite a quantidade do produto: ");
-                scanf(" %d", &novoProduto.quantidade);
                 adicionarProduto(listaProdutos, novoProduto);
                 printf("Produto adicionado com sucesso!\n");
                 break;

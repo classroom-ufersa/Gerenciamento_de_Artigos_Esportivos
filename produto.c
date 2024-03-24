@@ -13,10 +13,21 @@ struct lista_produto{
 };
 
 
-void adicionarProduto(Lista_Produtos *lista, Produto produto) {
+void adicionarProduto(Lista_Produtos *lista) {
+
+    Produto novo_Produto;
+    printf("Digite o nome do produto: ");
+    scanf(" %[^\n]", novo_Produto.nome);
+    printf("Digite a categoria do produto: ");
+    scanf(" %[^\n]", novo_Produto.categoria);
+    printf("Digite o preço do produto: ");
+    scanf(" %f", &novo_Produto.preco);
+    printf("Digite a quantidade do produto: ");
+    scanf(" %d", &novo_Produto.quantidade);
+
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
     if (novoNo != NULL) {
-        novoNo->produto = produto;
+        novoNo->produto = novo_Produto;
         novoNo->proximo_produto = lista;
     } else {
         printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
