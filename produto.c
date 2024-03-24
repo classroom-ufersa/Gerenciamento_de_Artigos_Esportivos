@@ -29,18 +29,18 @@ void imprimirProdutos(Lista_Produtos *lista) {
         return;
     }
     printf("Produtos:\n");
-    No_Produto *atual = lista->primeiro;
+    Lista_Produtos *atual = lista;
     while (atual != NULL) {
         printf("Nome: %s\n", atual->produto.nome);
         printf("Categoria: %s\n", atual->produto.categoria);
         printf("Preço: %.2f\n", atual->produto.preco);
         printf("Quantidade: %d\n", atual->produto.quantidade);
         printf("\n");
-        atual = atual->proximo;
+        atual = atual->proximo_produto;
     }
 }
 int listaProdutosVazia(Lista_Produtos *lista) {
-    return (lista == NULL || lista->primeiro == NULL);
+    return (lista == NULL);
 }
 
 void removerProduto(Lista_Produtos *lista, char nome[100]) {
@@ -49,31 +49,31 @@ void removerProduto(Lista_Produtos *lista, char nome[100]) {
         return;
     }
 
-    No_Produto *atual = lista->primeiro;
-    No_Produto *anterior = NULL;
+    Lista_Produtos *atual = lista;
+    Lista_Produtos *anterior = NULL;
 
     while (atual != NULL) {
         if (strcmp(atual->produto.nome, nome) == 0) {
             if (anterior == NULL) {
-                lista->primeiro = atual->proximo;
+                lista = atual->proximo_produto;
             } else {
-                anterior->proximo = atual->proximo;
+                anterior->proximo_produto = atual->proximo_produto;
             }
             free(atual);
             printf("Produto \"%s\" removido com sucesso.\n", nome);
             return;
         }
         anterior = atual;
-        atual = atual->proximo;
+        atual = atual->proximo_produto;
     }
 
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
 void liberarListaProdutos(Lista_Produtos *lista) {
-    No_Produto *atual = lista->primeiro;
+    Lista_Produtos *atual = lista;
     while (atual != NULL) {
-        No_Produto *proximo = atual->proximo;
+        Lista_Produtos *proximo = atual->proximo_produto;
         free(atual);
         atual = proximo;
     }
@@ -85,7 +85,7 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
         return;
     }
 
-    No_Produto *atual = lista->primeiro;
+    Lista_Produtos *atual = lista;
 
     while (atual != NULL) {
         if (strcmp(atual->produto.nome, nome) == 0) {
@@ -100,7 +100,7 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
             printf("Produto \"%s\" editado com sucesso.\n", nome);
             return;
         }
-        atual = atual->proximo;
+        atual = atual->proximo_produto;
     }
 
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
@@ -111,7 +111,7 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
         return;
     }
 
-    No_Produto *atual = lista->primeiro;
+    Lista_Produtos *atual = lista;
     int encontrado = 0;
 
     while (atual != NULL) {
@@ -124,7 +124,7 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
             printf("\n");
             encontrado = 1;
         }
-        atual = atual->proximo;
+        atual = atual->proximo_produto;
     }
 
     if (!encontrado) {
