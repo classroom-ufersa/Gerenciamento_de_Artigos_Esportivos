@@ -1,14 +1,23 @@
 #include "produto.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+
+struct produto{
+    char nome[100];
+    char categoria[100];
+    float preco;
+    int quantidade;
+};
+
+struct lista_produto{
+    Produto produto;
+    Lista_Produtos *proximo_produto;
+};
+
 
 void adicionarProduto(Lista_Produtos *lista, Produto produto) {
-    No_Produto *novoNo = (No_Produto*)malloc(sizeof(No_Produto));
+    Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
     if (novoNo != NULL) {
         novoNo->produto = produto;
-        novoNo->proximo = lista->primeiro;
-        lista->primeiro = novoNo;
+        novoNo->proximo_produto = lista;
     } else {
         printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
     }

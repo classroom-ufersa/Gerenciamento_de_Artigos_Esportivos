@@ -1,21 +1,13 @@
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
-typedef struct {
-    char nome[100];
-    char categoria[100];
-    float preco;
-    int quantidade;
-} Produto;
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-typedef struct No_Produto {
-    Produto produto;
-    struct No_Produto *proximo;
-} No_Produto;
+typedef struct produto Produto;
+typedef struct lista_produto Lista_Produtos;
 
-typedef struct {
-    No_Produto *primeiro;
-} Lista_Produtos;
 
 void adicionarProduto(Lista_Produtos *lista, Produto produto);
 void imprimirProdutos(Lista_Produtos *lista);
