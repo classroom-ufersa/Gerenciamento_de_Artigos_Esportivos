@@ -13,7 +13,7 @@ struct sessao{
 
 struct lista_sessao{
 
-    Sessao *proxima_sessao;
+    Lista_Sessao *proxima_sessao;
     Sessao sessao_lista;
 };
 
@@ -32,20 +32,8 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Digite a descrisao da sessao\n");
     scanf("%[^\n]", Novo_No->sessao_lista.descrisao);
 
-    lista_sessao_var->sessao_lista.nome;
-
-    Lista_Sessao *contador;
-    while(contador != NULL){
-
-        if(strcmp(Novo_No->sessao_lista.nome, contador->sessao_lista.nome)){
-
-            break;
-        }
-        contador = contador->proxima_sessao;
-    }
-
     Novo_No->sessao_lista.produto_var = NULL;
-    Novo_No->proxima_sessao = contador;
+    Novo_No->proxima_sessao = lista_sessao_var;
     return Novo_No;
 }
 
