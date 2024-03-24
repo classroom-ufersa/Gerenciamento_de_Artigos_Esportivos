@@ -9,7 +9,7 @@ typedef struct produto Produto;
 typedef struct lista_produto Lista_Produtos;
 
 
-void adicionarProduto(Lista_Produtos *lista, Produto produto);
+void adicionarProduto(Lista_Produtos *lista);
 void imprimirProdutos(Lista_Produtos *lista);
 void removerProduto(Lista_Produtos *lista, const char *nome);
 int listaProdutosVazia(Lista_Produtos *lista);

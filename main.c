@@ -18,7 +18,7 @@ int main() {
 
         switch (opcao) {
             case '1': {
-                adicionarProduto(listaProdutos, novoProduto);
+                adicionarProduto(listaProdutos);
                 printf("Produto adicionado com sucesso!\n");
                 break;
             }
@@ -36,7 +36,6 @@ int main() {
             }
             case '4': {
                 printf("\nOpção selecionada: Remover sessao\n");
-                // Implemente a remoção de sessão aqui
                 break;
             }
             case '5': {
@@ -54,7 +53,6 @@ int main() {
                 break;
             }
             case '7': {
-                // Implemente a listagem de produtos por nome aqui
                 break;
             }
             case '8': {

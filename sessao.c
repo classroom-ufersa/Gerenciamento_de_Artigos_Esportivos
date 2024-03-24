@@ -1,4 +1,5 @@
 #include "sessao.h"
+#include "produto.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -7,7 +8,7 @@ struct sessao{
     
     char nome[100];
     char descrisao[100];
-    lista_produto *produto_var;
+    Lista_Produtos *produto_var;
 };
 
 struct lista_sessao{
