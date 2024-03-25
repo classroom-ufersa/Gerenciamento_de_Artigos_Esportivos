@@ -14,14 +14,18 @@ int main() {
         switch (opcao) {
             case '1': {
 
-                char nome_sessao[100];
+                char nome_teste[10];
+                printf("estou aqui 1\n");
                 printf("Digite em qual sessao o produto vai estar\n");
-                scanf("%[^\n]", nome_sessao);
+                printf("estou aqui 2\n");
+                scanf(" %[^\n]", nome_teste);
+                printf("estou aqui 3\n");
 
-                Lista_Produtos *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_sessao);
+                Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_teste);
+                Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
 
                 if (sessao_escolhida != NULL){
-                    sessao_escolhida = adicionarProduto(sessao_escolhida);
+                    lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida);
                     printf("Produto adicionado com sucesso!\n");
                 }
                 break;
@@ -41,13 +45,13 @@ int main() {
                 break;
             }
             case '3': {
-                printf("\nOpção selecionada: Adicionar sessao\n");
+                printf("\nOpcao selecionada: Adicionar sessao\n");
                 lista_Sessao = Adicionar_Sessao(lista_Sessao);
                 break;
             }
             case '4': {
                 char nome[100];
-                printf("\nOpção selecionada: Remover sessao\n");
+                printf("\nOpcao selecionada: Remover sessao\n");
 
                 printf("Digite o nome da sessao a ser removida: ");
                 scanf(" %[^\n]", nome);
@@ -103,7 +107,7 @@ int main() {
                 break;
             }
             default: {
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
             }
         }
     } while (opcao != '8');

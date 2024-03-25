@@ -21,9 +21,9 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
     printf("Digite a categoria do produto: ");
     scanf(" %[^\n]", novo_Produto.categoria);
     printf("Digite o preço do produto: ");
-    scanf(" %f", &novo_Produto.preco);
+    scanf("%f", &novo_Produto.preco);
     printf("Digite a quantidade do produto: ");
-    scanf(" %d", &novo_Produto.quantidade);
+    scanf("%d", &novo_Produto.quantidade);
 
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
     if (novoNo != NULL) {
@@ -31,7 +31,7 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
         novoNo->proximo_produto = lista;
         return novoNo;
     } else {
-        printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
+        printf("Erro: Nao foi possível adicionar o produto. Memoria insuficiente.\n");
     }
 }
 

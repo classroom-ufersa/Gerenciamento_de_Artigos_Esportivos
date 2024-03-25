@@ -24,9 +24,9 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
     Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
     printf("Digite o nome da sessao\n");
-    scanf("%[^\n]", Novo_No->sessao_lista.nome);
+    scanf(" %[^\n]", Novo_No->sessao_lista.nome);
     printf("Digite a descrisao da sessao\n");
-    scanf("%[^\n]", Novo_No->sessao_lista.descrisao);
+    scanf(" %[^\n]", Novo_No->sessao_lista.descrisao);
 
     Novo_No->sessao_lista.produto_var = NULL;
     Novo_No->proxima_sessao = lista_sessao_var;
@@ -84,7 +84,7 @@ void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
 }
 
-Lista_Produtos *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
+Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[10]){
 
     if (Lista_Vazia(lista_sessao_var)){
         printf("nenhuma sessao cadastrada\n");
@@ -101,7 +101,7 @@ Lista_Produtos *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
         printf("Erro, sessao nao encontrada\n");
     }
-    return lista_sessao_var->sessao_lista.produto_var;
+    return atual;
 }
 
 Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var){

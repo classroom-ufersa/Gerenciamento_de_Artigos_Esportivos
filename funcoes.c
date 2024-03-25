@@ -13,7 +13,7 @@ char exibirMenu() {
     printf("\t\033[1;33m7.\033[0m Listar produtos por nome\n");
     printf("\t\033[1;33m8.\033[0m Sair\n");
     printf("\tEscolha uma opção (\033[1;33m1-8\033[0m): ");
-    scanf("%c", &escolha);
+    scanf(" %c", &escolha);
     return escolha;
 }
 
