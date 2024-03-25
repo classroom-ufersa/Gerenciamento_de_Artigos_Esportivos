@@ -29,6 +29,7 @@ void adicionarProduto(Lista_Produtos *lista) {
     if (novoNo != NULL) {
         novoNo->produto = novo_Produto;
         novoNo->proximo_produto = lista;
+        return novoNo;
     } else {
         printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
     }
