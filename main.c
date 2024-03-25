@@ -21,7 +21,7 @@ int main() {
                 Lista_Produtos *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_sessao);
 
                 if (sessao_escolhida != NULL){
-                    adicionarProduto(sessao_escolhida);
+                    sessao_escolhida = adicionarProduto(sessao_escolhida);
                     printf("Produto adicionado com sucesso!\n");
                 }
                 break;
@@ -35,7 +35,7 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    removerProduto(Auxiliar_produtos, nome);
+                    Auxiliar_produtos = removerProduto(Auxiliar_produtos, nome);
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
@@ -84,7 +84,18 @@ int main() {
             }
             case '7': {
 
-                
+                Lista_Sessao *Auxiliar = lista_Sessao;
+                if(Lista_Vazia(Auxiliar)){
+                while (Auxiliar != NULL)
+                    {
+                        Imprimir_Sessao(Auxiliar);
+                        Lista_Produtos *Auxiliar_produto = Pegar_Lista_Produtos(Auxiliar);
+                        imprimirProdutos(Auxiliar_produto);
+                        Auxiliar = Percorrer_Sessoes(Auxiliar);
+                    }
+                } else {
+                    printf("Nao existe nenhuma lista");
+                }
                 break;
             }
             case '8': {

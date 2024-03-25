@@ -13,7 +13,7 @@ struct lista_produto{
 };
 
 
-void adicionarProduto(Lista_Produtos *lista) {
+Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
 
     Produto novo_Produto;
     printf("Digite o nome do produto: ");
@@ -55,7 +55,7 @@ int listaProdutosVazia(Lista_Produtos *lista) {
     return (lista == NULL);
 }
 
-void removerProduto(Lista_Produtos *lista, char nome[100]) {
+Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a remover.\n");
         return;
@@ -78,7 +78,7 @@ void removerProduto(Lista_Produtos *lista, char nome[100]) {
         anterior = atual;
         atual = atual->proximo_produto;
     }
-
+    return lista;
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
