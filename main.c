@@ -4,20 +4,17 @@
 #include "sessao.h"
 
 int main() {
-    Lista_Produtos *listaProdutos = criarListaProdutos();
-    if (listaProdutos == NULL) {
-        printf("Erro: Falha ao criar lista de produtos.\n");
-        return 1;
-    }
 
     char opcao;
-    Lista_Sessao *listaSessao = Cria_Lista();
+    Lista_Sessao *listaSessao = Cria_Lista_ses();
 
     do {
         opcao = exibirMenu();
 
         switch (opcao) {
             case '1': {
+
+                produto
                 adicionarProduto(listaProdutos);
                 printf("Produto adicionado com sucesso!\n");
                 break;

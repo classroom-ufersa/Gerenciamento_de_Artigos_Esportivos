@@ -17,7 +17,7 @@ struct lista_sessao{
     Sessao sessao_lista;
 };
 
-Lista_Sessao *Cria_Lista(){
+Lista_Sessao *Cria_Lista_Sessao(){
 
     Lista_Sessao *Primeiro_No = NULL;
     return Primeiro_No;
@@ -86,4 +86,24 @@ void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
 
     printf("Sessao: %s", lista_sessao_var->sessao_lista.nome);
     printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
+}
+
+Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
+
+    if (Lista_Vazia(lista_sessao_var)){
+        printf("nenhuma sessao cadastrada\n");
+        return NULL;
+    }
+
+    Lista_Sessao *atual;
+    while (strcmp(atual->sessao_lista.nome, nome) != 0 && atual != NULL){
+
+        atual = atual->proxima_sessao;
+    }
+
+    if (atual == NULL){
+
+        printf("Erro, sessao nao encontrada\n");
+    }
+    return lista_sessao_var;
 }
