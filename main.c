@@ -42,7 +42,7 @@ int main() {
             }
             case '3': {
                 printf("\nOpção selecionada: Adicionar sessao\n");
-                listaSessao = Adicionar_Sessao(listaSessao);
+                lista_Sessao = Adicionar_Sessao(lista_Sessao);
                 break;
             }
             case '4': {
@@ -53,14 +53,28 @@ int main() {
                 char nome[100];
                 printf("Digite o nome do produto a ser editado: ");
                 scanf(" %[^\n]", nome);
-                editarProduto(listaProdutos, nome);
+
+                Lista_Sessao *Auxiliar = lista_Sessao;
+                while (Auxiliar != NULL){
+
+                    Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
+                    editarProduto(Auxiliar_produtos, nome);
+                    Auxiliar = Percorrer_Sessoes(Auxiliar);
+                }
                 break;
             }
             case '6': {
                 char nome[100];
                 printf("Digite o nome do produto a ser buscado: ");
                 scanf(" %[^\n]", nome);
-                buscarPorNome(listaProdutos, nome);
+                
+                Lista_Sessao *Auxiliar = lista_Sessao;
+                while (Auxiliar != NULL){
+
+                    Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
+                    buscarPorNome(Auxiliar_produtos, nome);
+                    Auxiliar = Percorrer_Sessoes(Auxiliar);
+                }
                 break;
             }
             case '7': {
@@ -76,8 +90,7 @@ int main() {
         }
     } while (opcao != '8');
 
-    liberarListaProdutos(listaProdutos);
-    liberarListaSessao(listaSessao);
+    liberarListaSessao(lista_Sessao);
 
     return 0;
 }
