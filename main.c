@@ -18,10 +18,10 @@ int main() {
                 printf("Digite em qual sessao o produto vai estar\n");
                 scanf("%[^\n]", nome_sessao);
 
-                Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_sessao);
+                Lista_Produtos *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_sessao);
 
                 if (sessao_escolhida != NULL){
-                    adicionarProduto(sessao_escolhida->sessao_lista.produto_var);
+                    adicionarProduto(sessao_escolhida);
                     printf("Produto adicionado com sucesso!\n");
                 }
                 break;

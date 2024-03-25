@@ -88,7 +88,7 @@ void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
 }
 
-Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
+Lista_Produtos *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
     if (Lista_Vazia(lista_sessao_var)){
         printf("nenhuma sessao cadastrada\n");
@@ -105,5 +105,5 @@ Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
         printf("Erro, sessao nao encontrada\n");
     }
-    return lista_sessao_var;
+    return lista_sessao_var->sessao_lista.produto_var;
 }
