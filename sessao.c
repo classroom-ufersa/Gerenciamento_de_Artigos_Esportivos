@@ -107,3 +107,8 @@ Lista_Produtos *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
     }
     return lista_sessao_var->sessao_lista.produto_var;
 }
+
+Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var){
+
+    return lista_sessao_var->sessao_lista.produto_var;
+}

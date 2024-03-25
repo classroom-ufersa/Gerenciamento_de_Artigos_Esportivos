@@ -30,7 +30,11 @@ int main() {
                 char nome[100];
                 printf("Digite o nome do produto a ser removido: ");
                 scanf(" %[^\n]", nome);
-                removerProduto(listaProdutos, nome);
+
+                
+                while (1){
+                    removerProduto(listaProdutos, nome);
+                }
                 break;
             }
             case '3': {
