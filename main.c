@@ -31,9 +31,12 @@ int main() {
                 printf("Digite o nome do produto a ser removido: ");
                 scanf(" %[^\n]", nome);
 
-                
-                while (1){
-                    removerProduto(listaProdutos, nome);
+                Lista_Sessao *Auxiliar = lista_Sessao;
+                while (Auxiliar != NULL){
+
+                    Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
+                    removerProduto(Auxiliar_produtos, nome);
+                    Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
             }
