@@ -107,8 +107,5 @@ int main() {
             }
         }
     } while (opcao != '8');
-
-    liberarListaSessao(lista_Sessao);
-
     return 0;
 }
