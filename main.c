@@ -6,7 +6,7 @@
 int main() {
 
     char opcao;
-    Lista_Sessao *listaSessao = Cria_Lista_ses();
+    Lista_Sessao *lista_Sessao = Cria_Lista_ses();
 
     do {
         opcao = exibirMenu();
@@ -14,9 +14,16 @@ int main() {
         switch (opcao) {
             case '1': {
 
-                produto
-                adicionarProduto(listaProdutos);
-                printf("Produto adicionado com sucesso!\n");
+                char nome_sessao[100];
+                printf("Digite em qual sessao o produto vai estar\n");
+                scanf("%[^\n]", nome_sessao);
+
+                Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_sessao);
+
+                if (sessao_escolhida != NULL){
+                    adicionarProduto(sessao_escolhida->sessao_lista.produto_var);
+                    printf("Produto adicionado com sucesso!\n");
+                }
                 break;
             }
             case '2': {
