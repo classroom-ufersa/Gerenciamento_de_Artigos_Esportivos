@@ -1,8 +1,4 @@
 #include "sessao.h"
-#include "produto.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 struct sessao{
     

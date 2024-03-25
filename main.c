@@ -6,7 +6,7 @@
 int main() {
 
     char opcao;
-    Lista_Sessao *lista_Sessao = Cria_Lista_ses();
+    Lista_Sessao *lista_Sessao = Cria_Lista_Sessao();
 
     do {
         opcao = exibirMenu();
