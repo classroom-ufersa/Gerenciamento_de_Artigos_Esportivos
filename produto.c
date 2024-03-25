@@ -38,7 +38,6 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
 void imprimirProdutos(Lista_Produtos *lista) {
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia.\n");
-        return;
     }
     printf("Produtos:\n");
     Lista_Produtos *atual = lista;
@@ -58,7 +57,7 @@ int listaProdutosVazia(Lista_Produtos *lista) {
 Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a remover.\n");
-        return;
+        return lista;
     }
 
     Lista_Produtos *atual = lista;
@@ -73,7 +72,7 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
             }
             free(atual);
             printf("Produto \"%s\" removido com sucesso.\n", nome);
-            return;
+            return lista;
         }
         anterior = atual;
         atual = atual->proximo_produto;
@@ -94,7 +93,6 @@ void liberarListaProdutos(Lista_Produtos *lista) {
 void editarProduto(Lista_Produtos *lista, char *nome) {
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a editar.\n");
-        return;
     }
 
     Lista_Produtos *atual = lista;
@@ -110,7 +108,6 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
             printf("Digite a nova quantidade do produto: ");
             scanf(" %d", &atual->produto.quantidade);
             printf("Produto \"%s\" editado com sucesso.\n", nome);
-            return;
         }
         atual = atual->proximo_produto;
     }
@@ -120,7 +117,6 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
 void buscarPorNome(Lista_Produtos *lista, char *nome) {
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia.\n");
-        return;
     }
 
     Lista_Produtos *atual = lista;
