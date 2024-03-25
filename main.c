@@ -46,7 +46,12 @@ int main() {
                 break;
             }
             case '4': {
+                char nome[100];
                 printf("\nOpção selecionada: Remover sessao\n");
+
+                printf("Digite o nome da sessao a ser removida: ");
+                scanf(" %[^\n]", nome);
+                lista_Sessao = Remover_Sessao(lista_Sessao, nome);
                 break;
             }
             case '5': {
