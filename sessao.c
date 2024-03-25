@@ -84,23 +84,19 @@ void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
     printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
 }
 
-Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[10]){
+Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 
     if (Lista_Vazia(lista_sessao_var)){
         printf("nenhuma sessao cadastrada\n");
         return NULL;
     }
 
-    Lista_Sessao *atual;
+    Lista_Sessao *atual = lista_sessao_var;
     while (strcmp(atual->sessao_lista.nome, nome) != 0 && atual != NULL){
 
         atual = atual->proxima_sessao;
     }
-
-    if (atual == NULL){
-
-        printf("Erro, sessao nao encontrada\n");
-    }
+    
     return atual;
 }
 

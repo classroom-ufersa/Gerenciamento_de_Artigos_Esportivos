@@ -14,19 +14,25 @@ int main() {
         switch (opcao) {
             case '1': {
 
-                char nome_teste[10];
-                printf("estou aqui 1\n");
-                printf("Digite em qual sessao o produto vai estar\n");
-                printf("estou aqui 2\n");
-                scanf(" %[^\n]", nome_teste);
-                printf("estou aqui 3\n");
+                if (Lista_Vazia(lista_Sessao)){
+                    printf("nenhuma sessao cadastrada\n");
+                } else{
+                    char nome_teste[100];
+                    printf("estou aqui 1\n");
+                    printf("Digite em qual sessao o produto vai estar\n");
+                    printf("estou aqui 2\n");
+                    scanf(" %[^\n]", nome_teste);
+                    printf("estou aqui 3\n");
 
-                Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_teste);
-                Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
+                    Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_teste);
+                    Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
 
-                if (sessao_escolhida != NULL){
-                    lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida);
-                    printf("Produto adicionado com sucesso!\n");
+                    if (sessao_escolhida != NULL){
+                        lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida);
+                        printf("Produto adicionado com sucesso!\n");
+                    } else {
+                        printf("sessao nao existe\n");
+                    }
                 }
                 break;
             }
