@@ -53,6 +53,7 @@ int main() {
             case '3': {
                 printf("\nOpcao selecionada: Adicionar sessao\n");
                 lista_Sessao = Adicionar_Sessao(lista_Sessao);
+                Imprimir_Sessao(lista_Sessao);
                 break;
             }
             case '4': {

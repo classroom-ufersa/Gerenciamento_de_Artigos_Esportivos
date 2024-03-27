@@ -38,7 +38,7 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
 
-    while (Atual->sessao_lista.nome != nome && Atual != NULL) {
+    while (Atual != NULL && Atual->sessao_lista.nome != nome) {
 
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
@@ -80,8 +80,8 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var){
 
 void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
 
-    printf("Sessao: %s", lista_sessao_var->sessao_lista.nome);
-    printf("Descricao: %s", lista_sessao_var->sessao_lista.descrisao);
+    printf("Sessao: %s\n", lista_sessao_var->sessao_lista.nome);
+    printf("Descricao: %s\n", lista_sessao_var->sessao_lista.descrisao);
 }
 
 Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
@@ -103,4 +103,9 @@ Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
 Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var){
 
     return lista_sessao_var->sessao_lista.produto_var;
+}
+
+Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao  *lista_sessao_var){
+
+    lista_sessao_var->sessao_lista.produto_var = Novo_No;
 }
