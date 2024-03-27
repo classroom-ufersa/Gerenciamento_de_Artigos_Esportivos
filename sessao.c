@@ -108,4 +108,5 @@ Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var){
 Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao  *lista_sessao_var){
 
     lista_sessao_var->sessao_lista.produto_var = Novo_No;
+    return lista_sessao_var;
 }
