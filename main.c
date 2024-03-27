@@ -6,6 +6,7 @@
 int main() {
 
     char opcao;
+    char nome_escolhido[100];
     Lista_Sessao *lista_Sessao = Cria_Lista_Sessao();
 
     do {
@@ -18,11 +19,10 @@ int main() {
                     printf("nenhuma sessao cadastrada\n");
                 } else{
 
-                    char nome_teste[100];
                     printf("Digite em qual sessao o produto vai estar\n");
-                    scanf(" %[^\n]", nome_teste);
+                    scanf(" %[^\n]", nome_escolhido);
 
-                    Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_teste);
+                    Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_escolhido);
                     Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
 
                     if (sessao_escolhida != NULL){
@@ -36,15 +36,14 @@ int main() {
                 break;
             }
             case '2': {
-                char nome[100];
                 printf("Digite o nome do produto a ser removido: ");
-                scanf(" %[^\n]", nome);
+                scanf(" %[^\n]", nome_escolhido);
 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    Auxiliar_produtos = removerProduto(Auxiliar_produtos, nome);
+                    Auxiliar_produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
@@ -56,38 +55,40 @@ int main() {
                 break;
             }
             case '4': {
-                char nome[100];
                 printf("\nOpcao selecionada: Remover sessao\n");
 
+                if(lista_Sessao == NULL){
+                    printf("nenhuma lista cadastrada\n");
+                    break;
+                }
+
                 printf("Digite o nome da sessao a ser removida: ");
-                scanf(" %[^\n]", nome);
-                lista_Sessao = Remover_Sessao(lista_Sessao, nome);
+                scanf(" %[^\n]", nome_escolhido);
+                lista_Sessao = Remover_Sessao(lista_Sessao, nome_escolhido);
                 break;
             }
             case '5': {
-                char nome[100];
                 printf("Digite o nome do produto a ser editado: ");
-                scanf(" %[^\n]", nome);
+                scanf(" %[^\n]", nome_escolhido);
 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    editarProduto(Auxiliar_produtos, nome);
+                    editarProduto(Auxiliar_produtos, nome_escolhido);
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
             }
             case '6': {
-                char nome[100];
                 printf("Digite o nome do produto a ser buscado: ");
-                scanf(" %[^\n]", nome);
+                scanf(" %[^\n]", nome_escolhido);
                 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    buscarPorNome(Auxiliar_produtos, nome);
+                    buscarPorNome(Auxiliar_produtos, nome_escolhido);
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;

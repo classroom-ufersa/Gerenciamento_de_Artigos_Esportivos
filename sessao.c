@@ -38,23 +38,29 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
 
-    while (Atual != NULL && Atual->sessao_lista.nome != nome) {
+    while (Atual != NULL && strcmp(lista_sessao_var->sessao_lista.nome, nome) != 0) {
 
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
     }
-    if (Anterior == NULL){
 
-        free(Atual);
-        return lista_sessao_var;
+    if (Atual != NULL){
+
+        if (Anterior == NULL){
+
+            free(Atual);
+            printf("sessao removida com sucesso, lista agora vazia\n");
+            return lista_sessao_var;
+        } else{
+            Anterior->proxima_sessao = Atual->proxima_sessao;
+            free(Atual);
+            printf("sessao removida com sucesso\n");
+            return lista_sessao_var;
+        }
     } else{
-        Anterior->proxima_sessao = Atual->proxima_sessao;
-        free(Atual);
+        printf("objeto não encontrado\n");
         return lista_sessao_var;
     }
-
-    printf("objeto não encontrado\n");
-    return lista_sessao_var;
 }
 
 short Lista_Vazia(Lista_Sessao *lista_sessao_var){
