@@ -1,82 +1,77 @@
 #include "sessao.h"
 
-struct sessao{
-    
+// Definição da estrutura Sessao
+struct sessao {
     char nome[100];
-    char descrisao[100];
+    char descricao[100];
     Lista_Produtos *produto_var;
 };
 
-struct lista_sessao{
-
+// Definição da estrutura Lista_Sessao
+struct lista_sessao {
     Lista_Sessao *proxima_sessao;
     Sessao sessao_lista;
 };
 
-Lista_Sessao *Cria_Lista_Sessao(){
-
+// Função para criar uma lista de sessões
+Lista_Sessao *Cria_Lista_Sessao() {
     Lista_Sessao *Primeiro_No = NULL;
     return Primeiro_No;
 }
 
-Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var){
-
+// Função para adicionar uma nova sessão à lista de sessões
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var) {
     Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
-    printf("Digite o nome da sessao\n");
+    printf("Digite o nome da sessao:\n");
     scanf(" %[^\n]", Novo_No->sessao_lista.nome);
-    printf("Digite a descrisao da sessao\n");
-    scanf(" %[^\n]", Novo_No->sessao_lista.descrisao);
+    printf("Digite a descricao da sessao:\n");
+    scanf(" %[^\n]", Novo_No->sessao_lista.descricao);
 
     Novo_No->sessao_lista.produto_var = NULL;
     Novo_No->proxima_sessao = lista_sessao_var;
     return Novo_No;
 }
 
-Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
-
+// Função para remover uma sessão da lista de sessões pelo nome
+Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
 
     while (Atual != NULL && strcmp(lista_sessao_var->sessao_lista.nome, nome) != 0) {
-
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
     }
 
-    if (Atual != NULL){
-
-        if (Anterior == NULL){
-
+    if (Atual != NULL) {
+        if (Anterior == NULL) {
             free(Atual);
-            printf("sessao removida com sucesso, lista agora vazia\n");
+            printf("Sessao removida com sucesso, lista agora vazia.\n");
             return lista_sessao_var;
-        } else{
+        } else {
             Anterior->proxima_sessao = Atual->proxima_sessao;
             free(Atual);
-            printf("sessao removida com sucesso\n");
+            printf("Sessao removida com sucesso.\n");
             return lista_sessao_var;
         }
-    } else{
-        printf("objeto não encontrado\n");
+    } else {
+        printf("Objeto não encontrado.\n");
         return lista_sessao_var;
     }
 }
 
-short Lista_Vazia(Lista_Sessao *lista_sessao_var){
-
-    if (lista_sessao_var == NULL){
-
+// Função para verificar se a lista de sessões está vazia
+short Lista_Vazia(Lista_Sessao *lista_sessao_var) {
+    if (lista_sessao_var == NULL) {
         return 1;
     } 
     return 0;
 }
 
-Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var){
-
-    if(Lista_Vazia(lista_sessao_var) == 1){
-        
-        printf("Erro: Nao existe Sessoes!!!\n\n");
+// Função para percorrer as sessões na lista de sessões
+Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
+    if (Lista_Vazia(lista_sessao_var) == 1) {
+        printf("Erro: Nao existe sessoes!!!\n\n");
     }
 
     Lista_Sessao *key = lista_sessao_var;
@@ -84,35 +79,34 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var){
     return key;
 }
 
-void Imprimir_Sessao(Lista_Sessao *lista_sessao_var){
-
+// Função para imprimir uma sessão
+void Imprimir_Sessao(Lista_Sessao *lista_sessao_var) {
     printf("Sessao: %s\n", lista_sessao_var->sessao_lista.nome);
-    printf("Descricao: %s\n", lista_sessao_var->sessao_lista.descrisao);
+    printf("Descricao: %s\n", lista_sessao_var->sessao_lista.descricao);
 }
 
-Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]){
-
-    if (Lista_Vazia(lista_sessao_var)){
-        printf("nenhuma sessao cadastrada\n");
+// Função para buscar uma sessão na lista de sessões pelo nome
+Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
+    if (Lista_Vazia(lista_sessao_var)) {
+        printf("Nenhuma sessao cadastrada.\n");
         return NULL;
     }
 
     Lista_Sessao *atual = lista_sessao_var;
-    while (strcmp(atual->sessao_lista.nome, nome) != 0 && atual != NULL){
-
+    while (strcmp(atual->sessao_lista.nome, nome) != 0 && atual != NULL) {
         atual = atual->proxima_sessao;
     }
     
     return atual;
 }
 
-Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var){
-
+// Função para obter a lista de produtos de uma sessão
+Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var) {
     return lista_sessao_var->sessao_lista.produto_var;
 }
 
-Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao  *lista_sessao_var){
-
+// Função para adicionar uma lista de produtos a uma sessão
+Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *lista_sessao_var) {
     lista_sessao_var->sessao_lista.produto_var = Novo_No;
     return lista_sessao_var;
 }
