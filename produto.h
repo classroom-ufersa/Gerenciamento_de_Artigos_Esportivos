@@ -1,9 +1,7 @@
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "funcoes.h"
 
 // Definição da estrutura do produto
 typedef struct produto Produto;

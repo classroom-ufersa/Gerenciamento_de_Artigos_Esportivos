@@ -1,7 +1,5 @@
 #include "produto.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "funcoes.h"
 
 // Definição da estrutura Sessao
 typedef struct sessao Sessao;

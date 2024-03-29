@@ -1,6 +1,4 @@
 #include "funcoes.h"
-#include <stdio.h>
-#include <locale.h>
 
 char exibirMenu() {
 
