@@ -1,6 +1,4 @@
 #include "funcoes.h"
-#include "sessao.h"
-#include "produto.h"
 
 char exibirMenu() {
 

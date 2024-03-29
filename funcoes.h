@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include "sessao.h"
+#include "produto.h"
 
 
 char exibirMenu();

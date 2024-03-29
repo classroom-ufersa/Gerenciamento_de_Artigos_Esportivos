@@ -1,5 +1,4 @@
 #include "funcoes.h"
-#include "produto.h"
 
 // Definição da estrutura Produto
 struct produto {
@@ -167,4 +166,19 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
     if (!encontrado) {
         printf("Nenhum produto encontrado com o nome \"%s\".\n", nome);
     }
+}
+
+void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo){
+
+    Lista_Produtos *Atual = lista_produtos_var;
+    if(lista_produtos_var == NULL){
+        fprintf(Arquivo, "\n");
+        return;
+    } else {
+        fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
+        fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
+        fprintf(Arquivo, "preco: %f\n", lista_produtos_var->produto.preco);
+        fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
+    }
+    Escreve_Produtos(Atual->proximo_produto, Arquivo);
 }

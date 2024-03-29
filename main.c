@@ -1,7 +1,4 @@
 #include "funcoes.h"
-#include "sessao.h"
-#include "produto.h"
-
 
 int main() {
 
