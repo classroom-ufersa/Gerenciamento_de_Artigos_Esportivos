@@ -1,4 +1,6 @@
 #include "funcoes.h"
+#include "sessao.h"
+#include "produto.h"
 
 char exibirMenu() {
 
@@ -18,3 +20,9 @@ char exibirMenu() {
     return escolha;
 }
 
+
+void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
+
+    FILE *Arquivo = fopen("Arquivo.txt", "wt");
+
+}

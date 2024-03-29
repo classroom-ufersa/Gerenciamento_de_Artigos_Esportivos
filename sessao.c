@@ -1,4 +1,6 @@
+#include "funcoes.h"
 #include "sessao.h"
+#include "produto.h"
 
 // Definição da estrutura Sessao
 struct sessao {

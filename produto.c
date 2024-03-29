@@ -1,3 +1,4 @@
+#include "funcoes.h"
 #include "produto.h"
 
 // Definição da estrutura Produto
