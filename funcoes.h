@@ -7,3 +7,4 @@
 
 char exibirMenu();
 void Escrever_Arquivo(Lista_Sessao *lista_sessao_var);
+int *Contador_Sessoes_e_Produtos(FILE *Arquivo);

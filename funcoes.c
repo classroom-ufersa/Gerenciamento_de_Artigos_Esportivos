@@ -25,3 +25,22 @@ void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
     Escrever_Sessao(lista_sessao_var, Arquivo);
     fclose(Arquivo);
 }
+
+int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
+
+    int *Contador = (int *)malloc(sizeof(int));
+    int index = -1;
+    char linha[200];
+
+    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
+
+        if(strstr(linha, "sessao") != NULL){
+            index++;
+            realloc(Contador, index + 1);
+        }
+        if(strstr(linha, "quantidade") != NULL){
+            Contador[index]++;
+        }
+    }
+    return Contador;
+}
