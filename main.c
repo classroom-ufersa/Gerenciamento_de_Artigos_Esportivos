@@ -23,9 +23,10 @@ int main() {
                     scanf(" %[^\n]", nome_escolhido);
 
                     Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_escolhido);
-                    Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
 
                     if (sessao_escolhida != NULL){
+
+                        Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
                         lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida);
                         sessao_escolhida = Adicionar_Produto_Sessao(lista_produto_Escolhida, sessao_escolhida);
                         printf("Produto adicionado com sucesso!\n");

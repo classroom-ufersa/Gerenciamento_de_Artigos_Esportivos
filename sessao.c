@@ -88,17 +88,15 @@ void Imprimir_Sessao(Lista_Sessao *lista_sessao_var) {
 
 // Função para buscar uma sessão na lista de sessões pelo nome
 Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
-    if (Lista_Vazia(lista_sessao_var)) {
-        printf("Nenhuma sessao cadastrada.\n");
-        return NULL;
-    }
 
     Lista_Sessao *atual = lista_sessao_var;
-    while (strcmp(atual->sessao_lista.nome, nome) != 0 && atual != NULL) {
-        atual = atual->proxima_sessao;
-    }
     
-    return atual;
+    if (Lista_Vazia(atual)){
+        return NULL;
+    } else if (strcmp(atual->sessao_lista.nome, nome) == 0){
+        return atual;
+    }
+    Busca_Sessao(atual->proxima_sessao, nome);
 }
 
 // Função para obter a lista de produtos de uma sessão
