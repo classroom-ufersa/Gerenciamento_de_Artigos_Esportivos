@@ -115,7 +115,6 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
     Lista_Sessao *Atual = lista_sessao_var;
 
     if (Lista_Vazia(Atual)){
-        fprintf(Arquivo, "\n\n");
         return;
     } else{
         fprintf(Arquivo, "Nome: %s\n", Atual->sessao_lista.nome);
@@ -123,6 +122,6 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
         fprintf(Arquivo, "\n");
         Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo);
     }
-    
+
     Escrever_Sessao(Atual->proxima_sessao, Arquivo);
 }

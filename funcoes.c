@@ -19,12 +19,9 @@ char exibirMenu() {
 }
 
 
-void Escrever_Arquivo(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
+void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
 
-    Lista_Sessao *Atual = lista_sessao_var;
-    if(Lista_Vazia(Atual)){
-        return;
-    } else{
-        
-    }
+    FILE *Arquivo = fopen("Arquivo.txt", "wt");
+    Escrever_Sessao(lista_sessao_var, Arquivo);
+    fclose(Arquivo);
 }

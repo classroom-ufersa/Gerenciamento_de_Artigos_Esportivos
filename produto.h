@@ -1,6 +1,7 @@
 #ifndef PRODUTO_H
 #define PRODUTO_H
 
+
 // Definição da estrutura do produto
 typedef struct produto Produto;
 

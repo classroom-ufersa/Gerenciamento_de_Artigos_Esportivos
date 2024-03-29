@@ -172,7 +172,7 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo){
 
     Lista_Produtos *Atual = lista_produtos_var;
     if(lista_produtos_var == NULL){
-        fprintf(Arquivo, "\n");
+        fprintf(Arquivo, "\n\n");
         return;
     } else {
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);

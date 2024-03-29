@@ -109,6 +109,7 @@ int main() {
             }
             case '8': {
                 printf("Saindo...\n");
+                Escrever_Arquivo(lista_Sessao);
                 break;
             }
             default: {
