@@ -112,8 +112,17 @@ Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *li
 
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
 
-    fprintf(Arquivo, "Nome: %s\n", lista_sessao_var->sessao_lista.nome);
-    fprintf(Arquivo, "Descrição: %s\n", lista_sessao_var->sessao_lista.descricao);
-    fprintf(Arquivo, "\n");
+    Lista_Sessao *Atual = lista_sessao_var;
 
+    if (Lista_Vazia(Atual)){
+        fprintf(Arquivo, "\n\n");
+        return;
+    } else{
+        fprintf(Arquivo, "Nome: %s\n", Atual->sessao_lista.nome);
+        fprintf(Arquivo, "Descrição: %s\n", Atual->sessao_lista.descricao);
+        fprintf(Arquivo, "\n");
+        Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo);
+    }
+    
+    Escrever_Sessao(Atual->proxima_sessao, Arquivo);
 }
