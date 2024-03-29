@@ -5,4 +5,4 @@
 
 
 char exibirMenu();
-void Escrever_Arquivo(Lista_Sessao *lista_sessao_var);
+void Escrever_Arquivo(Lista_Sessao *lista_sessao_var, FILE *Arquivo);

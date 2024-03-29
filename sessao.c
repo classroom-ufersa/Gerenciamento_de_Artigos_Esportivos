@@ -111,3 +111,11 @@ Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *li
     lista_sessao_var->sessao_lista.produto_var = Novo_No;
     return lista_sessao_var;
 }
+
+void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
+
+    fprintf(Arquivo, "Nome: %s\n", lista_sessao_var->sessao_lista.nome);
+    fprintf(Arquivo, "Descrição: %s\n", lista_sessao_var->sessao_lista.descricao);
+    fprintf(Arquivo, "\n");
+
+}
