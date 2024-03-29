@@ -45,8 +45,9 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
 
     if (Atual != NULL) {
         if (Anterior == NULL) {
+            lista_sessao_var = lista_sessao_var->proxima_sessao;
             free(Atual);
-            printf("Sessao removida com sucesso, lista agora vazia.\n");
+            printf("Sessao removida com sucesso\n");
             return lista_sessao_var;
         } else {
             Anterior->proxima_sessao = Atual->proxima_sessao;

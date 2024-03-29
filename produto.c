@@ -47,6 +47,7 @@ void imprimirProdutos(Lista_Produtos *lista) {
     // Verifica se a lista está vazia
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia.\n");
+        return;
     }
     printf("Produtos:\n");
     Lista_Produtos *atual = lista;

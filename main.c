@@ -96,7 +96,7 @@ int main() {
             case '7': {
 
                 Lista_Sessao *Auxiliar = lista_Sessao;
-                if(Lista_Vazia(Auxiliar)){
+                if(!Lista_Vazia(Auxiliar)){
                 while (Auxiliar != NULL)
                     {
                         Imprimir_Sessao(Auxiliar);
