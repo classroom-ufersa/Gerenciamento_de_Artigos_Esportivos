@@ -38,7 +38,7 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
 
-    while (Atual != NULL && strcmp(lista_sessao_var->sessao_lista.nome, nome) != 0) {
+    while (Atual != NULL && strcmp(Atual->sessao_lista.nome, nome) != 0) {
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
     }
@@ -115,12 +115,24 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
     Lista_Sessao *Atual = lista_sessao_var;
 
     if (Lista_Vazia(Atual)){
+
         return;
     } else{
+
+        fprintf(Arquivo, "Sessao\n");
+
         fprintf(Arquivo, "Nome: %s\n", Atual->sessao_lista.nome);
         fprintf(Arquivo, "Descrição: %s\n", Atual->sessao_lista.descricao);
         fprintf(Arquivo, "\n");
-        Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo);
+
+        if (Atual->sessao_lista.produto_var == NULL){
+
+            fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
+        } else{
+
+            fprintf(Arquivo, "Produtos\n");
+            Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo);
+        }
     }
 
     Escrever_Sessao(Atual->proxima_sessao, Arquivo);

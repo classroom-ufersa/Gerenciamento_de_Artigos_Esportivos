@@ -179,6 +179,7 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo){
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
         fprintf(Arquivo, "preco: %f\n", lista_produtos_var->produto.preco);
         fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
+        fprintf(Arquivo, "\n");
     }
     Escreve_Produtos(Atual->proximo_produto, Arquivo);
 }
