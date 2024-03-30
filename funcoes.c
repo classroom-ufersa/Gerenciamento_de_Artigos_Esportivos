@@ -29,12 +29,13 @@ void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
 int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
 
     int *Contador = (int *)malloc(sizeof(int));
+    Contador = NULL;
     int index = -1;
     char linha[200];
 
     while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
 
-        if(strstr(linha, "sessao") != NULL){
+        if(strstr(linha, "Sessao") != NULL){
             index++;
             realloc(Contador, index + 1);
         }
@@ -43,4 +44,21 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
         }
     }
     return Contador;
+}
+
+void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
+
+    FILE *Arquivo = fopen("Arquivo.txt", "rt");
+    char linha[200];
+
+    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
+
+        if(strstr(linha, "Sessao") != NULL){
+
+        } else if (strstr(linha, "Produto") != NULL)
+        {
+            
+        }
+        
+    }
 }
