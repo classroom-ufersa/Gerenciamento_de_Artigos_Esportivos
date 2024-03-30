@@ -34,3 +34,7 @@ Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var);
 Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *lista_sessao_var);
 
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);
+
+void Ler_Arquivo(Lista_Sessao *lista_sessao_var);
+
+Lista_Sessao *Ler_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);

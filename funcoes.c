@@ -45,20 +45,3 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
     }
     return Contador;
 }
-
-void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
-
-    FILE *Arquivo = fopen("Arquivo.txt", "rt");
-    char linha[200];
-
-    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
-
-        if(strstr(linha, "Sessao") != NULL){
-
-        } else if (strstr(linha, "Produto") != NULL)
-        {
-            
-        }
-        
-    }
-}

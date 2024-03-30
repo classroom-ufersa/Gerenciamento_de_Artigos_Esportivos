@@ -136,3 +136,32 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
 
     Escrever_Sessao(Atual->proxima_sessao, Arquivo);
 }
+
+void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
+
+    FILE *Arquivo = fopen("Arquivo.txt", "rt");
+    char linha[200];
+
+    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
+
+        if(strstr(linha, "Sessao") != NULL){
+            lista_sessao_var = Ler_Sessao(lista_sessao_var, Arquivo);
+        } else if (strstr(linha, "Produto") != NULL)
+        {
+            
+        }
+        
+    }
+}
+
+Lista_Sessao *Ler_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
+
+    Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
+
+    fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
+    fscanf(Arquivo, "Descrição: %[^\n]\n", Novo_No->sessao_lista.descricao);
+
+    Novo_No->sessao_lista.produto_var = NULL;
+    Novo_No->proxima_sessao = lista_sessao_var;
+    return Novo_No;
+}
