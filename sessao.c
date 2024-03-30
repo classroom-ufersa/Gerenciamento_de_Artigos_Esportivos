@@ -130,8 +130,7 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
             fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
 
-            fprintf(Arquivo, "Produtos\n");
-            Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo);
+            Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo, 1);
         }
     }
 

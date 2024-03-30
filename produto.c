@@ -168,18 +168,20 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
     }
 }
 
-void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo){
+void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Numero_Produto){
 
     Lista_Produtos *Atual = lista_produtos_var;
     if(lista_produtos_var == NULL){
-        fprintf(Arquivo, "\n\n");
+        fprintf(Arquivo, "\n");
         return;
     } else {
+        fprintf(Arquivo, "Produto %d\n", Numero_Produto);
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
-        fprintf(Arquivo, "preco: %f\n", lista_produtos_var->produto.preco);
+        fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco);
         fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
         fprintf(Arquivo, "\n");
+        Numero_Produto++;
     }
-    Escreve_Produtos(Atual->proximo_produto, Arquivo);
+    Escreve_Produtos(Atual->proximo_produto, Arquivo, Numero_Produto);
 }
