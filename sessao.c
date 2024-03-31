@@ -144,6 +144,11 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
     while(vetor_sessoes[index] != -1){
 
         Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
+        if (Arquivo == NULL)
+        {
+            printf("errp na alocacao da sessao\n");
+            exit(1);
+        }
 
         fscanf(Arquivo, "Sessao\n");
         fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);

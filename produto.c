@@ -193,6 +193,11 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
     while(quantidade_produtos > 0){
 
         Lista_Produtos *Novo_No = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
+        if (Arquivo == NULL)
+        {
+            printf("errp na alocacao de produtos\n");
+            exit(1);
+        }
 
         
         fscanf(Arquivo, "Produto %d\n");

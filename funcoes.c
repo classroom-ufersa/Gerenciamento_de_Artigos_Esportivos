@@ -22,13 +22,29 @@ void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
 
     FILE *Arquivo = fopen("Arquivo.txt", "wt");
     Escrever_Sessao(lista_sessao_var, Arquivo);
+    if (Arquivo == NULL)
+    {
+        printf("errp na abertura para escrever de arquivo\n");
+        exit(1);
+    }
     fclose(Arquivo);
 }
 
-int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
+int *Contador_Sessoes_e_Produtos(){
+    
+    FILE *Arquivo = fopen("Arquivo.txt", "rt");
+    if (Arquivo == NULL)
+    {
+        printf("errp na abertura de arquivo\n");
+        exit(1);
+    }
 
     int *Contador = (int *)malloc(sizeof(int));
-    Contador = NULL;
+    if (Contador == NULL)
+    {
+        printf("errp na realcacao de arquivo\n");
+        exit(1);
+    }
     int index = -1;
     char linha[200];
 
@@ -37,6 +53,11 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
         if(strstr(linha, "Sessao") != NULL){
             index++;
             Contador = (int *)realloc(Contador, (index + 1) * sizeof(int));
+            if (Contador == NULL)
+            {
+                printf("errp na realcacao de arquivo\n");
+                exit(1);
+            }
             Contador[index] = 0;
         }
         if(strstr(linha, "quantidade") != NULL){
@@ -45,14 +66,14 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
     }
     Contador = (int *)realloc(Contador, (index + 2) * sizeof(int));
     Contador[index + 1] = -1;
+    fclose(Arquivo);
     return Contador;
 }
 
 Lista_Sessao *Ler_Arquivo(Lista_Sessao *lista_sessao_var){
 
+    int *vetor_sessoes = Contador_Sessoes_e_Produtos();
     FILE *Arquivo = fopen("Arquivo.txt", "rt");
-
-    int *vetor_sessoes = Contador_Sessoes_e_Produtos(Arquivo);
     lista_sessao_var = Ler_Sessoes(lista_sessao_var, Arquivo, vetor_sessoes);
     fclose(Arquivo);
 }
