@@ -31,4 +31,6 @@ void buscarPorNome(Lista_Produtos *lista, char *nome);
 
 void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Numero_Produto);
 
+Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int quantidade_produtos);
+
 #endif // PRODUTO_H

@@ -205,5 +205,6 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
         lista_produtos_var = Novo_No;
         quantidade_produtos--;
     }
+    fscanf(Arquivo, "\n");
     return lista_produtos_var;
 }

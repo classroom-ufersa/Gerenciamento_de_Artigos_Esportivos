@@ -18,7 +18,6 @@ char exibirMenu() {
     return escolha;
 }
 
-
 void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
 
     FILE *Arquivo = fopen("Arquivo.txt", "wt");
@@ -45,4 +44,14 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
     }
     Contador[index + 1] = NULL;
     return Contador;
+}
+
+void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
+
+    FILE *Arquivo = fopen("Arquivo.txt", "rt");
+
+    int *vetor_sessoes = Contador_Sessoes_e_Produtos(Arquivo);
+
+    lista_sessao_var = (lista_sessao_var, Arquivo, vetor_sessoes);
+
 }

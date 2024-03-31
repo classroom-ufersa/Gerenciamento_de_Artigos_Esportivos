@@ -35,6 +35,4 @@ Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *li
 
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);
 
-void Ler_Arquivo(Lista_Sessao *lista_sessao_var);
-
-Lista_Sessao *Ler_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);
+Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor);

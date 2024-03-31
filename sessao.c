@@ -137,28 +137,11 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
     Escrever_Sessao(Atual->proxima_sessao, Arquivo);
 }
 
-void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
-
-    FILE *Arquivo = fopen("Arquivo.txt", "rt");
-    char linha[200];
-
-    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
-
-        if(strstr(linha, "Sessao") != NULL){
-            lista_sessao_var = Ler_Sessao(lista_sessao_var, Arquivo);
-        } else if (strstr(linha, "Produto") != NULL)
-        {
-            
-        }
-        
-    }
-}
-
-Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor){
+Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor_sessoes){
     
     int index = 0;
 
-    while(vetor[index] != NULL){
+    while(vetor_sessoes[index] != NULL){
 
         Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
@@ -166,13 +149,13 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
         fscanf(Arquivo, "Descrição: %[^\n]\n\n", Novo_No->sessao_lista.descricao);
 
-        if(vetor[index] == 0){
+        if(vetor_sessoes[index] == 0){
 
             fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
             Novo_No->sessao_lista.produto_var = NULL;
         } else{
 
-            
+            lista_sessao_var->sessao_lista.produto_var = Ler_Produtos(Pegar_Lista_Produtos(lista_sessao_var), Arquivo, vetor_sessoes[index]);
         }
         Novo_No->proxima_sessao = lista_sessao_var;
         lista_sessao_var = Novo_No;
