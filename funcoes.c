@@ -32,17 +32,19 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
     int index = -1;
     char linha[200];
 
-    while(fscanf(Arquivo, "%[^\n]", linha) != EOF){
+    while(fscanf(Arquivo, "%[^\n]\n", linha) != EOF){
 
         if(strstr(linha, "Sessao") != NULL){
             index++;
-            realloc(Contador, index + 1);
+            Contador = (int *)realloc(Contador, (index + 1) * sizeof(int));
+            Contador[index] = 0;
         }
         if(strstr(linha, "quantidade") != NULL){
             Contador[index]++;
         }
     }
-    Contador[index + 1] = NULL;
+    Contador = (int *)realloc(Contador, (index + 2) * sizeof(int));
+    Contador[index + 1] = -1;
     return Contador;
 }
 
@@ -51,7 +53,6 @@ void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
     FILE *Arquivo = fopen("Arquivo.txt", "rt");
 
     int *vetor_sessoes = Contador_Sessoes_e_Produtos(Arquivo);
-
-    lista_sessao_var = (lista_sessao_var, Arquivo, vetor_sessoes);
-
+    lista_sessao_var = Ler_Sessoes(lista_sessao_var, Arquivo, vetor_sessoes);
+    fclose(Arquivo);
 }

@@ -141,7 +141,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
     
     int index = 0;
 
-    while(vetor_sessoes[index] != NULL){
+    while(vetor_sessoes[index] != -1){
 
         Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
@@ -151,7 +151,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
 
         if(vetor_sessoes[index] == 0){
 
-            fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
+            fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
             Novo_No->sessao_lista.produto_var = NULL;
         } else{
 
