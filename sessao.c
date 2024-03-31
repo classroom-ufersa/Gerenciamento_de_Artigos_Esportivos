@@ -148,14 +148,14 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         fscanf(Arquivo, "Sessao\n");
         fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
         fscanf(Arquivo, "Descrição: %[^\n]\n\n", Novo_No->sessao_lista.descricao);
+        Novo_No->sessao_lista.produto_var = NULL;
 
         if(vetor_sessoes[index] == 0){
 
             fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
-            Novo_No->sessao_lista.produto_var = NULL;
         } else{
 
-            lista_sessao_var->sessao_lista.produto_var = Ler_Produtos(Pegar_Lista_Produtos(lista_sessao_var), Arquivo, vetor_sessoes[index]);
+            Novo_No->sessao_lista.produto_var = Ler_Produtos(Pegar_Lista_Produtos(Novo_No), Arquivo, vetor_sessoes[index]);
         }
         Novo_No->proxima_sessao = lista_sessao_var;
         lista_sessao_var = Novo_No;

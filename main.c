@@ -5,7 +5,7 @@ int main() {
     char opcao;
     char nome_escolhido[100];
     Lista_Sessao *lista_Sessao = Cria_Lista_Sessao();
-    Ler_Arquivo(lista_Sessao);
+    lista_Sessao = Ler_Arquivo(lista_Sessao);
 
     do {
         opcao = exibirMenu();
