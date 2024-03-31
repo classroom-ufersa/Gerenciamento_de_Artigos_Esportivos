@@ -43,5 +43,6 @@ int *Contador_Sessoes_e_Produtos(FILE *Arquivo){
             Contador[index]++;
         }
     }
+    Contador[index + 1] = NULL;
     return Contador;
 }

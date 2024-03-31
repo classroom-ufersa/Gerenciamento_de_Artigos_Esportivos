@@ -154,14 +154,29 @@ void Ler_Arquivo(Lista_Sessao *lista_sessao_var){
     }
 }
 
-Lista_Sessao *Ler_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
+Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor){
+    
+    int index = 0;
 
-    Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
+    while(vetor[index] != NULL){
 
-    fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
-    fscanf(Arquivo, "Descrição: %[^\n]\n", Novo_No->sessao_lista.descricao);
+        Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
-    Novo_No->sessao_lista.produto_var = NULL;
-    Novo_No->proxima_sessao = lista_sessao_var;
-    return Novo_No;
+        fscanf(Arquivo, "Sessao\n");
+        fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
+        fscanf(Arquivo, "Descrição: %[^\n]\n\n", Novo_No->sessao_lista.descricao);
+
+        if(vetor[index] == 0){
+
+            fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
+            Novo_No->sessao_lista.produto_var = NULL;
+        } else{
+
+            
+        }
+        Novo_No->proxima_sessao = lista_sessao_var;
+        lista_sessao_var = Novo_No;
+        index++;
+    }
+    return lista_sessao_var;
 }

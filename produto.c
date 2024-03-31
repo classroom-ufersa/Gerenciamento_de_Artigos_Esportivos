@@ -172,9 +172,11 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
 
     Lista_Produtos *Atual = lista_produtos_var;
     if(lista_produtos_var == NULL){
+
         fprintf(Arquivo, "\n");
         return;
     } else {
+
         fprintf(Arquivo, "Produto %d\n", Numero_Produto);
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
@@ -184,4 +186,24 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
         Numero_Produto++;
     }
     Escreve_Produtos(Atual->proximo_produto, Arquivo, Numero_Produto);
+}
+
+Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int quantidade_produtos){
+
+    while(quantidade_produtos > 0){
+
+        Lista_Produtos *Novo_No = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
+
+        
+        fscanf(Arquivo, "Produto %d\n");
+        fscanf(Arquivo, "Nome: %s\n", Novo_No->produto.nome);
+        fscanf(Arquivo, "categoria: %s\n", Novo_No->produto.categoria);
+        fscanf(Arquivo, "preco: %.2f\n", Novo_No->produto.preco);
+        fscanf(Arquivo, "quantidade: %d\n\n", Novo_No->produto.quantidade);
+
+        Novo_No->proximo_produto = lista_produtos_var;
+        lista_produtos_var = Novo_No;
+        quantidade_produtos--;
+    }
+    return lista_produtos_var;
 }
