@@ -14,7 +14,35 @@ def exibir_menu():
     opcao = input("\tEscolha uma opção (1-8): ")
     return opcao
 
-opcao_escolhida = exibir_menu()
+permanecer = True
+while(permanecer):
+    opcao_escolhida = exibir_menu()
 
-
+    if opcao_escolhida == '1':
     
+        print("Opção 1 selecionada.")
+    elif opcao_escolhida == '2':
+    
+        print("Opção 2 selecionada.")
+    elif opcao_escolhida == '3':
+
+        print("Opção 3 selecionada.")
+    elif opcao_escolhida == '4':
+
+        print("Opção 4 selecionada.")
+    elif opcao_escolhida == '5':
+
+        print("Opção 5 selecionada.")
+    elif opcao_escolhida == '6':
+
+        print("Opção 6 selecionada.")
+    elif opcao_escolhida == '7':
+
+        print("Opção 7 selecionada.")
+    elif opcao_escolhida == '8':
+
+        print("Opção 8 selecionada.")
+        permanecer = False
+    else:
+        print("Opção incorreta")
+        
