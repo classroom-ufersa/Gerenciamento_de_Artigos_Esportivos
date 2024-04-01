@@ -14,3 +14,9 @@ def adicionar_produto(lista_produto, nome, categoria, preco, quantidade):
     lista_produto.append(novo_no)
     return lista_produto
 
+def remover_produto(lista_produto, nome):
+    for sessao in lista_produto:
+        if sessao.nome == nome:
+            lista_produto.remove(sessao)
+            return lista_produto
+    return "Pessoa não encontrada."
