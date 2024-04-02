@@ -200,7 +200,7 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
         }
 
         
-        fscanf(Arquivo, "Produto %d\n");
+        fscanf(Arquivo, "Produto %*d\n");
         fscanf(Arquivo, "Nome: %s\n", Novo_No->produto.nome);
         fscanf(Arquivo, "categoria: %s\n", Novo_No->produto.categoria);
         fscanf(Arquivo, "preco: %.2f\n", Novo_No->produto.preco);
