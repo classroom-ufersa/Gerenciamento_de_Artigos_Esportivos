@@ -160,7 +160,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
             fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
 
-            Novo_No->sessao_lista.produto_var = Ler_Produtos(Pegar_Lista_Produtos(Novo_No), Arquivo, vetor_sessoes[index]);
+            Novo_No->sessao_lista.produto_var = Ler_Produtos(Novo_No->sessao_lista.produto_var, Arquivo, vetor_sessoes[index]);
         }
         Novo_No->proxima_sessao = lista_sessao_var;
         lista_sessao_var = Novo_No;

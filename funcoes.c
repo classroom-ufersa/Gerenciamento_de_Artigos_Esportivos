@@ -76,4 +76,5 @@ Lista_Sessao *Ler_Arquivo(Lista_Sessao *lista_sessao_var){
     FILE *Arquivo = fopen("Arquivo.txt", "rt");
     lista_sessao_var = Ler_Sessoes(lista_sessao_var, Arquivo, vetor_sessoes);
     fclose(Arquivo);
+    return lista_sessao_var;
 }
