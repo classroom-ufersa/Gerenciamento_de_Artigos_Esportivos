@@ -67,7 +67,22 @@ while True:
             print(e)
             
     elif opcao_escolhida == '6':
+        
         print("Opção 6 selecionada.")
+        nome_produto_escolhido = input("digite o nome do produto: ")
+        for sessao in lista_sessao:
+            for produto in sessao.lista_produto:
+                if produto.nome == nome_produto_escolhido:
+                    print("Sessoa:")
+                    print("Nome: ", sessao.nome)
+                    print("descricao: ", sessao.descricao, "\n")
+                    print("Produto:")
+                    print("Nome: ", produto.nome)
+                    print("Categoria: ", produto.categoria)
+                    print("Preco: ", produto.preco)
+                    print("Quantidade: ", produto.quantidade)
+                    
+                
         
     elif opcao_escolhida == '7':
         
@@ -75,7 +90,7 @@ while True:
         for sessao in lista_sessao:
             print("Sessoa:")
             print("Nome: ", sessao.nome)
-            print("descricao: " + sessao.descricao + "\n")
+            print("descricao: ", sessao.descricao, "\n")
             for produto in sessao.lista_produto:
                 print("Produto:")
                 print("Nome: ", produto.nome)
