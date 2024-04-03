@@ -6,6 +6,7 @@ struct produto {
     char categoria[100];
     char preco_str[50];
     float preco;
+     char quantidade_str[50];
     int quantidade;
 };
 
@@ -31,7 +32,9 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
     novo_Produto.preco = atof(novo_Produto.preco_str);
 
     printf("Digite a quantidade do produto: ");
-    scanf("%d", &novo_Produto.quantidade);
+    scanf("%d", &novo_Produto.quantidade_str);
+
+    novo_Produto.quantidade = atoi(novo_Produto.quantidade_str);
 
     // Aloca memória para um novo nó da lista
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
@@ -185,7 +188,7 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
         fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco_str);
-        fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
+        fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade_str);
         fprintf(Arquivo, "\n");
         Numero_Produto++;
     }
