@@ -4,6 +4,7 @@
 struct produto {
     char nome[100];
     char categoria[100];
+    char preco_str[50];
     float preco;
     int quantidade;
 };
@@ -25,7 +26,10 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
     printf("Digite a categoria do produto: ");
     scanf(" %[^\n]", novo_Produto.categoria);
     printf("Digite o preço do produto: ");
-    scanf("%f", &novo_Produto.preco);
+    scanf("%f", &novo_Produto.preco_str);
+
+    novo_Produto.preco = atof(novo_Produto.preco_str);
+
     printf("Digite a quantidade do produto: ");
     scanf("%d", &novo_Produto.quantidade);
 
@@ -180,7 +184,7 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
         fprintf(Arquivo, "Produto %d\n", Numero_Produto);
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
-        fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco);
+        fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco_str);
         fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
         fprintf(Arquivo, "\n");
         Numero_Produto++;
