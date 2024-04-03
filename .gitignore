@@ -53,5 +53,4 @@ Mkfile.old
 dkms.conf
 
 #Python
-.pyc
-_pycache_
+__pycache__/

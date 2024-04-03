@@ -70,7 +70,20 @@ while True:
         print("Opção 6 selecionada.")
         
     elif opcao_escolhida == '7':
+        
         print("Opção 7 selecionada.")
+        for sessao in lista_sessao:
+            print("Sessoa:")
+            print("Nome: ", sessao.nome)
+            print("descricao: " + sessao.descricao + "\n")
+            for produto in sessao.lista_produto:
+                print("Produto:")
+                print("Nome: ", produto.nome)
+                print("Categoria: ", produto.categoria)
+                print("Preco: ", produto.preco)
+                print("Quantidade: ", produto.quantidade)
+            print("\n") 
+        
         
     elif opcao_escolhida == '8':
         print("Opção 8 selecionada. Saindo...")
