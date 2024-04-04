@@ -208,9 +208,9 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
 
         
         fscanf(Arquivo, "Produto %*d\n");
-        fscanf(Arquivo, "Nome: %s\n", Novo_No->produto.nome);
-        fscanf(Arquivo, "categoria: %s\n", Novo_No->produto.categoria);
-        fscanf(Arquivo, "preco: %.2f\n", Novo_No->produto.preco);
+        fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->produto.nome);
+        fscanf(Arquivo, "categoria: %[^\n]\n", Novo_No->produto.categoria);
+        fscanf(Arquivo, "preco: %[^\n]\n", Novo_No->produto.preco);
         fscanf(Arquivo, "quantidade: %d\n\n", Novo_No->produto.quantidade);
 
         Novo_No->proximo_produto = lista_produtos_var;

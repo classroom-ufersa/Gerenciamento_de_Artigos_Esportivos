@@ -18,38 +18,22 @@ def ler_Arquivo(lista_sessao):
     Arquivo = open("Arquivo.txt", 'r', encoding='utf-8')
 
     for linha in Arquivo:
-        
-        if linha.startswith('Sessao'):
-            linha = Arquivo.readline()
             linha = linha.strip()
-            nome = linha.split('Nome: ')[1]
-            print(nome)
-            linha = Arquivo.readline()
-            linha = linha.strip()
-            descricao = linha.split('Descricao: ')[1]
-            print(descricao)
-            adicionar_sessao(lista_sessao, nome, descricao)
-        
-            
-        if linha.startswith('Produto'):
-            linha = Arquivo.readline()
-            linha = linha.strip()
-            nome = linha.split('Nome: ')[1]
-            print(nome)
-            linha = Arquivo.readline()
-            linha = linha.strip()
-            categoria = linha.split('Categoria: ')[1]
-            print(categoria)
-            linha = Arquivo.readline()
-            linha = linha.strip()
-            preco = linha.split('Preco: ')[1]
-            print(preco)
-            linha = Arquivo.readline()
-            linha = linha.strip()
-            quantidade = linha.split('Quantidade: ')[1]
-            print(quantidade)
-            sessao_atual = lista_sessao[-1]
-            adicionar_produto(sessao_atual.lista_produto, nome, categoria, preco, quantidade)
+
+            if linha.startswith('Sessao'):
+                nome = Arquivo.readline().strip().split('Nome: ')[1]
+                descricao = Arquivo.readline().strip().split('Descricao: ')[1]
+                print(nome, descricao)
+                adicionar_sessao(lista_sessao, nome, descricao)
+
+            elif linha.startswith('Produto'):
+                nome = Arquivo.readline().strip().split('Nome: ')[1]
+                categoria = Arquivo.readline().strip().split('Categoria: ')[1]
+                preco = Arquivo.readline().strip().split('Preco: ')[1]
+                quantidade = Arquivo.readline().strip().split('Quantidade: ')[1]
+                print(nome, categoria, preco, quantidade)
+                sessao_atual = lista_sessao[-1]
+                adicionar_produto(sessao_atual.lista_produto, nome, categoria, preco, quantidade)
 
 def escrever_Arquivo(lista_sessao):
     with open("Arquivo.txt", 'w', encoding='utf-8') as Arquivo:
@@ -73,9 +57,7 @@ def escrever_Arquivo(lista_sessao):
 lista_sessao = []
 
 ler_Arquivo(lista_sessao)
-escrever_Arquivo(lista_sessao)
 
-"""""
 while True:
     opcao_escolhida = exibir_menu()
 
@@ -161,8 +143,8 @@ while True:
         
     elif opcao_escolhida == '8':
         print("Opção 8 selecionada. Saindo...")
+        escrever_Arquivo(lista_sessao)
         break
         
     else:
         print("Opção incorreta")
-"""""
