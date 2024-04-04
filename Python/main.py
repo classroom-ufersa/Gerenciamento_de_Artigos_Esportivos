@@ -14,41 +14,48 @@ def exibir_menu():
     opcao = input("Escolha uma opção (1-8): ")
     return opcao
 
+def ler_Arquivo(lista_sessao):
+    Arquivo = open("Arquivo.txt", 'r', encoding='utf-8')
+
+    for linha in Arquivo:
+        
+        if linha.startswith('Sessao'):
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            nome = linha.split('Nome: ')[1]
+            print(nome)
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            descricao = linha.split('Descricao: ')[1]
+            print(descricao)
+            adicionar_sessao(lista_sessao, nome, descricao)
+        
+            
+        if linha.startswith('Produto'):
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            nome = linha.split('Nome: ')[1]
+            print(nome)
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            categoria = linha.split('Categoria: ')[1]
+            print(categoria)
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            preco = linha.split('Preco: ')[1]
+            print(preco)
+            linha = Arquivo.readline()
+            linha = linha.strip()
+            quantidade = linha.split('Quantidade: ')[1]
+            print(quantidade)
+            sessao_atual = lista_sessao[-1]
+            adicionar_produto(sessao_atual.lista_produto, nome, categoria, preco, quantidade)
+
+
 lista_sessao = []
 
-Arquivo = open("Arquivo.txt", 'r', encoding='utf-8')
+ler_Arquivo(lista_sessao)
 
-for linha in Arquivo:
-    
-    if linha.startswith('Sessao'):
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        nome = linha.split('Nome: ')[1]
-        print(nome)
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        descricao = linha.split('Descricao: ')[1]
-        print(descricao)
-        
-    if linha.startswith('Produto'):
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        nome = linha.split('Nome: ')[1]
-        print(nome)
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        descricao = linha.split('Categoria: ')[1]
-        print(descricao)
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        preco = linha.split('Preco: ')[1]
-        print(preco)
-        linha = Arquivo.readline()
-        linha = linha.strip()
-        quantidade = linha.split('Quantidade: ')[1]
-        print(quantidade)
-
-"""
 while True:
     opcao_escolhida = exibir_menu()
 
@@ -138,4 +145,3 @@ while True:
         
     else:
         print("Opção incorreta")
-"""
