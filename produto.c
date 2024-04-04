@@ -4,9 +4,7 @@
 struct produto {
     char nome[100];
     char categoria[100];
-    char preco_str[50];
     float preco;
-     char quantidade_str[50];
     int quantidade;
 };
 
@@ -27,14 +25,9 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
     printf("Digite a categoria do produto: ");
     scanf(" %[^\n]", novo_Produto.categoria);
     printf("Digite o preço do produto: ");
-    scanf("%f", &novo_Produto.preco_str);
-
-    novo_Produto.preco = atof(novo_Produto.preco_str);
-
+    scanf("%f", &novo_Produto.preco);
     printf("Digite a quantidade do produto: ");
-    scanf("%d", &novo_Produto.quantidade_str);
-
-    novo_Produto.quantidade = atoi(novo_Produto.quantidade_str);
+    scanf("%d", &novo_Produto.quantidade);
 
     // Aloca memória para um novo nó da lista
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
@@ -187,8 +180,8 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
         fprintf(Arquivo, "Produto %d\n", Numero_Produto);
         fprintf(Arquivo, "Nome: %s\n", lista_produtos_var->produto.nome);
         fprintf(Arquivo, "categoria: %s\n", lista_produtos_var->produto.categoria);
-        fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco_str);
-        fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade_str);
+        fprintf(Arquivo, "preco: %.2f\n", lista_produtos_var->produto.preco);
+        fprintf(Arquivo, "quantidade: %d\n", lista_produtos_var->produto.quantidade);
         fprintf(Arquivo, "\n");
         Numero_Produto++;
     }
@@ -206,12 +199,15 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
             exit(1);
         }
 
-        
+        char preco_str[40], quantidade_str[40];
         fscanf(Arquivo, "Produto %*d\n");
         fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->produto.nome);
         fscanf(Arquivo, "categoria: %[^\n]\n", Novo_No->produto.categoria);
-        fscanf(Arquivo, "preco: %[^\n]\n", Novo_No->produto.preco);
-        fscanf(Arquivo, "quantidade: %d\n\n", Novo_No->produto.quantidade);
+        fscanf(Arquivo, "preco: %[^\n]\n", preco_str);
+        fscanf(Arquivo, "quantidade: %[^\n]\n\n", quantidade_str);
+
+        Novo_No->produto.preco = atof(preco_str);
+        Novo_No->produto.quantidade = atoi(quantidade_str);
 
         Novo_No->proximo_produto = lista_produtos_var;
         lista_produtos_var = Novo_No;
