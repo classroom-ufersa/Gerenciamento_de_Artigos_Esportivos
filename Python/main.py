@@ -52,7 +52,20 @@ def escrever_Arquivo(lista_sessao):
                     Arquivo.write("Preco: " + produto.preco + "\n")
                     Arquivo.write("Quantidade: " + produto.quantidade + "\n\n")
 
+def Tratativa_para_int(string):
+    nova_string = ''  
+    for caractere in string:
+        if caractere.isdigit():
+            nova_string += caractere
+    return nova_string    
 
+def Tratativa_para_float(string):
+    nova_string = ''  
+    for caractere in string:
+        if caractere.isdigit() or (caractere == '.' or caractere ==','):
+            nova_string += caractere
+    return nova_string   
+    
 
 lista_sessao = []
 
@@ -148,3 +161,4 @@ while True:
         
     else:
         print("Opção incorreta")
+        
