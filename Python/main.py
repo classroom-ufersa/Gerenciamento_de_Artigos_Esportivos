@@ -1,4 +1,4 @@
-from sessao import adicionar_sessao, remover_sessao_por_nome, Sessao
+from sessao import adicionar_sessao, remover_sessao_por_nome
 from produto import adicionar_produto, remover_produto, editar_produto
 
 def exibir_menu():
@@ -16,6 +16,39 @@ def exibir_menu():
 
 lista_sessao = []
 
+Arquivo = open("Arquivo.txt", 'r', encoding='utf-8')
+
+for linha in Arquivo:
+    
+    if linha.startswith('Sessao'):
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        nome = linha.split('Nome: ')[1]
+        print(nome)
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        descricao = linha.split('Descricao: ')[1]
+        print(descricao)
+        
+    if linha.startswith('Produto'):
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        nome = linha.split('Nome: ')[1]
+        print(nome)
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        descricao = linha.split('Categoria: ')[1]
+        print(descricao)
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        preco = linha.split('Preco: ')[1]
+        print(preco)
+        linha = Arquivo.readline()
+        linha = linha.strip()
+        quantidade = linha.split('Quantidade: ')[1]
+        print(quantidade)
+
+"""
 while True:
     opcao_escolhida = exibir_menu()
 
@@ -81,8 +114,7 @@ while True:
                     print("Categoria: ", produto.categoria)
                     print("Preco: ", produto.preco)
                     print("Quantidade: ", produto.quantidade)
-                    
-                
+                            
         
     elif opcao_escolhida == '7':
         
@@ -106,3 +138,4 @@ while True:
         
     else:
         print("Opção incorreta")
+"""
