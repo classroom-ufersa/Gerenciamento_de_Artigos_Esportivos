@@ -52,23 +52,22 @@ def ler_Arquivo(lista_sessao):
             adicionar_produto(sessao_atual.lista_produto, nome, categoria, preco, quantidade)
 
 def escrever_Arquivo(lista_sessao):
-    
-    Arquivo = open("Arquivo.txt", 'w', encoding='utf-8')
-    
-    for sessao in lista_sessao:
-        
-        Arquivo.write("Sessao:")
-        Arquivo.write(sessao.nome)
-        Arquivo.write(sessao.descricao, "\n")
-        
-        if len(sessao.lista_produto) == 0:
-            Arquivo.write("Nao existe nenhum produto")
-        else:
-            for produto in sessao.lista_produto:
-                Arquivo.write(produto.nome)
-                Arquivo.write(produto.categoria)
-                Arquivo.write(produto.preco)
-                Arquivo.write(produto.quantidade, "\n")    
+    with open("Arquivo.txt", 'w', encoding='utf-8') as Arquivo:
+        for sessao in lista_sessao:
+            Arquivo.write("Sessao:\n")
+            Arquivo.write("Nome: " + sessao.nome + "\n")
+            Arquivo.write("Descricao: " + sessao.descricao + "\n\n")
+            
+            if len(sessao.lista_produto) == 0:
+                Arquivo.write("Nao existe nenhum produto\n\n")
+            else:
+                for produto in sessao.lista_produto:
+                    Arquivo.write("Produto:\n")
+                    Arquivo.write("Nome: " + produto.nome + "\n")
+                    Arquivo.write("Categoria: " + produto.categoria + "\n")
+                    Arquivo.write("Preco: " + produto.preco + "\n")
+                    Arquivo.write("Quantidade: " + produto.quantidade + "\n\n")
+
 
 
 lista_sessao = []
