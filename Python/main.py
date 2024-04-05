@@ -84,7 +84,8 @@ while True:
                     produto_com_mesmo_nome = False
                     for sessao in lista_sessao:
                         for produto in sessao.lista_produto:
-                            produto_com_mesmo_nome = True
+                            if produto.nome == nome:
+                                produto_com_mesmo_nome = True
                     
                     if not produto_com_mesmo_nome:
                         categoria = input("Digite a categoria do produto: ")
@@ -95,7 +96,7 @@ while True:
                         adicionar_produto(sessao.lista_produto, nome, categoria, preco, quantidade)
                         print("Produto adicionado com sucesso.")
                     else: 
-                        print("produto não existente")
+                        print("produto já existente")
                     sessao_encontrada = True
             if not sessao_encontrada:
                 print("sessao nao encontrada")
@@ -110,10 +111,18 @@ while True:
             print(e)
             
     elif opcao_escolhida == '3':
-        nome = input("Digite o nome da sessão: ")      
-        descricao = input("Digite a descrição da sessão: ")   
-        adicionar_sessao(lista_sessao, nome, descricao)
-        print("Sessão adicionada com sucesso.")
+        nome = input("Digite o nome da sessão: ")
+        
+        sessao_com_mesmo_nome = False
+        for sessao in lista_sessao:
+            if nome == sessao.nome:
+                sessao_com_mesmo_nome = True
+        if not sessao_com_mesmo_nome:
+            descricao = input("Digite a descrição da sessão: ")   
+            adicionar_sessao(lista_sessao, nome, descricao)
+            print("Sessão adicionada com sucesso.")
+        else:
+            print("sessao ja existente")
         
     elif opcao_escolhida == '4':
         nome_sessao = input("Digite o nome da sessão que deseja remover: ")
