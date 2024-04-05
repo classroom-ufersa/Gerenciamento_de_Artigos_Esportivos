@@ -74,21 +74,31 @@ while True:
 
     if opcao_escolhida == '1':
         
-        sessao_encontrada = False
-        nome_sessao = input("digite o nome da sessao que o produto vai ficar: ")
-        for sessao in lista_sessao:
-            if nome_sessao == sessao.nome:
-                nome = input("Digite o nome do produto: ")
-                categoria = input("Digite a categoria do produto: ")
-                preco = input("Digite o preço do produto: ")
-                preco = Tratativa_para_float(preco)
-                quantidade = input("Digite a quantidade do produto: ")
-                quantidade = Tratativa_para_int(quantidade)
-                adicionar_produto(sessao.lista_produto, nome, categoria, preco, quantidade)
-                print("Produto adicionado com sucesso.")
-                sessao_encontrada = True
-        if not sessao_encontrada:
-            print("sessao nao encontrada")
+        
+            sessao_encontrada = False
+            nome_sessao = input("digite o nome da sessao que o produto vai ficar: ")
+            for sessao in lista_sessao:
+                if nome_sessao == sessao.nome:
+                    nome = input("Digite o nome do produto: ")
+                    
+                    produto_com_mesmo_nome = False
+                    for sessao in lista_sessao:
+                        for produto in sessao.lista_produto:
+                            produto_com_mesmo_nome = True
+                    
+                    if not produto_com_mesmo_nome:
+                        categoria = input("Digite a categoria do produto: ")
+                        preco = input("Digite o preço do produto: ")
+                        preco = Tratativa_para_float(preco)
+                        quantidade = input("Digite a quantidade do produto: ")
+                        quantidade = Tratativa_para_int(quantidade)
+                        adicionar_produto(sessao.lista_produto, nome, categoria, preco, quantidade)
+                        print("Produto adicionado com sucesso.")
+                    else: 
+                        print("produto não existente")
+                    sessao_encontrada = True
+            if not sessao_encontrada:
+                print("sessao nao encontrada")
             
             
     elif opcao_escolhida == '2':
