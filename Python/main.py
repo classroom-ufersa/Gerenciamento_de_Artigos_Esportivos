@@ -160,6 +160,9 @@ while True:
     elif opcao_escolhida == '7':
         
         print("Opção 7 selecionada.")
+        lista_sessao.sort(key=lambda sessao: sessao.nome)
+        for sessao in lista_sessao:
+            sessao.lista_produto.sort(key = lambda produto: produto.nome)
         for sessao in lista_sessao:
             print("Sessoa:")
             print("Nome: ", sessao.nome)
@@ -174,7 +177,11 @@ while True:
         
         
     elif opcao_escolhida == '8':
+        
         print("Opção 8 selecionada. Saindo...")
+        lista_sessao.sort(key=lambda sessao: sessao.nome)
+        for sessao in lista_sessao:
+            sessao.lista_produto.sort(key = lambda produto: produto.nome)
         escrever_Arquivo(lista_sessao)
         break
         
