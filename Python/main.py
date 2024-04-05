@@ -23,7 +23,6 @@ def ler_Arquivo(lista_sessao):
             if linha.startswith('Sessao'):
                 nome = Arquivo.readline().strip().split('Nome: ')[1]
                 descricao = Arquivo.readline().strip().split('Descricao: ')[1]
-                print(nome, descricao)
                 adicionar_sessao(lista_sessao, nome, descricao)
 
             elif linha.startswith('Produto'):
@@ -31,7 +30,6 @@ def ler_Arquivo(lista_sessao):
                 categoria = Arquivo.readline().strip().split('Categoria: ')[1]
                 preco = Arquivo.readline().strip().split('Preco: ')[1]
                 quantidade = Arquivo.readline().strip().split('Quantidade: ')[1]
-                print(nome, categoria, preco, quantidade)
                 sessao_atual = lista_sessao[-1]
                 adicionar_produto(sessao_atual.lista_produto, nome, categoria, preco, quantidade)
 
@@ -83,7 +81,9 @@ while True:
                 nome = input("Digite o nome do produto: ")
                 categoria = input("Digite a categoria do produto: ")
                 preco = input("Digite o preço do produto: ")
+                preco = Tratativa_para_float(preco)
                 quantidade = input("Digite a quantidade do produto: ")
+                quantidade = Tratativa_para_int(quantidade)
                 adicionar_produto(sessao.lista_produto, nome, categoria, preco, quantidade)
                 print("Produto adicionado com sucesso.")
                 sessao_encontrada = True
