@@ -10,7 +10,7 @@ struct sessao {
 // Definição da estrutura Lista_Sessao
 struct lista_sessao {
     Lista_Sessao *proxima_sessao;
-    Sessao sessao_lista;
+    Sessao sessao;
 };
 
 // Função para criar uma lista de sessões
@@ -20,17 +20,34 @@ Lista_Sessao *Cria_Lista_Sessao() {
 }
 
 // Função para adicionar uma nova sessão à lista de sessões
-Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var) {
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var, char *nome, char *descricao, Lista_Produtos *lista_produto_var) {
     Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
-    printf("Digite o nome da sessao:\n");
-    scanf(" %[^\n]", Novo_No->sessao_lista.nome);
-    printf("Digite a descricao da sessao:\n");
-    scanf(" %[^\n]", Novo_No->sessao_lista.descricao);
+    strcpy(Novo_No->sessao.nome, nome);
+    strcpy(Novo_No->sessao.descricao, descricao);
+    Novo_No->sessao.produto_var = lista_produto_var;
 
-    Novo_No->sessao_lista.produto_var = NULL;
-    Novo_No->proxima_sessao = lista_sessao_var;
-    return Novo_No;
+    Lista_Sessao *Posicao_Ordenada = lista_sessao_var;
+    Lista_Sessao *Anterior = NULL;
+    while (Posicao_Ordenada != NULL){
+        if (strcmp(Novo_No->sessao.nome, Posicao_Ordenada->sessao.nome) < 0){
+            break;
+        }
+        Anterior = Posicao_Ordenada;
+        Posicao_Ordenada = Posicao_Ordenada->proxima_sessao;
+    }
+
+    if(Anterior == NULL){
+        
+        Novo_No->proxima_sessao = lista_sessao_var;
+        return Novo_No;
+
+    } else {
+        Anterior->proxima_sessao = Novo_No;
+        Novo_No->proxima_sessao = Posicao_Ordenada;
+        return lista_sessao_var;
+    }
+    
 }
 
 // Função para remover uma sessão da lista de sessões pelo nome
@@ -38,7 +55,7 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
 
-    while (Atual != NULL && strcmp(Atual->sessao_lista.nome, nome) != 0) {
+    while (Atual != NULL && strcmp(Atual->sessao.nome, nome) != 0) {
         Anterior = Atual;
         Atual = Atual->proxima_sessao;
     }
@@ -82,8 +99,8 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
 
 // Função para imprimir uma sessão
 void Imprimir_Sessao(Lista_Sessao *lista_sessao_var) {
-    printf("Sessao: %s\n", lista_sessao_var->sessao_lista.nome);
-    printf("Descricao: %s\n", lista_sessao_var->sessao_lista.descricao);
+    printf("Sessao: %s\n", lista_sessao_var->sessao.nome);
+    printf("Descricao: %s\n", lista_sessao_var->sessao.descricao);
 }
 
 // Função para buscar uma sessão na lista de sessões pelo nome
@@ -93,7 +110,7 @@ Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     
     if (Lista_Vazia(atual)){
         return NULL;
-    } else if (strcmp(atual->sessao_lista.nome, nome) == 0){
+    } else if (strcmp(atual->sessao.nome, nome) == 0){
         return atual;
     }
     Busca_Sessao(atual->proxima_sessao, nome);
@@ -101,12 +118,12 @@ Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
 
 // Função para obter a lista de produtos de uma sessão
 Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var) {
-    return lista_sessao_var->sessao_lista.produto_var;
+    return lista_sessao_var->sessao.produto_var;
 }
 
 // Função para adicionar uma lista de produtos a uma sessão
 Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *lista_sessao_var) {
-    lista_sessao_var->sessao_lista.produto_var = Novo_No;
+    lista_sessao_var->sessao.produto_var = Novo_No;
     return lista_sessao_var;
 }
 
@@ -121,16 +138,16 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
 
         fprintf(Arquivo, "Sessao\n");
 
-        fprintf(Arquivo, "Nome: %s\n", Atual->sessao_lista.nome);
-        fprintf(Arquivo, "Descrição: %s\n", Atual->sessao_lista.descricao);
+        fprintf(Arquivo, "Nome: %s\n", Atual->sessao.nome);
+        fprintf(Arquivo, "Descrição: %s\n", Atual->sessao.descricao);
         fprintf(Arquivo, "\n");
 
-        if (Atual->sessao_lista.produto_var == NULL){
+        if (Atual->sessao.produto_var == NULL){
 
             fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
 
-            Escreve_Produtos(Atual->sessao_lista.produto_var, Arquivo, 1);
+            Escreve_Produtos(Atual->sessao.produto_var, Arquivo, 1);
         }
     }
 
@@ -149,21 +166,18 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
             printf("errp na alocacao da sessao\n");
             exit(1);
         }
-
+        char nome[100], descricao[100];
         fscanf(Arquivo, "Sessao\n");
-        fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->sessao_lista.nome);
-        fscanf(Arquivo, "Descrição: %[^\n]\n\n", Novo_No->sessao_lista.descricao);
-        Novo_No->sessao_lista.produto_var = NULL;
-
+        fscanf(Arquivo, "Nome: %[^\n]\n", nome);
+        fscanf(Arquivo, "Descrição: %[^\n]\n\n", descricao);
         if(vetor_sessoes[index] == 0){
 
             fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
-
-            Novo_No->sessao_lista.produto_var = Ler_Produtos(Novo_No->sessao_lista.produto_var, Arquivo, vetor_sessoes[index]);
+            Novo_No->sessao.produto_var = NULL;
+            Novo_No->sessao.produto_var = Ler_Produtos(Novo_No->sessao.produto_var, Arquivo, vetor_sessoes[index]);
         }
-        Novo_No->proxima_sessao = lista_sessao_var;
-        lista_sessao_var = Novo_No;
+        lista_sessao_var = Adicionar_Sessao(lista_sessao_var, nome, descricao, Novo_No->sessao.produto_var);
         index++;
     }
     return lista_sessao_var;

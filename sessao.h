@@ -10,7 +10,7 @@ typedef struct lista_sessao Lista_Sessao;
 Lista_Sessao *Cria_Lista_Sessao();
 
 // Função para adicionar uma nova sessão à lista de sessões
-Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var);
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var, char *nome, char *descricao, Lista_Produtos *lista_produto_var);
 
 // Função para verificar se a lista de sessões está vazia
 short Lista_Vazia(Lista_Sessao *lista_sessao_var);

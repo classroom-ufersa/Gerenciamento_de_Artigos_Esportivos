@@ -28,6 +28,7 @@ int main() {
                         char nome[100], categoria[100], preco_str[40], quantidade_str[40];
                         float preco;
                         int quantidade;
+                        printf("Digite o nome do produto: ");
                         scanf(" %[^\n]", nome);
                         printf("Digite a categoria do produto: ");
                         scanf(" %[^\n]", categoria);
@@ -61,9 +62,16 @@ int main() {
                 break;
             }
             case '3': {
+
                 printf("\nOpcao selecionada: Adicionar sessao\n");
-                lista_Sessao = Adicionar_Sessao(lista_Sessao);
-                Imprimir_Sessao(lista_Sessao);
+
+                char nome[100], descricao[100];
+                printf("Digite o nome da sessao:\n");
+                scanf(" %[^\n]", nome);
+                printf("Digite a descricao da sessao:\n");
+                scanf(" %[^\n]", descricao);
+
+                lista_Sessao = Adicionar_Sessao(lista_Sessao, nome, descricao, NULL);
                 break;
             }
             case '4': {
