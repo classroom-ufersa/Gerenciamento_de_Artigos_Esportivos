@@ -15,19 +15,15 @@ struct lista_produto {
 };
 
 // Função para adicionar um novo produto à lista
-Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
+Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade) {
     // Declaração de uma variável do tipo Produto para armazenar o novo produto
     Produto novo_Produto;
 
     // Solicita ao usuário informações sobre o novo produto
-    printf("Digite o nome do produto: ");
-    scanf(" %[^\n]", novo_Produto.nome);
-    printf("Digite a categoria do produto: ");
-    scanf(" %[^\n]", novo_Produto.categoria);
-    printf("Digite o preço do produto: ");
-    scanf("%f", &novo_Produto.preco);
-    printf("Digite a quantidade do produto: ");
-    scanf("%d", &novo_Produto.quantidade);
+    strcpy(novo_Produto.nome, nome);
+    strcpy(novo_Produto.categoria, categoria);
+    novo_Produto.preco = preco;
+    novo_Produto.quantidade = quantidade;
 
     // Aloca memória para um novo nó da lista
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));

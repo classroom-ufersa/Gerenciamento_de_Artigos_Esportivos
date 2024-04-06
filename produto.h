@@ -9,7 +9,7 @@ typedef struct produto Produto;
 typedef struct lista_produto Lista_Produtos;
 
 // Função para adicionar um produto à lista
-Lista_Produtos *adicionarProduto(Lista_Produtos *lista);
+Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade);
 
 // Função para imprimir os produtos da lista
 void imprimirProdutos(Lista_Produtos *lista);
