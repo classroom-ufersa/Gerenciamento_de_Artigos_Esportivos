@@ -78,3 +78,15 @@ O projeto teve os seguintes requisitos:
 └── README.md
  ```
 **Linguagem** <img align="center" alt="Porfirio-Neto-Python" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg">
+
+ ```
+📁 Gerenciamento_de_Artigos_Esportivos
+│
+├── Main.py
+│    
+├── Produto.py
+│
+├── Sessão.py
+│
+└── .gitignore
+ ```
