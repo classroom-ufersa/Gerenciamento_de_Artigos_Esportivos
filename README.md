@@ -38,7 +38,8 @@ O projeto teve os seguintes requisitos:
 6. Buscar visitante por nome
 7. Listar atrações e o número de visitantes presentes
 8. Sair
- **Observações
+
+ **Observações**
 - A opção de sair é a única que permite sair do programa.
 - Os dados devem ser armazenados em um arquivo de texto após cada operação e quando o programa for iniciado, carregar os dados armazenados nesse arquivo de texto.
 - Ordenar por ordem alfabetica as sessões e produtos a cada remoção ou adição.
