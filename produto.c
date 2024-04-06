@@ -25,14 +25,30 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
     novo_Produto.preco = preco;
     novo_Produto.quantidade = quantidade;
 
+    Lista_Produtos *ordenada = lista;
+    Lista_Produtos *Anterior = NULL;
+    while (ordenada != NULL){
+        if (strcmp(nome, ordenada->produto.nome) < 0){
+            break;
+        }
+        Anterior = ordenada;
+        ordenada = ordenada->proximo_produto;
+    }
     // Aloca memória para um novo nó da lista
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
     // Verifica se a alocação foi bem-sucedida
     if (novoNo != NULL) {
         // Preenche o novo nó com o novo produto e o adiciona no início da lista
+        if(Anterior == NULL){
         novoNo->produto = novo_Produto;
         novoNo->proximo_produto = lista;
         return novoNo;
+        } else {
+            novoNo->produto = novo_Produto;
+            Anterior->proximo_produto = novoNo;
+            novoNo->proximo_produto = ordenada;
+            return lista;
+        }
     } else {
         printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
     }
@@ -188,13 +204,6 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
 
     while(quantidade_produtos > 0){
 
-        Lista_Produtos *Novo_No = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
-        if (Arquivo == NULL)
-        {
-            printf("errp na alocacao de produtos\n");
-            exit(1);
-        }
-
         char nome[100], categoria[100];
         float preco;
         int quantidade;
@@ -209,8 +218,8 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
         preco = extrairFloat(preco_str);
         quantidade = extrairInt(quantidade_str);
 
-        Novo_No = adicionarProduto(lista_produtos_var, nome, categoria, preco, quantidade);
-        lista_produtos_var = Novo_No;
+        lista_produtos_var = adicionarProduto(lista_produtos_var, nome, categoria, preco, quantidade);
+        
         quantidade_produtos--;
     }
     fscanf(Arquivo, "\n");
