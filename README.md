@@ -12,6 +12,14 @@ ___
 > :computer:[Francisco Porfirio de Oliveira Neto](https://github.com/Porfirio24)
 > 
 > :computer:[Daniel Neres Vireira](https://github.com/DanielNeres)
+
+## Introdução
+Em um mercado cada vez mais competitivo, a eficiência operacional e a excelência no atendimento ao cliente são diferenciais cruciais para o sucesso de qualquer negócio, especialmente no contexto de uma loja de artigos esportivos. Para enfrentar esses desafios, a adoção de um sistema de gerenciamento moderno e eficaz torna-se essencial.
+
+Este sistema não apenas simplifica tarefas operacionais, como também aprimora a gestão de estoque, vendas e relacionamento com os clientes. No entanto, para alcançar todo o potencial dessas funcionalidades, é fundamental contar com recursos avançados de programação, como ponteiros, alocação dinâmica, structs, TADs (Tipos Abstratos de Dados), manipulação de arquivos e lista encadeada.
+
+Ao integrar esses recursos tecnológicos, o sistema não só agiliza processos internos, mas também proporciona uma experiência mais personalizada e satisfatória para os clientes, ao mesmo tempo em que oferece ferramentas robustas para a tomada de decisões estratégicas por parte da loja.
+
 ## :scroll: Problemáticas
 
 **Imagine uma loja de Artigos Esportivos operada manualmente, onde todas as informações sobre produtos,são registradas em papel ou em sistemas ultrapassados. Essa abordagem manual cria uma série de desafios que podem ser considerados:**
