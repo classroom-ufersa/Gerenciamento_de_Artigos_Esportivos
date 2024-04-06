@@ -90,3 +90,12 @@ O projeto teve os seguintes requisitos:
 │
 └── .gitignore
  ```
+## Execução do Projeto :gear:
+**Compilando**
+```C
+gcc -c
+Produto.c
+Sessão.c
+Main.c
+Funcões.c
+```
