@@ -13,7 +13,7 @@ ___
 > 
 > :computer:[Daniel Neres Vireira](https://github.com/DanielNeres)
 
-## Introdução
+## :football: Introdução
 Em um mercado cada vez mais competitivo, a eficiência operacional e a excelência no atendimento ao cliente são diferenciais cruciais para o sucesso de qualquer negócio, especialmente no contexto de uma loja de artigos esportivos. Para enfrentar esses desafios, a adoção de um sistema de gerenciamento moderno e eficaz torna-se essencial.
 
 Este sistema não apenas simplifica tarefas operacionais, como também aprimora a gestão de estoque, vendas e relacionamento com os clientes. No entanto, para alcançar todo o potencial dessas funcionalidades, é fundamental contar com recursos avançados de programação, como ponteiros, alocação dinâmica, structs, TADs (Tipos Abstratos de Dados), manipulação de arquivos e lista encadeada.
