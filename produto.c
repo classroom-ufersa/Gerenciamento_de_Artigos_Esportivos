@@ -195,17 +195,20 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
             exit(1);
         }
 
-        char preco_str[40], quantidade_str[40];
+        char nome[100], categoria[100];
+        float preco;
+        int quantidade;
+        char preco_str[100], quantidade_str[100];
         fscanf(Arquivo, "Produto %*d\n");
-        fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->produto.nome);
-        fscanf(Arquivo, "categoria: %[^\n]\n", Novo_No->produto.categoria);
+        fscanf(Arquivo, "Nome: %[^\n]\n", nome);
+        fscanf(Arquivo, "categoria: %[^\n]\n", categoria);
         fscanf(Arquivo, "preco: %[^\n]\n", preco_str);
         fscanf(Arquivo, "quantidade: %[^\n]\n\n", quantidade_str);
 
-        Novo_No->produto.preco = atof(preco_str);
-        Novo_No->produto.quantidade = atoi(quantidade_str);
+        preco = atof(preco_str);
+        quantidade = atoi(quantidade_str);
 
-        Novo_No->proximo_produto = lista_produtos_var;
+        Novo_No = adicionarProduto(lista_produtos_var, nome, categoria, preco, quantidade);
         lista_produtos_var = Novo_No;
         quantidade_produtos--;
     }
