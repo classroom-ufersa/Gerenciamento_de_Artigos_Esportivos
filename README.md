@@ -9,9 +9,9 @@ Projeto de  um sistema em Linguagem C para gerenciamento de Artigos Esportivos, 
 ___
 
 ## Desenvolvedores
-> [Francisco Porfirio de Oliveira Neto](https://github.com/Porfirio24)
+> :computer:[Francisco Porfirio de Oliveira Neto](https://github.com/Porfirio24)
 > 
-> [Daniel Neres Vireira](https://github.com/DanielNeres)
+> :computer:[Daniel Neres Vireira](https://github.com/DanielNeres)
 ## :scroll: Problemáticas
 
 **Imagine uma loja de Artigos Esportivos operada manualmente, onde todas as informações sobre produtos,são registradas em papel ou em sistemas ultrapassados. Essa abordagem manual cria uma série de desafios que podem ser considerados:**
@@ -44,3 +44,6 @@ O projeto teve os seguintes requisitos:
 - A opção de sair é a única que permite sair do programa.
 - Os dados devem ser armazenados em um arquivo de texto após cada operação e quando o programa for iniciado, carregar os dados armazenados nesse arquivo de texto.
 - Ordenar por ordem alfabetica as sessões e produtos a cada remoção ou adição.
+
+## Organização
+**Linguagem C <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
