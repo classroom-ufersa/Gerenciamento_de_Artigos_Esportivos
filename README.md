@@ -48,6 +48,7 @@ O projeto teve os seguintes requisitos:
 ## Organização
 **Linguagem** <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
+  ```
 📁 Gerenciamento_de_Artigos_Esportivos
 │
 ├── .gitignore
@@ -75,5 +76,5 @@ O projeto teve os seguintes requisitos:
 │   └── Sessão.o
 │       
 └── README.md
-
+ ```
 **Linguagem** <img align="center" alt="Porfirio-Neto-Python" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg">
