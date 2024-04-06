@@ -25,7 +25,17 @@ int main() {
                     if (sessao_escolhida != NULL){
 
                         Lista_Produtos *lista_produto_Escolhida = Pegar_Lista_Produtos(sessao_escolhida);
-                        lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida);
+                        char nome[100], categoria[100];
+                        float preco;
+                        int quantidade;
+                        scanf(" %[^\n]", nome);
+                        printf("Digite a categoria do produto: ");
+                        scanf(" %[^\n]", categoria);
+                        printf("Digite o preço do produto: ");
+                        scanf("%f", &preco);
+                        printf("Digite a quantidade do produto: ");
+                        scanf("%d", &quantidade);
+                        lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida, nome, categoria, preco, quantidade);
                         sessao_escolhida = Adicionar_Produto_Sessao(lista_produto_Escolhida, sessao_escolhida);
                         printf("Produto adicionado com sucesso!\n");
                     } else {

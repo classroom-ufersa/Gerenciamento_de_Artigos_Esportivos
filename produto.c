@@ -15,19 +15,15 @@ struct lista_produto {
 };
 
 // Função para adicionar um novo produto à lista
-Lista_Produtos *adicionarProduto(Lista_Produtos *lista) {
+Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade) {
     // Declaração de uma variável do tipo Produto para armazenar o novo produto
     Produto novo_Produto;
 
     // Solicita ao usuário informações sobre o novo produto
-    printf("Digite o nome do produto: ");
-    scanf(" %[^\n]", novo_Produto.nome);
-    printf("Digite a categoria do produto: ");
-    scanf(" %[^\n]", novo_Produto.categoria);
-    printf("Digite o preço do produto: ");
-    scanf("%f", &novo_Produto.preco);
-    printf("Digite a quantidade do produto: ");
-    scanf("%d", &novo_Produto.quantidade);
+    strcpy(novo_Produto.nome, nome);
+    strcpy(novo_Produto.categoria, categoria);
+    novo_Produto.preco = preco;
+    novo_Produto.quantidade = quantidade;
 
     // Aloca memória para um novo nó da lista
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
@@ -199,17 +195,20 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
             exit(1);
         }
 
-        char preco_str[40], quantidade_str[40];
+        char nome[100], categoria[100];
+        float preco;
+        int quantidade;
+        char preco_str[100], quantidade_str[100];
         fscanf(Arquivo, "Produto %*d\n");
-        fscanf(Arquivo, "Nome: %[^\n]\n", Novo_No->produto.nome);
-        fscanf(Arquivo, "categoria: %[^\n]\n", Novo_No->produto.categoria);
+        fscanf(Arquivo, "Nome: %[^\n]\n", nome);
+        fscanf(Arquivo, "categoria: %[^\n]\n", categoria);
         fscanf(Arquivo, "preco: %[^\n]\n", preco_str);
         fscanf(Arquivo, "quantidade: %[^\n]\n\n", quantidade_str);
 
-        Novo_No->produto.preco = atof(preco_str);
-        Novo_No->produto.quantidade = atoi(quantidade_str);
+        preco = atof(preco_str);
+        quantidade = atoi(quantidade_str);
 
-        Novo_No->proximo_produto = lista_produtos_var;
+        Novo_No = adicionarProduto(lista_produtos_var, nome, categoria, preco, quantidade);
         lista_produtos_var = Novo_No;
         quantidade_produtos--;
     }
