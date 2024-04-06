@@ -46,4 +46,30 @@ O projeto teve os seguintes requisitos:
 - Ordenar por ordem alfabetica as sessões e produtos a cada remoção ou adição.
 
 ## Organização
-**Linguagem C <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+**Linguagem** <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
+**Linguagem** <img align="center" alt="Porfirio-Neto-Python" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg">
+
+📁 Gerenciamento_de_Artigos_Esportivos
+│
+└── .gitignore
+│
+└── Funções.c
+    └──Funções.h
+    └──Funções.o
+│    
+└── Arquivo.txt
+│
+└── Main.c
+    └──Main.exe
+    └──Main.o
+│
+└── Produto.c        
+    └──Produto.h
+    └──Produto.o
+│
+└── Sessão.c
+    └──Sessão.h
+    └──Sessão.o
+│       
+└───README.md
