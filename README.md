@@ -4,6 +4,7 @@ Projeto de  um sistema em Linguagem C para gerenciamento de Artigos Esportivos, 
 - [Introdução](#introduçao)
 - [Problemáticas](#Problemáticas)
 - [Requisitos](#Requisitos)
+- [Organização](#Organização)
 - [Execução do projeto;](#execução-do-projeto)
 ___
 
@@ -30,13 +31,13 @@ Nesse cenário, a implementação de um sistema de gerenciamento de loja de arti
 ## Requisitos do projeto
 O projeto teve os seguintes requisitos:
 
-1. Adicionar atração
-2. Remover atração
-3. Adicionar visitante
-4. Remover visitante
-5. Editar a informação do visitante
-6. Buscar visitante por nome
-7. Listar atrações e o número de visitantes presentes
+1. Adicionar Produto
+2. Remover Produto
+3. Adicionar Sessão
+4. Remover Sessão
+5. Editar a informação do Produto
+6. Buscar Produto por nome
+7. Listar Sessões e Produto
 8. Sair
 
  **Observações**
