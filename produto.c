@@ -205,8 +205,9 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
         fscanf(Arquivo, "preco: %[^\n]\n", preco_str);
         fscanf(Arquivo, "quantidade: %[^\n]\n\n", quantidade_str);
 
-        preco = atof(preco_str);
-        quantidade = atoi(quantidade_str);
+        
+        preco = extrairFloat(preco_str);
+        quantidade = extrairInt(quantidade_str);
 
         Novo_No = adicionarProduto(lista_produtos_var, nome, categoria, preco, quantidade);
         lista_produtos_var = Novo_No;
@@ -215,6 +216,7 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
     fscanf(Arquivo, "\n");
     return lista_produtos_var;
 }
+
 float extrairFloat(char *str) {
     char numero_str[50];
     int j = 0;
@@ -228,7 +230,7 @@ float extrairFloat(char *str) {
 				pontoEncontrado++;
 			} // Incrementa contador se já encontrou o ponto
         } else if((str[i] == '.' || str[i] == ',') && !pontoEncontrado) {
-            numero_str[j++] = '.';
+            numero_str[j++] = ',';
             pontoEncontrado = 1; // Marca que ponto foi encontrado e começa a contar os dígitos após o ponto
         } else if(pontoEncontrado && isdigit(str[i]) && pontoEncontrado < 3) {
             numero_str[j++] = str[i];
@@ -239,4 +241,18 @@ float extrairFloat(char *str) {
 		}
     }
     return atof(numero_str);
+}
+
+int extrairInt(char *str){
+
+    char numero_str[50];
+    int j = 0;
+    int i;
+    for(i = 0; i < strlen(str); i++) {
+        if(isdigit(str[i])) {
+            numero_str[j++] = str[i];
+		}
+    }
+    return atoi(numero_str);
+
 }
