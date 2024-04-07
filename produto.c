@@ -160,7 +160,7 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
 
     // Percorre a lista procurando produtos que contenham o nome especificado
     Lista_Produtos *atual = lista;
-    int encontrado = 0;
+
     while (atual != NULL) {
         if (strstr(atual->produto.nome, nome) != NULL) {
             // Imprime as informações do produto encontrado
@@ -170,12 +170,12 @@ void buscarPorNome(Lista_Produtos *lista, char *nome) {
             printf("Preço: %.2f\n", atual->produto.preco);
             printf("Quantidade: %d\n", atual->produto.quantidade);
             printf("\n");
-            encontrado = 1;
+            
         }
         atual = atual->proximo_produto;
     }
 
-    if (!encontrado) {
+    if (atual == NULL) {
         printf("Nenhum produto encontrado com o nome \"%s\".\n", nome);
     }
 }

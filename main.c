@@ -68,8 +68,14 @@ int main() {
                 char nome[100], descricao[100];
                 printf("Digite o nome da sessao:\n");
                 scanf(" %[^\n]", nome);
+
+                if (Busca_Sessao(lista_Sessao, nome_escolhido) != NULL){
+                    printf("Sessão já existente\n");
+                    break;
+                }
                 printf("Digite a descricao da sessao:\n");
                 scanf(" %[^\n]", descricao);
+
 
                 lista_Sessao = Adicionar_Sessao(lista_Sessao, nome, descricao, NULL);
                 break;
