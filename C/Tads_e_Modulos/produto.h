@@ -27,7 +27,9 @@ void liberarListaProdutos(Lista_Produtos *lista);
 void editarProduto(Lista_Produtos *lista, char *nome);
 
 // Função para buscar produtos na lista pelo nome
-void buscarPorNome(Lista_Produtos *lista, char *nome);
+Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome);
+
+void Imprimir_Produto(Lista_Produtos *Produto);
 
 void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Numero_Produto);
 

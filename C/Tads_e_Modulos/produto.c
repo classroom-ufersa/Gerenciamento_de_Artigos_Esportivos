@@ -152,32 +152,29 @@ void editarProduto(Lista_Produtos *lista, char *nome) {
 }
 
 // Função para buscar produtos na lista pelo nome
-void buscarPorNome(Lista_Produtos *lista, char *nome) {
-    // Verifica se a lista está vazia
-    if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia.\n");
-    }
+Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
 
     // Percorre a lista procurando produtos que contenham o nome especificado
     Lista_Produtos *atual = lista;
 
     while (atual != NULL) {
         if (strstr(atual->produto.nome, nome) != NULL) {
-            // Imprime as informações do produto encontrado
-            printf("Produto encontrado:\n");
-            printf("Nome: %s\n", atual->produto.nome);
-            printf("Categoria: %s\n", atual->produto.categoria);
-            printf("Preço: %.2f\n", atual->produto.preco);
-            printf("Quantidade: %d\n", atual->produto.quantidade);
-            printf("\n");
-            
+            return atual;      
         }
         atual = atual->proximo_produto;
     }
 
-    if (atual == NULL) {
-        printf("Nenhum produto encontrado com o nome \"%s\".\n", nome);
-    }
+    return atual;
+}
+
+void Imprimir_Produto(Lista_Produtos *Produto){
+
+    printf("Produto encontrado:\n");
+        printf("Nome: %s\n", Produto->produto.nome);
+        printf("Categoria: %s\n", Produto->produto.categoria);
+        printf("Preço: %.2f\n", Produto->produto.preco);
+        printf("Quantidade: %d\n", Produto->produto.quantidade);
+        printf("\n");
 }
 
 void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Numero_Produto){
@@ -263,5 +260,4 @@ int extrairInt(char *str){
 		}
     }
     return atoi(numero_str);
-
 }

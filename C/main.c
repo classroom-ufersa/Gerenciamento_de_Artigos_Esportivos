@@ -114,9 +114,14 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    buscarPorNome(Auxiliar_produtos, nome_escolhido);
+                    Lista_Produtos *Produto = buscarPorNome(Auxiliar_produtos, nome_escolhido);
+                    if (Produto != NULL){
+                        Imprimir_Produto(Produto);
+                        break;
+                    }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
+                printf("Nenhum produto com o nome: \"%s\" encontrado", nome_escolhido);
                 break;
             }
             case '7': {
