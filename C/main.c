@@ -1,4 +1,4 @@
-#include "funcoes.h"
+#include "Tads_e_Modulos\funcoes.h"
 
 int main() {
 
@@ -15,7 +15,7 @@ int main() {
 
                 if (Lista_Vazia(lista_Sessao)){
                     printf("nenhuma sessao cadastrada\n");
-                } else{
+                } else{ 
 
                     printf("Digite em qual sessao o produto vai estar\n");
                     scanf(" %[^\n]", nome_escolhido);
