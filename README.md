@@ -100,10 +100,16 @@ O projeto teve os seguintes requisitos:
  ```
 ## Execução do Projeto :gear:
 -Este é um sistema em Linguagem C para gerenciamento de Artigos Esportivos, que realiza a manipulação de Sessões e Produtos.
+
 **Compilando**
 ## C
 ```
 gcc -c /Produto.c /Sessão.c /Main.c /Funcões.c
 gcc -o main /Produto.c /Sessão.c /Main.c /Funcões.c
 ```
-
+##Python
+```
+python main.py
+```
+**Observação**
+verifique se você possui em compilador de C instalado assim como um compilador de Python para que possa compilar o código com sucessso.
