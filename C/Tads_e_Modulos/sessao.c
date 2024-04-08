@@ -182,6 +182,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         char nome[100], descricao[100];
         fscanf(Arquivo, "Sessao\n");
         fscanf(Arquivo, "Nome: %[^\n]\n", nome);
+        string_maiuscula_minuscula(nome);
         fscanf(Arquivo, "Descrição: %[^\n]\n\n", descricao);
         if(vetor_sessoes[index] == 0){
 

@@ -207,6 +207,7 @@ Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, 
         char preco_str[100], quantidade_str[100];
         fscanf(Arquivo, "Produto %*d\n");
         fscanf(Arquivo, "Nome: %[^\n]\n", nome);
+        string_maiuscula_minuscula(nome);
         fscanf(Arquivo, "categoria: %[^\n]\n", categoria);
         fscanf(Arquivo, "preco: %[^\n]\n", preco_str);
         fscanf(Arquivo, "quantidade: %[^\n]\n\n", quantidade_str);

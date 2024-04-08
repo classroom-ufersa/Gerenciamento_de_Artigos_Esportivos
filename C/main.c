@@ -67,6 +67,7 @@ int main() {
             case '2': {
                 printf("Digite o nome do produto a ser removido: ");
                 scanf(" %[^\n]", nome_escolhido);
+                string_maiuscula_minuscula(nome_escolhido);
 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
@@ -107,12 +108,14 @@ int main() {
 
                 printf("Digite o nome da sessao a ser removida: ");
                 scanf(" %[^\n]", nome_escolhido);
+                string_maiuscula_minuscula(nome_escolhido);
                 lista_Sessao = Remover_Sessao(lista_Sessao, nome_escolhido);
                 break;
             }
             case '5': {
                 printf("Digite o nome do produto a ser editado: ");
                 scanf(" %[^\n]", nome_escolhido);
+                string_maiuscula_minuscula(nome_escolhido);
 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
@@ -126,6 +129,7 @@ int main() {
             case '6': {
                 printf("Digite o nome do produto a ser buscado: ");
                 scanf(" %[^\n]", nome_escolhido);
+                string_maiuscula_minuscula(nome_escolhido);
                 
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
