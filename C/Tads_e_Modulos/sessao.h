@@ -1,3 +1,6 @@
+#ifndef SESSAO_H
+#define SESSAO_H
+
 #include "produto.h"
 
 // Definição da estrutura Sessao
@@ -38,3 +41,5 @@ void *Liberar_Lista_Sessao(Lista_Sessao *lista_sessao_var);
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);
 
 Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor);
+
+#endif // SESSAO_H

@@ -30,6 +30,7 @@ int main() {
                         int quantidade;
                         printf("Digite o nome do produto: ");
                         scanf(" %[^\n]", nome);
+                        string_maiuscula_minuscula(nome);
 
                         Lista_Sessao *Auxiliar_Adicionar = lista_Sessao;
                         short produto_com_mesmo_nome = 0;
@@ -83,6 +84,7 @@ int main() {
                 char nome[100], descricao[100];
                 printf("Digite o nome da sessao:\n");
                 scanf(" %[^\n]", nome);
+                string_maiuscula_minuscula(nome);
 
                 if (Busca_Sessao(lista_Sessao, nome_escolhido) != NULL){
                     printf("Sessão já existente\n");

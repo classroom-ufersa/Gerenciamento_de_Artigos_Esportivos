@@ -35,8 +35,4 @@ void Escreve_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int Num
 
 Lista_Produtos *Ler_Produtos(Lista_Produtos *lista_produtos_var, FILE *Arquivo, int quantidade_produtos);
 
-float extrairFloat(char *str);
-
-int extrairInt(char *str);
-
 #endif // PRODUTO_H

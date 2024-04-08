@@ -91,14 +91,41 @@ void string_maiuscula_minuscula(char *Nome){
   }
 }
 
-void Tratamento_de_Dado_Nome(char *Nome){
-  int Contador, Contador2; 
-  for (Contador = 0; Nome[Contador] != '\0'; Contador++)  {
-    if((Nome[Contador] < 65 || Nome[Contador] > 90) && (Nome[Contador] < 97 || Nome[Contador] > 122) && (Nome[Contador] != 32)){
-       for(Contador2 = Contador;Nome[Contador2] != '\0';Contador2++){
-        Nome[Contador2] = Nome[Contador2 + 1];
-       }
-       Contador--;
+float extrairFloat(char *str) {
+    char numero_str[50];
+    int j = 0;
+    int i;
+    int pontoEncontrado = 0; // Variável para controlar o número de dígitos após o ponto
+
+    for(i = 0; i < strlen(str); i++) {
+        if(isdigit(str[i])) {
+            numero_str[j++] = str[i];
+            if(pontoEncontrado){
+				pontoEncontrado++;
+			} // Incrementa contador se já encontrou o ponto
+        } else if((str[i] == '.' || str[i] == ',') && !pontoEncontrado) {
+            numero_str[j++] = ',';
+            pontoEncontrado = 1; // Marca que ponto foi encontrado e começa a contar os dígitos após o ponto
+        } else if(pontoEncontrado && isdigit(str[i]) && pontoEncontrado < 3) {
+            numero_str[j++] = str[i];
+            pontoEncontrado++;
+        }
+        if (pontoEncontrado > 3){
+			break;
+		}
     }
-  }
+    return atof(numero_str);
+}
+
+int extrairInt(char *str){
+
+    char numero_str[50];
+    int j = 0;
+    int i;
+    for(i = 0; i < strlen(str); i++) {
+        if(isdigit(str[i])) {
+            numero_str[j++] = str[i];
+		}
+    }
+    return atoi(numero_str);
 }
