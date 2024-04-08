@@ -127,17 +127,16 @@ Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *li
     return lista_sessao_var;
 }
 
-Lista_Sessao *Liberar_Lista_Sessao(Lista_Sessao *lista_sessao_var){
+void *Liberar_Lista_Sessao(Lista_Sessao *lista_sessao_var){
 
-    Lista_Sessao *Auxiliar = lista_sessao_var;
-    while (Auxiliar != NULL)
-    {
-        Auxiliar = lista_sessao_var;
-        liberarListaProdutos(Auxiliar->sessao.produto_var);
-        lista_sessao_var = Auxiliar->proxima_sessao;
-        free(Auxiliar);
-        Auxiliar = lista_sessao_var;
+    Lista_Sessao *atual = lista_sessao_var;
+    while (atual != NULL) {
+        Lista_Sessao *proximo = atual->proxima_sessao;
+        liberarListaProdutos(atual->sessao.produto_var);
+        free(atual);
+        atual = proximo;
     }
+    free(lista_sessao_var);
 
 }
 
