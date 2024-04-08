@@ -59,30 +59,19 @@ O projeto teve os seguintes requisitos:
   ```
 📁 Gerenciamento_de_Artigos_Esportivos
 │
+├── C
+│
+├── Tads_e_Modulos
+│    ├── Funções.c
+│    ├── Funções.h
+│    ├── Produto.c        
+│    ├── Produto.h
+│    ├── Sessão.h
+│    ├── Sessão.c
+├── Main.c
+│
 ├── .gitignore
 │
-├── Funções
-│   ├── Funções.c
-│   ├── Funções.h
-│   └── Funções.o
-│    
-├── Arquivo.txt
-│
-├── Main
-│   ├── Main.c
-│   ├── Main.exe
-│   └── Main.o
-│
-├── Produto
-│   ├── Produto.c        
-│   ├── Produto.h
-│   └── Produto.o
-│
-├── Sessão
-│   ├── Sessão.c
-│   ├── Sessão.h
-│   └── Sessão.o
-│       
 └── README.md
  ```
 **Linguagem** <img align="center" alt="Porfirio-Neto-Python" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg">
@@ -105,7 +94,7 @@ O projeto teve os seguintes requisitos:
 ## C
 ```
 gcc -c /Produto.c /Sessão.c /Main.c /Funcões.c
-gcc -o main /Produto.c /Sessão.c /Main.c /Funcões.c
+gcc -o main.exe main.c Tads_e_Modulos/produto.c Tads_e_Modulos/sessao.c Tads_e_Modulos/funcoes.c
 ```
 ## Python
 ```
