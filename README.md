@@ -107,7 +107,7 @@ O projeto teve os seguintes requisitos:
 gcc -c /Produto.c /Sessão.c /Main.c /Funcões.c
 gcc -o main /Produto.c /Sessão.c /Main.c /Funcões.c
 ```
-##Python
+## Python
 ```
 python main.py
 ```
