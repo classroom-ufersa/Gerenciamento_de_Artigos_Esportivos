@@ -78,3 +78,27 @@ Lista_Sessao *Ler_Arquivo(Lista_Sessao *lista_sessao_var){
     fclose(Arquivo);
     return lista_sessao_var;
 }
+
+void string_maiuscula_minuscula(char *Nome){ 
+  int Contador; 
+  Nome[0] = toupper(Nome[0]);  
+  for (Contador = 1; Nome[Contador] != '\0'; Contador++)  { 
+    if (isspace(Nome[Contador - 1]))  { 
+      Nome[Contador] = toupper(Nome[Contador]);
+    } else  { 
+      Nome[Contador] = tolower(Nome[Contador]); 
+    }
+  }
+}
+
+void Tratamento_de_Dado_Nome(char *Nome){
+  int Contador, Contador2; 
+  for (Contador = 0; Nome[Contador] != '\0'; Contador++)  {
+    if((Nome[Contador] < 65 || Nome[Contador] > 90) && (Nome[Contador] < 97 || Nome[Contador] > 122) && (Nome[Contador] != 32)){
+       for(Contador2 = Contador;Nome[Contador2] != '\0';Contador2++){
+        Nome[Contador2] = Nome[Contador2 + 1];
+       }
+       Contador--;
+    }
+  }
+}
