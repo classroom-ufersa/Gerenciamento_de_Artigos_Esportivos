@@ -93,8 +93,8 @@ O projeto teve os seguintes requisitos:
 **Compilando**
 ## C
 ```
-gcc -c /Produto.c /Sessão.c /Main.c /Funcões.c
-gcc -o main.exe main.c Tads_e_Modulos/produto.c Tads_e_Modulos/sessao.c Tads_e_Modulos/funcoes.c
+gcc -o arquivo executavel main.c Tads_e_Modulos/produto.c Tads_e_Modulos/sessao.c Tads_e_Modulos/funcoes.c
+./arquivo executavel.exe
 ```
 ## Python
 ```
