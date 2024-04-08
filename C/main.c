@@ -158,6 +158,8 @@ int main() {
             case '8': {
                 printf("Saindo...\n");
                 Escrever_Arquivo(lista_Sessao);
+                lista_Sessao = Liberar_Lista_Sessao(lista_Sessao);
+                printf("deu certo\n");
                 break;
             }
             default: {

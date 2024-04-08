@@ -33,6 +33,8 @@ Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var);
 // Função para adicionar uma lista de produtos a uma sessão
 Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *lista_sessao_var);
 
+Lista_Sessao *Liberar_Lista_Sessao(Lista_Sessao *lista_sessao_var);
+
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo);
 
 Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *vetor);

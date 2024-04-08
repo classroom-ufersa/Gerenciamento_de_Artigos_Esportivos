@@ -127,6 +127,20 @@ Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *li
     return lista_sessao_var;
 }
 
+Lista_Sessao *Liberar_Lista_Sessao(Lista_Sessao *lista_sessao_var){
+
+    Lista_Sessao *Auxiliar = lista_sessao_var;
+    while (Auxiliar != NULL)
+    {
+        Auxiliar = lista_sessao_var;
+        liberarListaProdutos(Auxiliar->sessao.produto_var);
+        lista_sessao_var = Auxiliar->proxima_sessao;
+        free(Auxiliar);
+        Auxiliar = lista_sessao_var;
+    }
+
+}
+
 void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
 
     Lista_Sessao *Atual = lista_sessao_var;
