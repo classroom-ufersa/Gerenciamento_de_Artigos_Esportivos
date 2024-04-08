@@ -30,6 +30,21 @@ int main() {
                         int quantidade;
                         printf("Digite o nome do produto: ");
                         scanf(" %[^\n]", nome);
+
+                        Lista_Sessao *Auxiliar_Adicionar = lista_Sessao;
+                        short produto_com_mesmo_nome = 0;
+                        while(Auxiliar_Adicionar != NULL){
+
+                            if (buscarPorNome(Pegar_Lista_Produtos(Auxiliar_Adicionar), nome) != NULL){
+                                produto_com_mesmo_nome = 1;
+                            }
+                            Auxiliar_Adicionar = Percorrer_Sessoes(Auxiliar_Adicionar);
+                        }
+                        if(produto_com_mesmo_nome){
+                            printf("Produto já existente");
+                            break;
+                        }
+
                         printf("Digite a categoria do produto: ");
                         scanf(" %[^\n]", categoria);
                         printf("Digite o preço do produto: ");
