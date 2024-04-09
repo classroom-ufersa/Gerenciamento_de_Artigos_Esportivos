@@ -105,7 +105,8 @@ python main.py
 verifique se você possui em compilador de C instalado assim como um compilador de Python para que possa compilar o código com sucessso.
 
 ## Estruturas
-**Estrutura Produto**
+**Estrutura Produto** <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
 ```c
 struct produto{
     char nome[100];
@@ -114,7 +115,8 @@ struct produto{
     int quantidade;
 };
 ```
-**Estrutura Lista Produto**
+**Estrutura Lista Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
 ```c
 struct lista_produto{
     Produto produto;
