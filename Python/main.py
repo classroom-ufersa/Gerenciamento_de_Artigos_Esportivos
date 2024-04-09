@@ -40,15 +40,18 @@ def escrever_Arquivo(lista_sessao):
             Arquivo.write("Nome: " + sessao.nome + "\n")
             Arquivo.write("Descricao: " + sessao.descricao + "\n\n")
             
+            contador = 0
             if len(sessao.lista_produto) == 0:
                 Arquivo.write("Nao existe nenhum produto\n\n")
             else:
                 for produto in sessao.lista_produto:
-                    Arquivo.write("Produto:\n")
+                    contador += 1
+                    Arquivo.write("Produto " + str(contador) + "\n")
                     Arquivo.write("Nome: " + produto.nome + "\n")
                     Arquivo.write("Categoria: " + produto.categoria + "\n")
-                    Arquivo.write("Preco: " + produto.preco + "\n")
-                    Arquivo.write("Quantidade: " + produto.quantidade + "\n\n")
+                    Arquivo.write("Preco: " + str(produto.preco) + "\n")
+                    Arquivo.write("Quantidade: " + str(produto.quantidade) + "\n\n")
+
 
 def Tratativa_para_int(string):
     nova_string = ''  
