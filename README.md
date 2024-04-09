@@ -105,12 +105,19 @@ python main.py
 verifique se você possui em compilador de C instalado assim como um compilador de Python para que possa compilar o código com sucessso.
 
 ## Estruturas
-** Estrutura Produto
+**Estrutura Produto**
 ```c
 struct produto{
     char nome[100];
     char categoria[100];
     float preco;
     int quantidade;
+};
+```
+**Estrutura Lista Produto**
+```c
+struct lista_produto{
+    Produto produto;
+    lista_Produto *proximo_produto;
 };
 ```
