@@ -6,6 +6,7 @@ Projeto de  um sistema em Linguagem C para gerenciamento de Artigos Esportivos, 
 - [Requisitos](#Requisitos)
 - [Organização](#Organização)
 - [Execução do projeto;](#execução-do-projeto)
+- [Estruturas](#Estruturas)
 ___
 
 ## Desenvolvedores
@@ -102,3 +103,14 @@ python main.py
 ```
 **Observação**
 verifique se você possui em compilador de C instalado assim como um compilador de Python para que possa compilar o código com sucessso.
+
+## Estruturas
+** Estrutura Produto
+```c
+struct produto{
+    char nome[100];
+    char categoria[100];
+    float preco;
+    int quantidade;
+};
+```
