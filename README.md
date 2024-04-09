@@ -6,7 +6,7 @@ Projeto de  um sistema em Linguagem C para gerenciamento de Artigos Esportivos, 
 - [Requisitos](#Requisitos)
 - [Organização](#Organização)
 - [Execução do projeto;](#execução-do-projeto)
-- [Estruturas](#Estruturas)
+- [Funções](#Funções)
 ___
 
 ## Desenvolvedores
@@ -104,31 +104,203 @@ python main.py
 **Observação**
 verifique se você possui em compilador de C instalado assim como um compilador de Python para que possa compilar o código com sucessso.
 
-## Estruturas
-**Estrutura Produto** <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+## Funções
+**Adicionar Produto** <img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
 ```c
-struct produto{
-    char nome[100];
-    char categoria[100];
-    float preco;
-    int quantidade;
-};
+Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade) {
+
+    Produto novo_Produto;
+
+    strcpy(novo_Produto.nome, nome);
+    strcpy(novo_Produto.categoria, categoria);
+    novo_Produto.preco = preco;
+    novo_Produto.quantidade = quantidade;
+
+    Lista_Produtos *ordenada = lista;
+    Lista_Produtos *Anterior = NULL;
+    while (ordenada != NULL){
+        if (strcmp(nome, ordenada->produto.nome) < 0){
+            break;
+        }
+        Anterior = ordenada;
+        ordenada = ordenada->proximo_produto;
+    }
+
+    Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
+
+    if (novoNo != NULL) {
+        
+        if(Anterior == NULL){
+        novoNo->produto = novo_Produto;
+        novoNo->proximo_produto = lista;
+        return novoNo;
+        } else {
+            novoNo->produto = novo_Produto;
+            Anterior->proximo_produto = novoNo;
+            novoNo->proximo_produto = ordenada;
+            return lista;
+        }
+    } else {
+        printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
+    }
+}
 ```
-**Estrutura Lista Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+**Remover Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
 ```c
-struct lista_produto{
-    Produto produto;
-    lista_Produto *proximo_produto;
-};
+Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia. Nada a remover.\n");
+        return lista;
+    }
+
+    Lista_Produtos *atual = lista;
+    Lista_Produtos *anterior = NULL;
+
+    while (atual != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
+            // Remove o nó correspondente ao produto encontrado
+            if (anterior == NULL) {
+                lista = atual->proximo_produto;
+            } else {
+                anterior->proximo_produto = atual->proximo_produto;
+            }
+            free(atual); // Libera a memória do nó removido
+            printf("Produto \"%s\" removido com sucesso.\n", nome);
+            return lista;
+        }
+        anterior = atual;
+        atual = atual->proximo_produto;
+    }
+    return lista;
+    printf("Produto \"%s\" não encontrado na lista.\n", nome); // Essa linha nunca será executada
+}
 ```
-**Estrutura Sessão**
+**Adicionar Sessão**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
 ```c
-struct sessao {
-    char nome[100];
-    char descricao[100];
-    Lista_Produtos *produto_var;
-};
-};
+Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var, char *nome, char *descricao, Lista_Produtos *lista_produto_var) {
+    Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
+
+    strcpy(Novo_No->sessao.nome, nome);
+    strcpy(Novo_No->sessao.descricao, descricao);
+    Novo_No->sessao.produto_var = lista_produto_var;
+
+    Lista_Sessao *Posicao_Ordenada = lista_sessao_var;
+    Lista_Sessao *Anterior = NULL;
+    while (Posicao_Ordenada != NULL){
+        if (strcmp(Novo_No->sessao.nome, Posicao_Ordenada->sessao.nome) < 0){
+            break;
+        }
+        Anterior = Posicao_Ordenada;
+        Posicao_Ordenada = Posicao_Ordenada->proxima_sessao;
+    }
+
+    if(Anterior == NULL){
+        
+        Novo_No->proxima_sessao = lista_sessao_var;
+        return Novo_No;
+
+    } else {
+        Anterior->proxima_sessao = Novo_No;
+        Novo_No->proxima_sessao = Posicao_Ordenada;
+        return lista_sessao_var;
+    }
+    
+}
+```
+**Remover Sessão**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
+```c
+Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
+    Lista_Sessao *Atual = lista_sessao_var;
+    Lista_Sessao *Anterior = NULL;
+
+    while (Atual != NULL && strcmp(Atual->sessao.nome, nome) != 0) {
+        Anterior = Atual;
+        Atual = Atual->proxima_sessao;
+    }
+
+    if (Atual != NULL) {
+        if (Anterior == NULL) {
+            lista_sessao_var = lista_sessao_var->proxima_sessao;
+            free(Atual);
+            printf("Sessao removida com sucesso\n");
+            return lista_sessao_var;
+        } else {
+            Anterior->proxima_sessao = Atual->proxima_sessao;
+            free(Atual);
+            printf("Sessao removida com sucesso.\n");
+            return lista_sessao_var;
+        }
+    } else {
+        printf("Objeto não encontrado.\n");
+        return lista_sessao_var;
+    }
+}
+```
+**Editar informações**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
+```c
+void editarProduto(Lista_Produtos *lista, char *nome) {
+    // Verifica se a lista está vazia
+    if (listaProdutosVazia(lista)) {
+        printf("Lista de produtos vazia. Nada a editar.\n");
+    }
+
+    // Percorre a lista procurando o produto com o nome especificado
+    Lista_Produtos *atual = lista;
+    while (atual != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
+            // Solicita ao usuário as novas informações para o produto
+            printf("Digite o novo nome do produto: ");
+            scanf(" %[^\n]", atual->produto.nome);
+            printf("Digite a nova categoria do produto: ");
+            scanf(" %[^\n]", atual->produto.categoria);
+            printf("Digite o novo preço do produto: ");
+            scanf(" %f", &atual->produto.preco);
+            printf("Digite a nova quantidade do produto: ");
+            scanf(" %d", &atual->produto.quantidade);
+            printf("Produto \"%s\" editado com sucesso.\n", nome);
+            return;
+        }
+        atual = atual->proximo_produto;
+    }
+
+    printf("Produto \"%s\" não encontrado na lista.\n", nome);
+}
+```
+**Buscar Produto por nome**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
+```c
+Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
+
+    // Percorre a lista procurando produtos que contenham o nome especificado
+    Lista_Produtos *atual = lista;
+
+    while (atual != NULL) {
+        if (strstr(atual->produto.nome, nome) != NULL) {
+            return atual;      
+        }
+        atual = atual->proximo_produto;
+    }
+
+    return atual;
+}
+
+void Imprimir_Produto(Lista_Produtos *Produto){
+
+    printf("Produto encontrado:\n");
+        printf("Nome: %s\n", Produto->produto.nome);
+        printf("Categoria: %s\n", Produto->produto.categoria);
+        printf("Preço: %.2f\n", Produto->produto.preco);
+        printf("Quantidade: %d\n", Produto->produto.quantidade);
+        printf("\n");
+}
+```
+**Listar Sessão e Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
+
+```c
+
 ```
