@@ -14,7 +14,7 @@ int main() {
             case '1': {
 
                 if (Lista_Vazia(lista_Sessao)){
-                    printf("nenhuma sessao cadastrada\n");
+                    printf("\033[1;31mnenhuma sessao cadastrada\033[0m\n");
                 } else{ 
 
                     printf("Digite em qual sessao o produto vai estar\n");
@@ -58,9 +58,9 @@ int main() {
                         quantidade = extrairInt(quantidade_str);
                         lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida, nome, categoria, preco, quantidade);
                         sessao_escolhida = Adicionar_Produto_Sessao(lista_produto_Escolhida, sessao_escolhida);
-                        printf("Produto adicionado com sucesso!\n");
+                        printf("\033[1;32mProduto adicionado com sucesso!\033[0m\n");
                     } else {
-                        printf("sessao nao existe\n");
+                        printf("\033[1;31msessao nao existe\033[0m\n");
                     }
                 }
                 break;
@@ -89,7 +89,7 @@ int main() {
                 string_maiuscula_minuscula(nome);
 
                 if (Busca_Sessao(lista_Sessao, nome_escolhido) != NULL){
-                    printf("Sessão já existente\n");
+                    printf("\033[1;31mSessão já existente\033[0m\n");
                     break;
                 }
                 printf("Digite a descricao da sessao:\n");
@@ -103,7 +103,7 @@ int main() {
                 printf("\nOpcao selecionada: Remover sessao\n");
 
                 if(lista_Sessao == NULL){
-                    printf("nenhuma lista cadastrada\n");
+                    printf("\033[1;31nenhuma lista cadastrada\033[0m\n");
                     break;
                 }
 
@@ -127,7 +127,7 @@ int main() {
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
-                printf("Produto \"%s\" não encontrado na lista.\n", nome_escolhido);
+                printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
                 break;
             }
             case '6': {
@@ -146,7 +146,7 @@ int main() {
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
-                printf("Nenhum produto com o nome: \"%s\" encontrado", nome_escolhido);
+                printf("\033[1;31mNenhum produto com o nome: \"%s\" encontrado\033[0m", nome_escolhido);
                 break;
             }
             case '7': {
@@ -161,7 +161,7 @@ int main() {
                         Auxiliar = Percorrer_Sessoes(Auxiliar);
                     }
                 } else {
-                    printf("Nao existe nenhuma lista");
+                    printf("\033[1;31mNao existe nenhuma lista\033[0m\n");
                 }
                 break;
             }
@@ -172,7 +172,7 @@ int main() {
                 break;
             }
             default: {
-                printf("Opcao invalida. Tente novamente.\n");
+                printf("\033[1;31mOpcao invalida. Tente novamente.\033[0m\n");
             }
         }
     } while (opcao != '8');

@@ -153,7 +153,7 @@ Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
     Lista_Produtos *atual = lista;
 
     while (atual != NULL) {
-        if (strstr(atual->produto.nome, nome) != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
             return atual;      
         }
         atual = atual->proximo_produto;
