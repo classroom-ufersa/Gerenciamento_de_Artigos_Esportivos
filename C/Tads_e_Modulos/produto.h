@@ -24,7 +24,7 @@ int listaProdutosVazia(Lista_Produtos *lista);
 void liberarListaProdutos(Lista_Produtos *lista);
 
 // Função para editar um produto na lista pelo nome
-void editarProduto(Lista_Produtos *lista, char *nome);
+short editarProduto(Lista_Produtos *lista, char *nome);
 
 // Função para buscar produtos na lista pelo nome
 Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome);

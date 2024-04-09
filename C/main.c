@@ -121,9 +121,12 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    editarProduto(Auxiliar_produtos, nome_escolhido);
+                    if(editarProduto(Auxiliar_produtos, nome_escolhido)){
+                        break;
+                    }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
+                printf("Produto \"%s\" não encontrado na lista.\n", nome_escolhido);
                 break;
             }
             case '6': {

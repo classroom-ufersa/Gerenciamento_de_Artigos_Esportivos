@@ -123,7 +123,7 @@ void liberarListaProdutos(Lista_Produtos *lista) {
 }
 
 // Função para editar um produto na lista pelo nome
-void editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
+short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
     // Verifica se a lista está vazia
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a editar.\n");
@@ -149,11 +149,11 @@ void editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
             adicionarProduto(lista, nome, categoria, preco, quantidade);
             printf("Produto \"%s\" editado com sucesso.\n", nome);
            
-            return;
+            return 1;
         }
         atual = atual->proximo_produto;
     }
-
+    return 0;
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
