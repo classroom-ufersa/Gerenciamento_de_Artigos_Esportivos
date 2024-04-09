@@ -1,6 +1,5 @@
 #include "../Funcoes/funcoes.h"
 
-// Definição da estrutura Produto
 struct produto {
     char nome[100];
     char categoria[100];
@@ -8,18 +7,16 @@ struct produto {
     int quantidade;
 };
 
-// Definição da estrutura Lista_Produtos
 struct lista_produto {
     Produto produto;
     Lista_Produtos *proximo_produto;
 };
 
-// Função para adicionar um novo produto à lista
 Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade) {
-    // Declaração de uma variável do tipo Produto para armazenar o novo produto
+    
     Produto novo_Produto;
 
-    // Solicita ao usuário informações sobre o novo produto
+    
     strcpy(novo_Produto.nome, nome);
     strcpy(novo_Produto.categoria, categoria);
     novo_Produto.preco = preco;
@@ -34,11 +31,11 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
         Anterior = ordenada;
         ordenada = ordenada->proximo_produto;
     }
-    // Aloca memória para um novo nó da lista
+    
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
-    // Verifica se a alocação foi bem-sucedida
+
     if (novoNo != NULL) {
-        // Preenche o novo nó com o novo produto e o adiciona no início da lista
+        
         if(Anterior == NULL){
         novoNo->produto = novo_Produto;
         novoNo->proximo_produto = lista;
@@ -54,16 +51,15 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
     }
 }
 
-// Função para imprimir todos os produtos na lista
 void imprimirProdutos(Lista_Produtos *lista) {
-    // Verifica se a lista está vazia
+    
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia.\n");
         return;
     }
     printf("Produtos:\n");
     Lista_Produtos *atual = lista;
-    // Percorre a lista e imprime cada produto
+    
     while (atual != NULL) {
         printf("Nome: %s\n", atual->produto.nome);
         printf("Categoria: %s\n", atual->produto.categoria);
@@ -74,33 +70,29 @@ void imprimirProdutos(Lista_Produtos *lista) {
     }
 }
 
-// Função para verificar se a lista de produtos está vazia
 int listaProdutosVazia(Lista_Produtos *lista) {
     return (lista == NULL);
 }
 
-// Função para remover um produto da lista pelo nome
 Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
-    // Verifica se a lista está vazia
+    
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a remover.\n");
         return lista;
     }
 
-    // Declaração de ponteiros para percorrer a lista
     Lista_Produtos *atual = lista;
     Lista_Produtos *anterior = NULL;
 
-    // Percorre a lista procurando o produto com o nome especificado
     while (atual != NULL) {
         if (strcmp(atual->produto.nome, nome) == 0) {
-            // Remove o nó correspondente ao produto encontrado
+            
             if (anterior == NULL) {
                 lista = atual->proximo_produto;
             } else {
                 anterior->proximo_produto = atual->proximo_produto;
             }
-            free(atual); // Libera a memória do nó removido
+            free(atual); 
             printf("Produto \"%s\" removido com sucesso.\n", nome);
             return lista;
         }
@@ -108,10 +100,9 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
         atual = atual->proximo_produto;
     }
     return lista;
-    printf("Produto \"%s\" não encontrado na lista.\n", nome); // Essa linha nunca será executada
+    printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
-// Função para liberar a memória ocupada pela lista de produtos
 void liberarListaProdutos(Lista_Produtos *lista) {
     Lista_Produtos *atual = lista;
     while (atual != NULL) {
@@ -122,21 +113,20 @@ void liberarListaProdutos(Lista_Produtos *lista) {
     free(lista);
 }
 
-// Função para editar um produto na lista pelo nome
 short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
-    // Verifica se a lista está vazia
+    
     if (listaProdutosVazia(lista)) {
         printf("Lista de produtos vazia. Nada a editar.\n");
     }
 
-    // Percorre a lista procurando o produto com o nome especificado
+    
     Lista_Produtos *atual = lista;
     char nome[100], categoria[100];
     float preco;
     int quantidade;
     while (atual != NULL) {
         if (strcmp(atual->produto.nome, nome_escolhido) == 0) {
-            // Solicita ao usuário as novas informações para o produto
+            
             printf("Digite o novo nome do produto: ");
             scanf(" %[^\n]", nome);
             printf("Digite a nova categoria do produto: ");
@@ -157,10 +147,9 @@ short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
     printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
-// Função para buscar produtos na lista pelo nome
 Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
 
-    // Percorre a lista procurando produtos que contenham o nome especificado
+    
     Lista_Produtos *atual = lista;
 
     while (atual != NULL) {
