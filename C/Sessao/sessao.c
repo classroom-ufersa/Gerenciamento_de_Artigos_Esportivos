@@ -1,25 +1,21 @@
 #include "../Funcoes/funcoes.h"
 
-// Definição da estrutura Sessao
 struct sessao {
     char nome[100];
     char descricao[100];
     Lista_Produtos *produto_var;
 };
 
-// Definição da estrutura Lista_Sessao
 struct lista_sessao {
     Lista_Sessao *proxima_sessao;
     Sessao sessao;
 };
 
-// Função para criar uma lista de sessões
 Lista_Sessao *Cria_Lista_Sessao() {
     Lista_Sessao *Primeiro_No = NULL;
     return Primeiro_No;
 }
 
-// Função para adicionar uma nova sessão à lista de sessões
 Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var, char *nome, char *descricao, Lista_Produtos *lista_produto_var) {
     Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
 
@@ -50,7 +46,6 @@ Lista_Sessao *Adicionar_Sessao(Lista_Sessao *lista_sessao_var, char *nome, char 
     
 }
 
-// Função para remover uma sessão da lista de sessões pelo nome
 Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     Lista_Sessao *Atual = lista_sessao_var;
     Lista_Sessao *Anterior = NULL;
@@ -78,7 +73,6 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     }
 }
 
-// Função para verificar se a lista de sessões está vazia
 short Lista_Vazia(Lista_Sessao *lista_sessao_var) {
     if (lista_sessao_var == NULL) {
         return 1;
@@ -86,7 +80,6 @@ short Lista_Vazia(Lista_Sessao *lista_sessao_var) {
     return 0;
 }
 
-// Função para percorrer as sessões na lista de sessões
 Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
     if (Lista_Vazia(lista_sessao_var) == 1) {
         printf("Erro: Nao existe sessoes!!!\n\n");
@@ -97,13 +90,11 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
     return key;
 }
 
-// Função para imprimir uma sessão
 void Imprimir_Sessao(Lista_Sessao *lista_sessao_var) {
     printf("Sessao: %s\n", lista_sessao_var->sessao.nome);
     printf("Descricao: %s\n", lista_sessao_var->sessao.descricao);
 }
 
-// Função para buscar uma sessão na lista de sessões pelo nome
 Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
 
     Lista_Sessao *atual = lista_sessao_var;
@@ -116,12 +107,10 @@ Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
     Busca_Sessao(atual->proxima_sessao, nome);
 }
 
-// Função para obter a lista de produtos de uma sessão
 Lista_Produtos *Pegar_Lista_Produtos(Lista_Sessao *lista_sessao_var) {
     return lista_sessao_var->sessao.produto_var;
 }
 
-// Função para adicionar uma lista de produtos a uma sessão
 Lista_Sessao *Adicionar_Produto_Sessao(Lista_Produtos *Novo_No, Lista_Sessao *lista_sessao_var) {
     lista_sessao_var->sessao.produto_var = Novo_No;
     return lista_sessao_var;

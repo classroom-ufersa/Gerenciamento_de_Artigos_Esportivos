@@ -98,17 +98,17 @@ float extrairFloat(char *str) {
     char numero_str[50];
     int j = 0;
     int i;
-    int pontoEncontrado = 0; // Variável para controlar o número de dígitos após o ponto
+    int pontoEncontrado = 0;
 
     for(i = 0; i < strlen(str); i++) {
         if(isdigit(str[i])) {
             numero_str[j++] = str[i];
             if(pontoEncontrado){
 				pontoEncontrado++;
-			} // Incrementa contador se já encontrou o ponto
+			} 
         } else if((str[i] == '.' || str[i] == ',') && !pontoEncontrado) {
             numero_str[j++] = ',';
-            pontoEncontrado = 1; // Marca que ponto foi encontrado e começa a contar os dígitos após o ponto
+            pontoEncontrado = 1; 
         } else if(pontoEncontrado && isdigit(str[i]) && pontoEncontrado < 3) {
             numero_str[j++] = str[i];
             pontoEncontrado++;
