@@ -62,14 +62,19 @@ O projeto teve os seguintes requisitos:
 │
 ├── C
 │
-├── Tads_e_Modulos
+├── Funções
 │    ├── Funções.c
 │    ├── Funções.h
-│    ├── Produto.c        
-│    ├── Produto.h
-│    ├── Sessão.h
-│    ├── Sessão.c
+│
 ├── Main.c
+│       
+├── Produto
+│    ├── Produto.c
+│    ├── Produto.h
+│   
+├── Sessão
+│    ├── Sessão.c
+│    ├── Sessão.h
 │
 ├── .gitignore
 │
