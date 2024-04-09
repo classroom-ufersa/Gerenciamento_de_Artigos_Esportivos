@@ -123,3 +123,12 @@ struct lista_produto{
     lista_Produto *proximo_produto;
 };
 ```
+**Estrutura Sessão**
+```c
+struct sessao {
+    char nome[100];
+    char descricao[100];
+    Lista_Produtos *produto_var;
+};
+};
+```
