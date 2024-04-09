@@ -1,4 +1,4 @@
-#include "funcoes.h"
+#include "../Funcoes/funcoes.h"
 
 // Definição da estrutura Produto
 struct produto {

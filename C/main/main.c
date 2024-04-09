@@ -1,4 +1,4 @@
-#include "Tads_e_Modulos\funcoes.h"
+#include "../Funcoes/funcoes.h"
 
 int main() {
 
@@ -19,6 +19,7 @@ int main() {
 
                     printf("Digite em qual sessao o produto vai estar\n");
                     scanf(" %[^\n]", nome_escolhido);
+                    string_maiuscula_minuscula(nome_escolhido);
 
                     Lista_Sessao *sessao_escolhida = Busca_Sessao(lista_Sessao, nome_escolhido);
 

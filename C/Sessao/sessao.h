@@ -1,7 +1,7 @@
 #ifndef SESSAO_H
 #define SESSAO_H
 
-#include "produto.h"
+#include "../Produto/produto.h"
 
 // Definição da estrutura Sessao
 typedef struct sessao Sessao;
