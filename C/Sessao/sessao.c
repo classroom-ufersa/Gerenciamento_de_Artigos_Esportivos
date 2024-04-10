@@ -59,16 +59,19 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
         if (Anterior == NULL) {
             lista_sessao_var = lista_sessao_var->proxima_sessao;
             free(Atual);
-            printf("Sessao removida com sucesso\n");
+            Limpar_Tela();
+            printf("\033[1;32mSessao removida com sucesso\033[0m\n");
             return lista_sessao_var;
         } else {
             Anterior->proxima_sessao = Atual->proxima_sessao;
             free(Atual);
-            printf("Sessao removida com sucesso.\n");
+            Limpar_Tela();
+            printf("\033[1;32mSessao removida com sucesso.\033[0m\n");
             return lista_sessao_var;
         }
     } else {
-        printf("Objeto não encontrado.\n");
+        Limpar_Tela();
+        printf("\033[1;31mObjeto não encontrado.\033[0m\n");
         return lista_sessao_var;
     }
 }
@@ -82,7 +85,8 @@ short Lista_Vazia(Lista_Sessao *lista_sessao_var) {
 
 Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
     if (Lista_Vazia(lista_sessao_var) == 1) {
-        printf("Erro: Nao existe sessoes!!!\n\n");
+        Limpar_Tela();
+        printf("\033[1;31mErro: Nao existe sessoes!!!\033[0m\n\n");
     }
 
     Lista_Sessao *key = lista_sessao_var;
@@ -145,7 +149,7 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
         fprintf(Arquivo, "\n");
 
         if (Atual->sessao.produto_var == NULL){
-
+            Limpar_Tela();
             fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
 
@@ -165,7 +169,8 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         Lista_Sessao *Novo_No = (Lista_Sessao *)malloc(sizeof(Lista_Sessao));
         if (Arquivo == NULL)
         {
-            printf("errp na alocacao da sessao\n");
+            Limpar_Tela();
+            printf("\033[1;31mErro na alocacao da sessao\033[0m\n");
             exit(1);
         }
         char nome[100], descricao[100];
@@ -174,7 +179,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         string_maiuscula_minuscula(nome);
         fscanf(Arquivo, "Descrição: %[^\n]\n\n", descricao);
         if(vetor_sessoes[index] == 0){
-
+            Limpar_Tela();
             fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
             Novo_No->sessao.produto_var = NULL;
