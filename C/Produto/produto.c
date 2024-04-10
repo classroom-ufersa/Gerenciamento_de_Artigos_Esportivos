@@ -76,12 +76,6 @@ int listaProdutosVazia(Lista_Produtos *lista) {
 }
 
 Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
-    
-    if (listaProdutosVazia(lista)) {
-        Limpar_Tela();
-        printf("\033[1;31mLista de produtos vazia. Nada a remover.\033[0m\n");
-        return lista;
-    }
 
     Lista_Produtos *atual = lista;
     Lista_Produtos *anterior = NULL;
@@ -103,8 +97,6 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
         atual = atual->proximo_produto;
     }
     
-    Limpar_Tela();
-    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
     return lista;
 }
 

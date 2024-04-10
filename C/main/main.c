@@ -83,12 +83,21 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    Auxiliar_produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
-                    Auxiliar = Adicionar_Produto_Sessao(Auxiliar_produtos, Auxiliar);
+                    Lista_Produtos *Nova_Lista_Produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
+                    
+                    if (Nova_Lista_Produtos != Auxiliar_produtos){
+                        Auxiliar = Adicionar_Produto_Sessao(Nova_Lista_Produtos, Auxiliar);
+                        break;
+                    }                 
+                    
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
+                }
+                if (Auxiliar == NULL) {
+                    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
                 }
                 break;
             }
+
             case '3': {
                 Emite_Bip();
                 printf("\nOpcao selecionada: Adicionar sessao\n");
@@ -98,14 +107,13 @@ int main() {
                 scanf(" %[^\n]", nome);
                 string_maiuscula_minuscula(nome);
 
-                if (Busca_Sessao(lista_Sessao, nome_escolhido) != NULL){
-                    Limpar_Tela();
-                    printf("\033[1;31mSessão já existente\033[0m\n");
+                string_maiuscula_minuscula(nome);
+                if(Busca_Sessao(lista_Sessao, nome) != NULL){
+                    printf("\033[1;31mSessão já existente.\033[0m\n");
                     break;
                 }
                 printf("Digite a descricao da sessao:\n");
                 scanf(" %[^\n]", descricao);
-
 
                 lista_Sessao = Adicionar_Sessao(lista_Sessao, nome, descricao, NULL);
                 break;
@@ -137,8 +145,8 @@ int main() {
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
                     if(editarProduto(Auxiliar_produtos, nome_escolhido)){
-                        break;
                         produto_editado = 1;
+                        break;
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
@@ -148,6 +156,7 @@ int main() {
                 }
                 break;
             }
+
             case '6': {
                 Emite_Bip();
                 printf("Digite o nome do produto a ser buscado: ");
