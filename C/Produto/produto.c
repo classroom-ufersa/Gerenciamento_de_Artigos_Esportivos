@@ -102,9 +102,10 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
         anterior = atual;
         atual = atual->proximo_produto;
     }
-    return lista;
+    
     Limpar_Tela();
     printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
+    return lista;
 }
 
 void liberarListaProdutos(Lista_Produtos *lista) {
@@ -134,6 +135,7 @@ short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
             
             printf("Digite o novo nome do produto: ");
             scanf(" %[^\n]", nome);
+            string_maiuscula_minuscula(nome);
             printf("Digite a nova categoria do produto: ");
             scanf(" %[^\n]", categoria);
             printf("Digite o novo preço do produto: ");

@@ -84,6 +84,7 @@ int main() {
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
                     Auxiliar_produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
+                    Auxiliar = Adicionar_Produto_Sessao(Auxiliar_produtos, Auxiliar);
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
@@ -130,18 +131,21 @@ int main() {
                 printf("Digite o nome do produto a ser editado: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
-
+                short produto_editado = 0;
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
                     if(editarProduto(Auxiliar_produtos, nome_escolhido)){
                         break;
+                        produto_editado = 1;
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
-                Limpar_Tela();
-                printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
+                if(!produto_editado){
+                    Limpar_Tela();
+                    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
+                }
                 break;
             }
             case '6': {
