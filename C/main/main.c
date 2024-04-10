@@ -75,6 +75,7 @@ int main() {
             }
             case '2': {
                 Emite_Bip();
+                short produto_encontrado = 0;
                 printf("Digite o nome do produto a ser removido: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
@@ -83,18 +84,30 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    Lista_Produtos *Nova_Lista_Produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
-                    
-                    if (Nova_Lista_Produtos != Auxiliar_produtos){
-                        Auxiliar = Adicionar_Produto_Sessao(Nova_Lista_Produtos, Auxiliar);
-                        printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome_escolhido);
+                    if (buscarPorNome(Auxiliar_produtos, nome_escolhido) != NULL){
+                        produto_encontrado = 1;
                         break;
-                    }                 
-                    
+                    }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
-                if (Auxiliar == NULL) {
+                if(produto_encontrado == 0){
+                    Limpar_Tela();
                     printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
+                    break;
+                }
+
+
+                Auxiliar = lista_Sessao;
+                while (Auxiliar != NULL){
+
+                    Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
+                    Lista_Produtos *Nova_Lista_Produtos = removerProduto(Auxiliar_produtos, nome_escolhido);
+                    
+                    
+                    Auxiliar = Adicionar_Produto_Sessao(Nova_Lista_Produtos, Auxiliar);
+                                                      
+                    
+                    Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 break;
             }
@@ -216,6 +229,7 @@ int main() {
                 printf("Saindo...\n");
                 Escrever_Arquivo(lista_Sessao);
                 Liberar_Lista_Sessao(lista_Sessao);
+                printf("estou aqui\n");
                 break;
             }
             default: {

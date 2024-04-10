@@ -53,16 +53,18 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
 
 void imprimirProdutos(Lista_Produtos *lista) {
     
-    printf("Produtos:\n");
+    printf("Produtos:\n\n");
     Lista_Produtos *atual = lista;
-    
+    int contador = 1;
     while (atual != NULL) {
+        printf("Produto %d\n", contador);
         printf("Nome: %s\n", atual->produto.nome);
         printf("Categoria: %s\n", atual->produto.categoria);
         printf("Preço: %.2f\n", atual->produto.preco);
         printf("Quantidade: %d\n", atual->produto.quantidade);
         printf("\n");
         atual = atual->proximo_produto;
+        contador++;
     }
 }
 
@@ -85,6 +87,7 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
             }
             free(atual); 
             Limpar_Tela();
+            printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome);
             return lista;
         }
         anterior = atual;
