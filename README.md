@@ -259,33 +259,44 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
 **Editar informações**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
 ```c
-void editarProduto(Lista_Produtos *lista, char *nome) {
-    // Verifica se a lista está vazia
+short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
+    
     if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia. Nada a editar.\n");
+        Limpar_Tela();
+        printf("\033[1;31mLista de produtos vazia. Nada a editar.\033[0m\n");
     }
 
-    // Percorre a lista procurando o produto com o nome especificado
+    
     Lista_Produtos *atual = lista;
+    char nome[100], categoria[100];
+    float preco;
+    int quantidade;
     while (atual != NULL) {
-        if (strcmp(atual->produto.nome, nome) == 0) {
-            // Solicita ao usuário as novas informações para o produto
+        if (strcmp(atual->produto.nome, nome_escolhido) == 0) {
+            
             printf("Digite o novo nome do produto: ");
-            scanf(" %[^\n]", atual->produto.nome);
+            scanf(" %[^\n]", nome);
             printf("Digite a nova categoria do produto: ");
-            scanf(" %[^\n]", atual->produto.categoria);
+            scanf(" %[^\n]", categoria);
             printf("Digite o novo preço do produto: ");
-            scanf(" %f", &atual->produto.preco);
+            scanf(" %f", &preco);
             printf("Digite a nova quantidade do produto: ");
-            scanf(" %d", &atual->produto.quantidade);
-            printf("Produto \"%s\" editado com sucesso.\n", nome);
-            return;
+            scanf(" %d", &quantidade);
+            removerProduto(lista, nome_escolhido);
+            adicionarProduto(lista, nome, categoria, preco, quantidade);
+            Limpar_Tela();
+            printf("\033[1;32mProduto \"%s\" editado com sucesso.\033[0m\n", nome);
+           
+            return 1;
         }
         atual = atual->proximo_produto;
     }
-
-    printf("Produto \"%s\" não encontrado na lista.\n", nome);
+    
+    Limpar_Tela();
+    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
+    return 0;
 }
+
 ```
 **Buscar Produto por nome**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
