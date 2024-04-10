@@ -71,7 +71,7 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
         }
     } else {
         Limpar_Tela();
-        printf("\033[1;31mObjeto não encontrado.\033[0m\n");
+        printf("\033[1;31 sessao não encontrado.\033[0m\n");
         return lista_sessao_var;
     }
 }
@@ -96,7 +96,7 @@ Lista_Sessao *Percorrer_Sessoes(Lista_Sessao *lista_sessao_var) {
 
 void Imprimir_Sessao(Lista_Sessao *lista_sessao_var) {
     printf("Sessao: %s\n", lista_sessao_var->sessao.nome);
-    printf("Descricao: %s\n", lista_sessao_var->sessao.descricao);
+    printf("Descricao: %s\n", lista_sessao_var->sessao.descricao); 
 }
 
 Lista_Sessao *Busca_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
