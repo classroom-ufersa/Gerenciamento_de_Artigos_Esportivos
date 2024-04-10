@@ -158,8 +158,10 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
 
 ```c
 Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
+    
     if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia. Nada a remover.\n");
+        Limpar_Tela();
+        printf("\033[1;31mLista de produtos vazia. Nada a remover.\033[0m\n");
         return lista;
     }
 
@@ -168,21 +170,23 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
 
     while (atual != NULL) {
         if (strcmp(atual->produto.nome, nome) == 0) {
-            // Remove o nó correspondente ao produto encontrado
+            
             if (anterior == NULL) {
                 lista = atual->proximo_produto;
             } else {
                 anterior->proximo_produto = atual->proximo_produto;
             }
-            free(atual); // Libera a memória do nó removido
-            printf("Produto \"%s\" removido com sucesso.\n", nome);
+            free(atual); 
+            Limpar_Tela();
+            printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome);
             return lista;
         }
         anterior = atual;
         atual = atual->proximo_produto;
     }
     return lista;
-    printf("Produto \"%s\" não encontrado na lista.\n", nome); // Essa linha nunca será executada
+    Limpar_Tela();
+    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
 }
 ```
 **Adicionar Sessão**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
