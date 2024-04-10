@@ -47,14 +47,16 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
             return lista;
         }
     } else {
-        printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
+        Limpar_Tela();
+        printf("\033[1;31mErro: Não foi possível adicionar o produto. Memória insuficiente.\033[0m\n");
     }
 }
 
 void imprimirProdutos(Lista_Produtos *lista) {
     
     if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia.\n");
+        Limpar_Tela();
+        printf("\033[1;31mLista de produtos vazia.\033[0m\n");
         return;
     }
     printf("Produtos:\n");
@@ -77,7 +79,8 @@ int listaProdutosVazia(Lista_Produtos *lista) {
 Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
     
     if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia. Nada a remover.\n");
+        Limpar_Tela();
+        printf("\033[1;31mLista de produtos vazia. Nada a remover.\033[0m\n");
         return lista;
     }
 
@@ -93,14 +96,16 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
                 anterior->proximo_produto = atual->proximo_produto;
             }
             free(atual); 
-            printf("Produto \"%s\" removido com sucesso.\n", nome);
+            Limpar_Tela();
+            printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome);
             return lista;
         }
         anterior = atual;
         atual = atual->proximo_produto;
     }
     return lista;
-    printf("Produto \"%s\" não encontrado na lista.\n", nome);
+    Limpar_Tela();
+    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
 }
 
 void liberarListaProdutos(Lista_Produtos *lista) {
@@ -116,7 +121,8 @@ void liberarListaProdutos(Lista_Produtos *lista) {
 short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
     
     if (listaProdutosVazia(lista)) {
-        printf("Lista de produtos vazia. Nada a editar.\n");
+        Limpar_Tela();
+        printf("\033[1;31mLista de produtos vazia. Nada a editar.\033[0m\n");
     }
 
     
@@ -137,14 +143,17 @@ short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
             scanf(" %d", &quantidade);
             removerProduto(lista, nome_escolhido);
             adicionarProduto(lista, nome, categoria, preco, quantidade);
-            printf("Produto \"%s\" editado com sucesso.\n", nome);
+            Limpar_Tela();
+            printf("\033[1;32mProduto \"%s\" editado com sucesso.\033[0m\n", nome);
            
             return 1;
         }
         atual = atual->proximo_produto;
     }
+    
+    Limpar_Tela();
+    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
     return 0;
-    printf("Produto \"%s\" não encontrado na lista.\n", nome);
 }
 
 Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
@@ -164,7 +173,8 @@ Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
 
 void Imprimir_Produto(Lista_Produtos *Produto){
 
-    printf("Produto encontrado:\n");
+    Limpar_Tela();
+    printf("\033[1;32mProduto encontrado:\033[0m\n");
         printf("Nome: %s\n", Produto->produto.nome);
         printf("Categoria: %s\n", Produto->produto.categoria);
         printf("Preço: %.2f\n", Produto->produto.preco);
