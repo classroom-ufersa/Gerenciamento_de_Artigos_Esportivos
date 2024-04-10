@@ -149,7 +149,6 @@ void Escrever_Sessao(Lista_Sessao *lista_sessao_var, FILE *Arquivo){
         fprintf(Arquivo, "\n");
 
         if (Atual->sessao.produto_var == NULL){
-            Limpar_Tela();
             fprintf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
 
@@ -179,7 +178,7 @@ Lista_Sessao *Ler_Sessoes(Lista_Sessao *lista_sessao_var, FILE *Arquivo, int *ve
         string_maiuscula_minuscula(nome);
         fscanf(Arquivo, "Descrição: %[^\n]\n\n", descricao);
         if(vetor_sessoes[index] == 0){
-            Limpar_Tela();
+
             fscanf(Arquivo, "Nenhum produto cadastrado\n\n");
         } else{
             Novo_No->sessao.produto_var = NULL;

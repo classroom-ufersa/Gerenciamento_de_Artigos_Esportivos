@@ -55,7 +55,6 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
 void imprimirProdutos(Lista_Produtos *lista) {
     
     if (listaProdutosVazia(lista)) {
-        Limpar_Tela();
         printf("\033[1;31mLista de produtos vazia.\033[0m\n");
         return;
     }

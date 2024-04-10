@@ -149,7 +149,7 @@ int main() {
                 printf("Digite o nome do produto a ser buscado: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
-                
+                short produto_encontrado = 0;
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 while (Auxiliar != NULL){
 
@@ -157,12 +157,15 @@ int main() {
                     Lista_Produtos *Produto = buscarPorNome(Auxiliar_produtos, nome_escolhido);
                     if (Produto != NULL){
                         Imprimir_Produto(Produto);
+                        produto_encontrado = 1;
                         break;
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
-                Limpar_Tela();
-                printf("\033[1;31mNenhum produto com o nome: \"%s\" encontrado\033[0m", nome_escolhido);
+                if (!(produto_encontrado)){
+                    Limpar_Tela();
+                    printf("\033[1;31mNenhum produto com o nome: \"%s\" encontrado\033[0m", nome_escolhido);
+                }
                 break;
             }
             case '7': {
