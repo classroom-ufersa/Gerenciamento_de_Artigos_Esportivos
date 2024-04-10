@@ -58,8 +58,17 @@ float extrairFloat(char *str);
  */
 int extrairInt(char *str);
 
+/**
+ * @brief Limpa o conteúdo da tela do terminal.
+ */
 void Limpar_Tela();
 
+/**
+ * @brief Configura as definições do terminal para a execução do programa.
+ */
 void Configura_Terminal();
 
+/**
+ * @brief Emite um sinal sonoro (bip) no terminal.
+ */
 void Emite_Bip();
