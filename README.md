@@ -238,19 +238,23 @@ Lista_Sessao *Remover_Sessao(Lista_Sessao *lista_sessao_var, char nome[100]) {
         if (Anterior == NULL) {
             lista_sessao_var = lista_sessao_var->proxima_sessao;
             free(Atual);
-            printf("Sessao removida com sucesso\n");
+            Limpar_Tela();
+            printf("\033[1;32mSessao removida com sucesso\033[0m\n");
             return lista_sessao_var;
         } else {
             Anterior->proxima_sessao = Atual->proxima_sessao;
             free(Atual);
-            printf("Sessao removida com sucesso.\n");
+            Limpar_Tela();
+            printf("\033[1;32mSessao removida com sucesso.\033[0m\n");
             return lista_sessao_var;
         }
     } else {
-        printf("Objeto não encontrado.\n");
+        Limpar_Tela();
+        printf("\033[1;31mObjeto não encontrado.\033[0m\n");
         return lista_sessao_var;
     }
 }
+
 ```
 **Editar informações**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
