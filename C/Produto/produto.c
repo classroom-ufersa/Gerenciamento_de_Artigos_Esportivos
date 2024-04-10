@@ -53,10 +53,6 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
 
 void imprimirProdutos(Lista_Produtos *lista) {
     
-    if (listaProdutosVazia(lista)) {
-        printf("\033[1;31mLista de produtos vazia.\033[0m\n");
-        return;
-    }
     printf("Produtos:\n");
     Lista_Produtos *atual = lista;
     
@@ -139,8 +135,6 @@ Lista_Produtos *editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
         atual = atual->proximo_produto;
     }
     
-    Limpar_Tela();
-    printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
     return lista;
 }
 
