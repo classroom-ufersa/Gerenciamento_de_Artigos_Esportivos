@@ -229,7 +229,6 @@ int main() {
                 printf("Saindo...\n");
                 Escrever_Arquivo(lista_Sessao);
                 Liberar_Lista_Sessao(lista_Sessao);
-                printf("estou aqui\n");
                 break;
             }
             default: {
