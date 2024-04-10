@@ -57,7 +57,7 @@ void liberarListaProdutos(Lista_Produtos *lista);
  * @param nome Ponteiro para uma string contendo o nome do produto a ser editado.
  * @return 1 se a edição foi bem-sucedida, 0 caso contrário.
  */
-short editarProduto(Lista_Produtos *lista, char *nome);
+Lista_Produtos *editarProduto(Lista_Produtos *lista, char *nome);
 
 /**
  * @brief Busca produtos na lista pelo nome.

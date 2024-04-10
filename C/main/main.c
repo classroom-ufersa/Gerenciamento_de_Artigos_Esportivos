@@ -87,6 +87,7 @@ int main() {
                     
                     if (Nova_Lista_Produtos != Auxiliar_produtos){
                         Auxiliar = Adicionar_Produto_Sessao(Nova_Lista_Produtos, Auxiliar);
+                        printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome_escolhido);
                         break;
                     }                 
                     
@@ -144,10 +145,9 @@ int main() {
                 while (Auxiliar != NULL){
 
                     Lista_Produtos *Auxiliar_produtos = Pegar_Lista_Produtos(Auxiliar);
-                    if(editarProduto(Auxiliar_produtos, nome_escolhido)){
-                        produto_editado = 1;
-                        break;
-                    }
+                    Auxiliar_produtos = editarProduto(Auxiliar_produtos, nome_escolhido);
+                    Adicionar_Produto_Sessao(Auxiliar_produtos, Auxiliar);
+                    
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
                 if(!produto_editado){

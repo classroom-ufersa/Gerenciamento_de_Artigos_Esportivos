@@ -16,7 +16,6 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
     
     Produto novo_Produto;
 
-    
     strcpy(novo_Produto.nome, nome);
     strcpy(novo_Produto.categoria, categoria);
     novo_Produto.preco = preco;
@@ -90,7 +89,6 @@ Lista_Produtos *removerProduto(Lista_Produtos *lista, char nome[100]) {
             }
             free(atual); 
             Limpar_Tela();
-            printf("\033[1;32mProduto \"%s\" removido com sucesso.\033[0m\n", nome);
             return lista;
         }
         anterior = atual;
@@ -110,16 +108,10 @@ void liberarListaProdutos(Lista_Produtos *lista) {
     free(lista);
 }
 
-short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
-    
-    if (listaProdutosVazia(lista)) {
-        Limpar_Tela();
-        printf("\033[1;31mLista de produtos vazia. Nada a editar.\033[0m\n");
-    }
+Lista_Produtos *editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
 
-    
     Lista_Produtos *atual = lista;
-    char nome[100], categoria[100];
+    char nome[100], categoria[100], preco_str[40], quantidade_str[40];
     float preco;
     int quantidade;
     while (atual != NULL) {
@@ -131,22 +123,25 @@ short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
             printf("Digite a nova categoria do produto: ");
             scanf(" %[^\n]", categoria);
             printf("Digite o novo preço do produto: ");
-            scanf(" %f", &preco);
+            scanf(" %[^\n]", &preco_str);
             printf("Digite a nova quantidade do produto: ");
-            scanf(" %d", &quantidade);
-            removerProduto(lista, nome_escolhido);
-            adicionarProduto(lista, nome, categoria, preco, quantidade);
+            scanf(" %[^\n]", &quantidade_str);
+            preco = extrairFloat(preco_str);
+            quantidade = extrairInt(quantidade_str);
+
+            lista = adicionarProduto(lista, nome, categoria, preco, quantidade);
+            lista = removerProduto(lista, nome_escolhido);
             Limpar_Tela();
-            printf("\033[1;32mProduto \"%s\" editado com sucesso.\033[0m\n", nome);
+            printf("\033[1;32mProduto \"%s\" editado com sucesso.\033[0m\n", nome_escolhido);
            
-            return 1;
+            return lista;
         }
         atual = atual->proximo_produto;
     }
     
     Limpar_Tela();
     printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome);
-    return 0;
+    return lista;
 }
 
 Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
