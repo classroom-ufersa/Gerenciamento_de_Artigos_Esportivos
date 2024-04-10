@@ -303,11 +303,11 @@ short editarProduto(Lista_Produtos *lista, char *nome_escolhido) {
 ```c
 Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
 
-    // Percorre a lista procurando produtos que contenham o nome especificado
+    
     Lista_Produtos *atual = lista;
 
     while (atual != NULL) {
-        if (strstr(atual->produto.nome, nome) != NULL) {
+        if (strcmp(atual->produto.nome, nome) == 0) {
             return atual;      
         }
         atual = atual->proximo_produto;
@@ -316,15 +316,6 @@ Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
     return atual;
 }
 
-void Imprimir_Produto(Lista_Produtos *Produto){
-
-    printf("Produto encontrado:\n");
-        printf("Nome: %s\n", Produto->produto.nome);
-        printf("Categoria: %s\n", Produto->produto.categoria);
-        printf("Preço: %.2f\n", Produto->produto.preco);
-        printf("Quantidade: %d\n", Produto->produto.quantidade);
-        printf("\n");
-}
 ```
 **Listar Sessão e Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
