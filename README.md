@@ -114,9 +114,10 @@ verifique se você possui em compilador de C instalado assim como um compilador 
 
 ```c
 Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *categoria, float preco, int quantidade) {
-
+    
     Produto novo_Produto;
 
+    
     strcpy(novo_Produto.nome, nome);
     strcpy(novo_Produto.categoria, categoria);
     novo_Produto.preco = preco;
@@ -131,7 +132,7 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
         Anterior = ordenada;
         ordenada = ordenada->proximo_produto;
     }
-
+    
     Lista_Produtos *novoNo = (Lista_Produtos *)malloc(sizeof(Lista_Produtos));
 
     if (novoNo != NULL) {
@@ -147,9 +148,11 @@ Lista_Produtos *adicionarProduto(Lista_Produtos *lista, char *nome, char *catego
             return lista;
         }
     } else {
-        printf("Erro: Não foi possível adicionar o produto. Memória insuficiente.\n");
+        Limpar_Tela();
+        printf("\033[1;31mErro: Não foi possível adicionar o produto. Memória insuficiente.\033[0m\n");
     }
 }
+
 ```
 **Remover Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
