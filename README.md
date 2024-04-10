@@ -320,7 +320,20 @@ Lista_Produtos *buscarPorNome(Lista_Produtos *lista, char *nome) {
 **Listar Sessão e Produto**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
 ```c
-
+Lista_Sessao *Auxiliar = lista_Sessao;
+                if(!Lista_Vazia(Auxiliar)){
+                while (Auxiliar != NULL)
+                    {
+                        Imprimir_Sessao(Auxiliar);
+                        Lista_Produtos *Auxiliar_produto = Pegar_Lista_Produtos(Auxiliar);
+                        imprimirProdutos(Auxiliar_produto);
+                        Auxiliar = Percorrer_Sessoes(Auxiliar);
+                    }
+                } else {
+                    Limpar_Tela();
+                    printf("\033[1;31mNao existe nenhuma lista\033[0m\n");
+                }
+                break;
 ```
 **Main**<img align="center" alt="Porfirio-Neto-C" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/c/c-original.svg">
 
