@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include <windows.h>
 #include "../Sessao/sessao.h"
 #include "../Produto/produto.h"
 
@@ -56,3 +57,9 @@ float extrairFloat(char *str);
  * @return O número inteiro extraído da string.
  */
 int extrairInt(char *str);
+
+void Limpar_Tela();
+
+void Configura_Terminal();
+
+void Emite_Bip();

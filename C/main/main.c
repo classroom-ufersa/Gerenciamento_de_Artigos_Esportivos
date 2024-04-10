@@ -2,18 +2,23 @@
 
 int main() {
 
+    Configura_Terminal();
     char opcao;
     char nome_escolhido[100];
     Lista_Sessao *lista_Sessao = Cria_Lista_Sessao();
     lista_Sessao = Ler_Arquivo(lista_Sessao);
 
     do {
-        opcao = exibirMenu();
 
+        Emite_Bip();
+        opcao = exibirMenu();
+        Limpar_Tela();
+        
         switch (opcao) {
             case '1': {
-
+                Emite_Bip();
                 if (Lista_Vazia(lista_Sessao)){
+                    Limpar_Tela();
                     printf("\033[1;31mnenhuma sessao cadastrada\033[0m\n");
                 } else{ 
 
@@ -43,7 +48,8 @@ int main() {
                             Auxiliar_Adicionar = Percorrer_Sessoes(Auxiliar_Adicionar);
                         }
                         if(produto_com_mesmo_nome){
-                            printf("Produto já existente");
+                            Limpar_Tela();
+                            printf("\033[1;31mProduto já existente\033[0m");
                             break;
                         }
 
@@ -58,14 +64,17 @@ int main() {
                         quantidade = extrairInt(quantidade_str);
                         lista_produto_Escolhida = adicionarProduto(lista_produto_Escolhida, nome, categoria, preco, quantidade);
                         sessao_escolhida = Adicionar_Produto_Sessao(lista_produto_Escolhida, sessao_escolhida);
+                        Limpar_Tela();
                         printf("\033[1;32mProduto adicionado com sucesso!\033[0m\n");
                     } else {
+                        Limpar_Tela();
                         printf("\033[1;31msessao nao existe\033[0m\n");
                     }
                 }
                 break;
             }
             case '2': {
+                Emite_Bip();
                 printf("Digite o nome do produto a ser removido: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
@@ -80,7 +89,7 @@ int main() {
                 break;
             }
             case '3': {
-
+                Emite_Bip();
                 printf("\nOpcao selecionada: Adicionar sessao\n");
 
                 char nome[100], descricao[100];
@@ -89,6 +98,7 @@ int main() {
                 string_maiuscula_minuscula(nome);
 
                 if (Busca_Sessao(lista_Sessao, nome_escolhido) != NULL){
+                    Limpar_Tela();
                     printf("\033[1;31mSessão já existente\033[0m\n");
                     break;
                 }
@@ -100,9 +110,11 @@ int main() {
                 break;
             }
             case '4': {
+                Emite_Bip();
                 printf("\nOpcao selecionada: Remover sessao\n");
 
                 if(lista_Sessao == NULL){
+                    Limpar_Tela();
                     printf("\033[1;31nenhuma lista cadastrada\033[0m\n");
                     break;
                 }
@@ -114,6 +126,7 @@ int main() {
                 break;
             }
             case '5': {
+                Emite_Bip();
                 printf("Digite o nome do produto a ser editado: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
@@ -127,10 +140,12 @@ int main() {
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
+                Limpar_Tela();
                 printf("\033[1;31mProduto \"%s\" não encontrado na lista.\033[0m\n", nome_escolhido);
                 break;
             }
             case '6': {
+                Emite_Bip();
                 printf("Digite o nome do produto a ser buscado: ");
                 scanf(" %[^\n]", nome_escolhido);
                 string_maiuscula_minuscula(nome_escolhido);
@@ -146,11 +161,12 @@ int main() {
                     }
                     Auxiliar = Percorrer_Sessoes(Auxiliar);
                 }
+                Limpar_Tela();
                 printf("\033[1;31mNenhum produto com o nome: \"%s\" encontrado\033[0m", nome_escolhido);
                 break;
             }
             case '7': {
-
+                Emite_Bip();
                 Lista_Sessao *Auxiliar = lista_Sessao;
                 if(!Lista_Vazia(Auxiliar)){
                 while (Auxiliar != NULL)
@@ -161,17 +177,20 @@ int main() {
                         Auxiliar = Percorrer_Sessoes(Auxiliar);
                     }
                 } else {
+                    Limpar_Tela();
                     printf("\033[1;31mNao existe nenhuma lista\033[0m\n");
                 }
                 break;
             }
             case '8': {
+                Emite_Bip();
                 printf("Saindo...\n");
                 Escrever_Arquivo(lista_Sessao);
                 Liberar_Lista_Sessao(lista_Sessao);
                 break;
             }
             default: {
+                Limpar_Tela();
                 printf("\033[1;31mOpcao invalida. Tente novamente.\033[0m\n");
             }
         }

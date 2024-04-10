@@ -2,7 +2,6 @@
 
 char exibirMenu() {
 
-    setlocale(LC_ALL, "Portuguese");
     char escolha[10];
     printf("\n\t\033[34m=== Menu ===\n");
     printf("\t\033[1;33m1.\033[0m Adicionar produto\n");
@@ -27,7 +26,7 @@ void Escrever_Arquivo(Lista_Sessao *lista_sessao_var){
     Escrever_Sessao(lista_sessao_var, Arquivo);
     if (Arquivo == NULL)
     {
-        printf("erro na abertura para escrever de arquivo\n");
+        printf("\033[1;31mErro na abertura para escrever de arquivo\033[0m\n");
         exit(1);
     }
     fclose(Arquivo);
@@ -38,14 +37,14 @@ int *Contador_Sessoes_e_Produtos(){
     FILE *Arquivo = fopen("Arquivo.txt", "rt");
     if (Arquivo == NULL)
     {
-        printf("errp na abertura de arquivo\n");
+        printf("\033[1;31mErro na abertura de arquivo\033[0m\n");
         exit(1);
     }
 
     int *Contador = (int *)malloc(sizeof(int));
     if (Contador == NULL)
     {
-        printf("errp na realcacao de arquivo\n");
+        printf("\033[1;31mErro na realcacao de arquivo\033[0m\n");
         exit(1);
     }
     int index = -1;
@@ -58,7 +57,7 @@ int *Contador_Sessoes_e_Produtos(){
             Contador = (int *)realloc(Contador, (index + 1) * sizeof(int));
             if (Contador == NULL)
             {
-                printf("errp na realcacao de arquivo\n");
+                printf("\033[1;31mErro na realcacao de arquivo\033[0m\n");
                 exit(1);
             }
             Contador[index] = 0;
@@ -131,4 +130,30 @@ int extrairInt(char *str){
 		}
     }
     return atoi(numero_str);
+}
+
+void Limpar_Tela(){
+
+    #ifdef _WIN32
+        system("cls");
+    #else 
+        system("clear");   
+    #endif
+}
+
+void Configura_Terminal() {
+    #ifdef _WIN32
+        system("chcp 65001 > NUL");
+    #else
+        setlocale(LC_ALL, "");
+    #endif
+}
+
+void Emite_Bip() {
+
+    #ifdef _WIN32
+       Beep(3000, 230);
+    #else
+        printf("\a");
+    #endif
 }
