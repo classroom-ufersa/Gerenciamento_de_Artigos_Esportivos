@@ -10,12 +10,12 @@ def adicionar_produto(lista_produto, nome, categoria, preco, quantidade):
     lista_produto.append(novo_produto)
     return lista_produto
 
-def remover_produto(lista_sessao, lista_produto, nome):
+def remover_produto(lista_sessao, nome):
     for sessao in lista_sessao:
         for produto in sessao.lista_produto:
             if produto.nome == nome:
-                lista_produto.remove(produto)
-                return lista_produto
+                sessao.lista_produto.remove(produto)
+                return sessao.lista_produto
     raise ValueError("Produto não encontrado.")
 
 def editar_produto(lista_produto, nome):
