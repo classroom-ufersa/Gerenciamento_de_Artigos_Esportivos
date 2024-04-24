@@ -66,7 +66,16 @@ def Tratativa_para_float(string):
         if caractere.isdigit() or (caractere == '.' or caractere ==','):
             nova_string += caractere
     return nova_string   
+
+def Tretamento_para_String(string):
     
+    while True:
+        if len(string) == 0:
+            print("nome invalido")
+            string = input("Digite o nome novamente: ")
+        else:
+            break
+    return string
 
 lista_sessao = []
 
@@ -83,6 +92,7 @@ while True:
             for sessao in lista_sessao:
                 if nome_sessao == sessao.nome:
                     nome = input("Digite o nome do produto: ")
+                    nome = Tretamento_para_String(nome)
                     
                     produto_com_mesmo_nome = False
                     for sessao in lista_sessao:
@@ -93,13 +103,18 @@ while True:
                     if not produto_com_mesmo_nome:
                         categoria = input("Digite a categoria do produto: ")
                         preco = input("Digite o preço do produto: ")
+                        preco = Tretamento_para_String(preco)
                         preco = Tratativa_para_float(preco)
+                        
                         quantidade = input("Digite a quantidade do produto: ")
                         quantidade = Tratativa_para_int(quantidade)
+                        quantidade = Tretamento_para_String(quantidade)
+                        
                         adicionar_produto(sessao.lista_produto, nome, categoria, preco, quantidade)
                         print("Produto adicionado com sucesso.")
                     else: 
                         print("produto já existente")
+                    
                     sessao_encontrada = True
             if not sessao_encontrada:
                 print("sessao nao encontrada")
@@ -115,13 +130,15 @@ while True:
             
     elif opcao_escolhida == '3':
         nome = input("Digite o nome da sessão: ")
-        
+        nome = Tretamento_para_String(nome)
         sessao_com_mesmo_nome = False
         for sessao in lista_sessao:
             if nome == sessao.nome:
                 sessao_com_mesmo_nome = True
         if not sessao_com_mesmo_nome:
-            descricao = input("Digite a descrição da sessão: ")   
+            descricao = input("Digite a descrição da sessão: ") 
+            descricao = Tretamento_para_String(descricao)  
+            
             adicionar_sessao(lista_sessao, nome, descricao)
             print("Sessão adicionada com sucesso.")
         else:
